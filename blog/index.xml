@@ -6,10 +6,25 @@
     <description>Recent content in Blogs on lowply.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 14 Jan 2017 03:33:43 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 17 Aug 2017 19:56:26 +0900</lastBuildDate>
     
 	<atom:link href="https://lowply.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GitHub PagesとマージしてURLを変えた</title>
+      <link>https://lowply.github.io/blog/2017/08/merge-github-pages/</link>
+      <pubDate>Thu, 17 Aug 2017 19:56:26 +0900</pubDate>
+      
+      <guid>https://lowply.github.io/blog/2017/08/merge-github-pages/</guid>
+      <description>2006年から使っていたfixture.jpというドメインをブログに使うのをやめて、これまでプロフィール的に使っていたGitHub Pagesのドメインlowply.github.ioに統合しました。
+2016年の6月にGitHubに入社して以来、Pagesをもう少し積極的に使っていきたいと思っていたのと、HTTPSを使いたいだけのためにCloudFrontを経由したS3でホストするのも大げさだなと思ってのアイデアです。
+ちょっと困ったのは、lowply.github.ioのようなドメイン直下にPagesのサイトを置きたい場合、ソースの配置先はmasterブランチのみで/docsが選べなかったこと。
+ If your site is a User or Organization Page that has a repository named &amp;lt;username&amp;gt;.github.io or &amp;lt;orgname&amp;gt;.github.io, you cannot publish your site&amp;rsquo;s source files from different locations. User and Organization Pages that have this type of repository name are only published from the master branch.
+ Configuring a publishing source for GitHub Pages
+Hugoで生成したファイル群をリポジトリの直下に置かないといけないので、ディレクトリの見通しが悪くなる。仕方がないからコンテンツやテーマといったHugo関連のファイル群を.hugoディレクトリに置くことに。隠しディレクトリにしているのは、hugoコマンドに--cleanDestinationDirをつけても自分自身が消されないためです。
+というわけで、書きたいネタは少しずつ浮かぶものの形にできず更新が止まっているブログですが、引き続き時間を見て書いていきます。Photo Journalもそのうち更新します。</description>
+    </item>
     
     <item>
       <title>AWS Route 53用のCLIツールをGoで書いた</title>
