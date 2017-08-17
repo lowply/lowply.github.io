@@ -17,4 +17,4 @@ TITLE=$(echo ${FILENAME} | sed 's/[^ _-]*/\u&/g' | sed 's/-/ /g')
 
 hugo new ${TYPE}/${FILENAME}.md
 perl -i -pe "s|title = \".*\"|title = \"${TITLE}\"|g" content/${TYPE}/${FILENAME}.md
-vim content/${TYPE}/${FILENAME}.md
+/usr/local/bin/nvim content/${TYPE}/${FILENAME}.md
