@@ -19,5 +19,5 @@ publishDir = "../"
 [params]
 	twitter = "lowply"
 	github = "lowply"
-	gaid = "UA-258121-11"
+	gaid = "UA-258121-9"
 
