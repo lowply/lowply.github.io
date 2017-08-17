@@ -4,36 +4,40 @@
 
 ### Setup
 
-Clone and install furniture theme
+Clone and install furniture theme as a submodule
 
 ```bash
 $ git clone https://github.com/lowply/lowply.github.io.git
-$ cd /path/to/lowply.github.io/themes/
-$ git clone https://github.com/lowply/furniture.git
-$ cd furniture
+$ cd lowply.github.io
+$ git submodule update -i
+$ cd .hugo/themes/furniture/
 $ make install
 $ make build
 ```
 
-Run dev server for preview
+### Run dev server for preview
 
 ```bash
-$ cd /path/to/lowply.github.io
+$ cd /path/to/lowply.github.io/.hugo
 $ make watch
 ```
 
-### Usage
+### Build and deploy
+
+```bash
+$ cd /path/to/lowply.github.io/.hugo
+$ make build
+$ cd ..
+```
+
+Then push changes to the master branch.
+
+### Start writing a new post
 
 New post
 
 ```bash
 $ ./new.sh a-sample-post
-```
-
-Deploy
-
-```bash
-$ make deploy
 ```
 
 ### Author
