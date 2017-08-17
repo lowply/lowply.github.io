@@ -113,10 +113,10 @@ $ go get -v github.com/spf13/hugo $ hugo version Hugo Static Site Generator v0.<
     
     <item>
       <title>Kölner Dom</title>
-      <link>https://lowply.github.io/photo/k%C3%B6lner-dom/</link>
+      <link>https://lowply.github.io/photo/kolner-dom/</link>
       <pubDate>Thu, 05 Sep 2013 00:00:00 +0900</pubDate>
       
-      <guid>https://lowply.github.io/photo/k%C3%B6lner-dom/</guid>
+      <guid>https://lowply.github.io/photo/kolner-dom/</guid>
       <description>The Cathedral   Before getting back to Japan, I visited Köln, only 1 hour by train from Frankfurt am Main. When I got out from Köln Hauptbahnhof (Cologne main station), what I saw blowed my mind and I couldn&amp;rsquo;t move for a while.
      It&amp;rsquo;s HUGE. GR&amp;rsquo;s 28mm equivalent focal length was not enough to capture its entire silhouette. 157 meters height is close to 40 stories building, and building of the Cologne Cathedral took 632 years.</description>
     </item>
@@ -243,14 +243,18 @@ WPA2の認証までは通ってるので、なんとなくDHCP周りかなと思
 各方面のコメント はてブ http://b.hatena.ne.jp/entry/fixture.jp/blog/2012/09/how-apple-compresses-video-in-iphone5-website/
 Twitter https://twitter.com/i/#!/search/?q=fixture.jp
 一番見かけたのが「こんなん目指すべき姿じゃない」というご意見。
-アホ言え! 一番真似しちゃアカンタイプのバッドノウハウの塊やないかい!! こんなん目指してどうするんだよ。こういう事やらなくて良い世界目指す方でおねがいします。 まずSafariでインライン再生できるようにするのが先じゃないのか   バッドかどうかは後述するとして、このノウハウそのものが「目指すべき姿」だとは思っていないのですが、言葉足らずでした。スミマセン。
+ アホ言え! 一番真似しちゃアカンタイプのバッドノウハウの塊やないかい!! こんなん目指してどうするんだよ。こういう事やらなくて良い世界目指す方でおねがいします。 まずSafariでインライン再生できるようにするのが先じゃないのか
+ バッドかどうかは後述するとして、このノウハウそのものが「目指すべき姿」だとは思っていないのですが、言葉足らずでした。スミマセン。
 ここで書きたかったことは、この10年Appleのサイトを見てきて一度も「大規模リニューアル」とかをせず、新製品が登場するごとに部分的に変化し、HTML5, JS, CSSを使って新しい技術を積極的に取り入れながら、まるで生き物のように成長していく全体的なサイト運営手法が、大規模オフィシャルサイトのひとつの「目指すべき姿」だと感じたということです。これは昔から思っていたことです。
 Appleサイトに見るグローバルメニューの画像置換手法 | fixture.jp
 ウェブ上での表現、特にモーションがあるものに関してはFlashからJSへの過渡期であったり、まだまだ模索段階だと思います。だから、一つの技法を編み出して、それを大規模サイトに躊躇なく投入していく実験的な姿勢が、次の時代の流れを作っていくのではないかと思っています。そういう意味で、今はバッドノウハウでも、やがて最適化されて未来の標準技術になっていく可能性は大いにあると思います。AJAXのように。
-これがバッドノウハウを使わないと実装できないのなら、間違ってるのは仕様の方です。実装は結果のためにあるのであって、逆ではありません。   MotionJPEGが普及しなかったように、実装と仕様には常にタイミングの問題が絡みついてきますね。
+ これがバッドノウハウを使わないと実装できないのなら、間違ってるのは仕様の方です。実装は結果のためにあるのであって、逆ではありません。
+ MotionJPEGが普及しなかったように、実装と仕様には常にタイミングの問題が絡みついてきますね。
 あと次に見かけて驚いたのが、実は昔からある技法ということ。
-ぜんぜん違うけど何となくMSX時代の裏ページに置く展開前の超圧縮画像を思い出した 変態というか、8ビット時代のプログラミングって感じだな。 昔ながらのビデオプログラミングのやり方をHTML5流で。 古典的な技術の昇華がすごい。   リソースが少なかった頃のレトロゲーム時代によくこういう実装をしていた、ということ。なるほど先人の知恵が細い3G回線とモバイルデバイスの環境でまた生きてくるわけですねー。ダブルバッファリングという単語も見かけましたが、ちょっと詳しくは調べきれていません。
-技術的にはすごいんだろうけど開いたらCPU使用率MAXになったので結果的にはイケてないサイトになってる   これはスゴイ嫌ですね。昔のFlashサイトはこういうことよくありました。ただ今回の例では、自分の環境ではCPUは一瞬上がるだけで特に問題ないように思いました。</description>
+ ぜんぜん違うけど何となくMSX時代の裏ページに置く展開前の超圧縮画像を思い出した 変態というか、8ビット時代のプログラミングって感じだな。 昔ながらのビデオプログラミングのやり方をHTML5流で。 古典的な技術の昇華がすごい。
+ リソースが少なかった頃のレトロゲーム時代によくこういう実装をしていた、ということ。なるほど先人の知恵が細い3G回線とモバイルデバイスの環境でまた生きてくるわけですねー。ダブルバッファリングという単語も見かけましたが、ちょっと詳しくは調べきれていません。
+ 技術的にはすごいんだろうけど開いたらCPU使用率MAXになったので結果的にはイケてないサイトになってる
+ これはスゴイ嫌ですね。昔のFlashサイトはこういうことよくありました。ただ今回の例では、自分の環境ではCPUは一瞬上がるだけで特に問題ないように思いました。</description>
     </item>
     
     <item>
