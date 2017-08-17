@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Dockerが公式にOS Xに対応したので試してみた - lowply.github.io</title>
+	<meta name="description" content="">
+	<meta name="author" content="lowply">
+	<meta name="generator" content="Hugo 0.26" />
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="lowply" />
+	<meta name="twitter:title" content="Dockerが公式にOS Xに対応したので試してみた - lowply.github.io">
+	<meta name="twitter:description" content="">
+	<meta property="fb:app_id" content="1612273492388081">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Dockerが公式にOS Xに対応したので試してみた - lowply.github.io">
+	<meta property="og:url" content="https://lowply.github.io/blog/2014/02/docker-tryout/"/>
+	<meta property="og:image" content="http://lowply.github.io/assets/img/og.png"/>
+	<meta property="og:description" content="">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="alternate" type="application/rss+xml" title="lowply.github.io" href="/index.xml" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<link rel="stylesheet" href="/assets/main.css">
+</head>
+<body class="blog">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1612273492388081";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<div class="container article">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1><a href="/">lowply.github.io</a>/<a href="/blog/">blog</a></h1>
+			<section class="post">
+				<h2>
+					Dockerが公式にOS Xに対応したので試してみた
+				</h2>
+				<article>
+					
+
+<h3 id="boot2docker">boot2docker</h3>
+
+<blockquote class="blockquote">
+  <p class="m-b-0">
+    First, install the Docker binary which will forward all commands to a remote docker daemon
+    Second, install Boot2Docker, which is a super-lightweight Linux VM capable of running a docker daemon on your Mac with the smallest possible overhead. Currently it occupies 24MB on disk and boots in less than 10 seconds.
+  </p>
+  <footer class="blockquote-footer"><cite title=""><a href="http://blog.docker.io/2014/02/docker-0-8-quality-new-builder-features-btrfs-storage-osx-support/">DOCKER 0.8: QUALITY, NEW BUILDER FEATURES, BTRFS, OSX SUPPORT</a></cite></footer>
+</blockquote>
+
+<p>とのこと。まず<a href="https://github.com/steeve/boot2docker">boot2docker</a>について。これはなんだ、と。</p>
+
+<ul>
+<li>これまでMacでDockerを使う場合はVirtualBoxなりVMware FusionなりでUbuntuとかを動かして、その中でDockerを使う必要があった</li>
+<li>しかしそれでは毎回最初の一歩が重くてDockerのメリットが活かせないし、ネイティブにDockerを使えたほうが何かと便利</li>
+<li>そこでboot2dockerというものが考案された</li>
+<li>これは厳密にはソフトウェアではなく、Dockerを動かすことに特化したTiny Core Linuxベースのisoイメージと、それをインストールしたVirtualBoxをコントロールするシェルスクリプトの組み合わせ</li>
+<li>boot2dockerが起動している状態であれば、OS XのターミナルからDockerを直接操作できる（Docker 0.8になって公式にOS Xをサポートした、というのはこの部分かと）</li>
+<li>これについてさらっとこのページの一番下（About the way Docker works on Mac OS X）に書いてある。MacにはLXCとかがないからねーということで。：<a href="http://docs.docker.io/en/latest/installation/mac/">Requirements and Installation on Mac OS X 10.6 Snow Leopard - Docker Documentation</a></li>
+</ul>
+
+<p>という理解でいいのでしょうか？たぶん合ってる。要はboot2docker stopするとTerminalからdockerコマンド使えない。その関係性をdaemonとclientと言ってる。</p>
+
+<h3 id="インストール手順">インストール手順</h3>
+
+<p>Oracle VirtualBox 必須。ここからDL &amp; インストロール。<a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></p>
+
+<p>ドキュメントではgithubからcurlしてるけど、tapを追加すればhomebrewで入れられる。</p>
+
+<pre><code class="language-bash">$ brew tap homebrew/binary
+$ brew install docker boot2docker
+$ docker -v
+Docker version 0.8.0, build cc3a8c8
+</code></pre>
+
+<p>これも必須（docker - VM間の通信用）</p>
+
+<pre><code class="language-bash">export DOCKER_HOST=tcp://
+</code></pre>
+
+<p>Tiny Core Linuxのisoを格納するディレクトリを適当に作って適当に移動</p>
+
+<pre><code class="language-bash">$ cd &amp;&amp; mkdir docker &amp;&amp; cd docker
+</code></pre>
+
+<p>VirtualBox上にディスクイメージを準備・起動。initでisoがDLされる。.vmdkも後でここにできる。</p>
+
+<pre><code class="language-bash">$ boot2docker init
+$ boot2docker up
+</code></pre>
+
+<p>確認</p>
+
+<pre><code class="language-bash">$ boot2docker status
+ [2014-02-09 00:39:35] boot2docker-vm is running.
+</code></pre>
+
+<p>これでTerminalからdockerが使える。CentOSをpullして</p>
+
+<pre><code class="language-bash">$ docker pull centos
+</code></pre>
+
+<p>コンテナに入る</p>
+
+<pre><code class="language-bash">$ docker run -i -t centos /bin/bash
+</code></pre>
+
+<p>あとは普通にdocker。なんていうか全体的にシンプルかつ最善を尽くした感じの良いソリューションで素敵。</p>
+
+<p>それにしてもコンテナ型VMの速度にはびっくりする。昔OpenVZ好きじゃなかったけど、LXCはLinuxカーネルにも取り込まれたり、もうすぐ1.0も出たりと期待できる。今のところプロダクション環境より検証とかテストに向いてるイメージ。</p>
+
+				</article>
+			</section>
+			<nav>
+				<ul class="pagination pagination-sm justify-content-center">
+					<li class="page-item"><a class="page-link" href="/blog/2013/03/how-to-compile-libevent-20-with-tmux-18/">Prev</a></li>
+					<li class="page-item"><a class="page-link" href="/blog/2015/06/moved/">Next</a></li>
+				</ul>
+			</nav>
+			
+			<footer class="clearfix">
+	<div class="postmeta">
+		Written on <time datetime="2014-02-09">09 Feb, 2014</time>
+		 under <a class="post-category" href="/categories/server/">Server</a>
+	</div>
+	<div class="float-xs-left">
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.26 and hosted by <a href="https://aws.amazon.com/s3/">S3 + CloudFront</a>.
+	</div>
+	<div class="float-xs-right">
+		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>
+	</div>
+</footer>
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/662ce5e241.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+<script src="/assets/main.js"></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-258121-11', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
+
+
+

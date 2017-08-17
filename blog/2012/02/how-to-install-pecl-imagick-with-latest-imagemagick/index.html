@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>ImageMagick 6.7 &#43; PECL::imagickのインストール - lowply.github.io</title>
+	<meta name="description" content="">
+	<meta name="author" content="lowply">
+	<meta name="generator" content="Hugo 0.26" />
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="lowply" />
+	<meta name="twitter:title" content="ImageMagick 6.7 &#43; PECL::imagickのインストール - lowply.github.io">
+	<meta name="twitter:description" content="">
+	<meta property="fb:app_id" content="1612273492388081">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="ImageMagick 6.7 &#43; PECL::imagickのインストール - lowply.github.io">
+	<meta property="og:url" content="https://lowply.github.io/blog/2012/02/how-to-install-pecl-imagick-with-latest-imagemagick/"/>
+	<meta property="og:image" content="http://lowply.github.io/assets/img/og.png"/>
+	<meta property="og:description" content="">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="alternate" type="application/rss+xml" title="lowply.github.io" href="/index.xml" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<link rel="stylesheet" href="/assets/main.css">
+</head>
+<body class="blog">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1612273492388081";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<div class="container article">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1><a href="/">lowply.github.io</a>/<a href="/blog/">blog</a></h1>
+			<section class="post">
+				<h2>
+					ImageMagick 6.7 &#43; PECL::imagickのインストール
+				</h2>
+				<article>
+					<p>ImageMagick 6.6 系のときはこんなことなかった気がするんだけど、 PECL::imagick のインストールがこける。こちらの記事を見つつも、微妙に環境が違うし、 /usr/bin/php-config とか編集したくないし、何か別の方法があるはずと思って探ってみた。</p>
+
+<ul>
+<li><a href="http://dqn.sakusakutto.jp/2010/08/phpimagick.html">[PHP]Imagickのインストールエラーの対処法 - DQNEO起業日記</a></li>
+<li><a href="http://nobuneko.com/blog/archives/2010/10/php_imagickpecl.html">PHP 拡張モジュールImagickの導入時に遭遇したPECLのバグの回避策など - r_nobuホームページ </a></li>
+</ul>
+
+<p>とりあえず現状</p>
+
+<pre><code class="language-bash">$ uname -orm
+2.6.18-238.el5 x86_64 GNU/Linux
+
+$ cat /etc/issue
+CentOS release 5.7 (Final)
+Kernel \r on an \m
+</code></pre>
+
+<p>ここから最新のsrcをDL。<a href="http://www.imagemagick.org/script/download.php">ImageMagick: Downloads</a></p>
+
+<pre><code class="language-bash">$ cd /usr/local/src/
+$ wget ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/ImageMagick-6.7.5-6.tar.bz2
+$ tar vxjf ImageMagick-6.7.5-6.tar.bz2
+$ cd ImageMagick-6.7.5-6
+
+- perlで使うかもしれないので
+$ ./configure --prefix=/usr/local/ImageMagick --with-perl
+
+$ make &amp;&amp; make install
+
+$ cd /usr/local/bin
+$ ln -s /usr/local/ImageMagick/bin/* .
+</code></pre>
+
+<p>ここまではいい。</p>
+
+<pre><code class="language-bash">$ pecl install imagick
+</code></pre>
+
+<p>すると</p>
+
+<pre><code class="language-bash">downloading imagick-3.0.1.tgz ...
+Starting to download imagick-3.0.1.tgz (93,920 bytes)
+.....................done: 93,920 bytes
+13 source files, building
+running: phpize
+Configuring for:
+PHP Api Version: 20090626
+Zend Module Api No: 20090626
+Zend Extension Api No: 220090626
+Please provide the prefix of Imagemagick installation [autodetect] :
+building in /var/tmp/pear-build-rootoxvYzf/imagick-3.0.1
+running: /var/tmp/imagick/configure --with-imagick=/usr/local/ImageMagick
+checking for egrep... grep -E
+checking for a sed that does not truncate output... /bin/sed
+checking for cc... cc
+checking for C compiler default output file name... a.out
+.
+.
+.
+checking for gawk... gawk
+checking whether to enable the imagick extension... yes, shared
+checking whether to enable the imagick GraphicsMagick backend... no
+checking ImageMagick MagickWand API configuration program... found in /usr/local/ImageMagick/bin/MagickWand-config
+checking if ImageMagick version is at least 6.2.4... found version 6.7.5 Q16
+checking for MagickWand.h header file... found in /usr/local/ImageMagick/include/ImageMagick/wand/MagickWand.h
+checking PHP version is at least 5.1.3... yes. found 5.3.3
+Package MagickWand was not found in the pkg-config search path.
+Perhaps you should add the directory containing 'MagickWand.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'MagickWand' found
+Package MagickWand was not found in the pkg-config search path.
+Perhaps you should add the directory containing 'MagickWand.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'MagickWand' found&lt;/span&gt;
+.
+.
+.
+checking if f95 supports -c -o file.o... yes
+checking whether the f95 linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+configure: creating ./config.status
+config.status: creating config.h
+running: make
+/bin/sh /var/tmp/pear-build-rootoxvYzf/imagick-3.0.1/libtool --mode=compile cc -I. -I/var/tmp/imagick -DPHP_ATOM_INC -I/var/tmp/pear-build-rootoxvYzf/imagick-3.0.1/include -I/var/tmp/pear-build-rootoxvYzf/imagick-3.0.1/main -I/var/tmp/imagick -I/usr/include/php -I/usr/include/php/main -I/usr/include/php/TSRM -I/usr/include/php/Zend -I/usr/include/php/ext -I/usr/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /var/tmp/imagick/imagick_class.c -o imagick_class.lo
+mkdir .libs
+cc -I. -I/var/tmp/imagick -DPHP_ATOM_INC -I/var/tmp/pear-build-rootoxvYzf/imagick-3.0.1/include -I/var/tmp/pear-build-rootoxvYzf/imagick-3.0.1/main -I/var/tmp/imagick -I/usr/include/php -I/usr/include/php/main -I/usr/include/php/TSRM -I/usr/include/php/Zend -I/usr/include/php/ext -I/usr/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /var/tmp/imagick/imagick_class.c -fPIC -DPIC -o .libs/imagick_class.o
+In file included from /var/tmp/imagick/imagick_class.c:21:
+/var/tmp/imagick/php_imagick.h:49:31: error: wand/MagickWand.h: No such file or directory&lt;/span&gt;
+In file included from /var/tmp/imagick/imagick_class.c:22:
+/var/tmp/imagick/php_imagick_defs.h:72: error: expected specifier-qualifier-list before 'MagickWand'
+/var/tmp/imagick/php_imagick_defs.h:80: error: expected specifier-qualifier-list before 'DrawingWand'
+/var/tmp/imagick/php_imagick_defs.h:86: error: expected specifier-qualifier-list before 'PixelIterator'
+/var/tmp/imagick/php_imagick_defs.h:98: error: expected specifier-qualifier-list before 'PixelWand'
+.
+.
+.
+</code></pre>
+
+<p>あとはずっとエラーの嵐。しょうがないからメッセージを1行ずつ読んでいく。とりあえずエラーの嵐の直前で</p>
+
+<pre><code class="language-bash">/var/tmp/imagick/php_imagick.h:49:31: error: wand/MagickWand.h: No such file or directory
+</code></pre>
+
+<p>と言ってる。が、ちゃんとこれは</p>
+
+<pre><code class="language-bash">/usr/local/ImageMagick/include/ImageMagick/wand/MagickWand.h
+</code></pre>
+
+<p>にある。さらに上の方を見ると</p>
+
+<pre><code class="language-bash">Package MagickWand was not found in the pkg-config search path.
+Perhaps you should add the directory containing `MagickWand.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'MagickWand' found
+</code></pre>
+
+<p>って言ってるので、MagickWand.pcがある場所にパスが通ってないらしい。</p>
+
+<pre><code class="language-bash">$ echo $PKG_CONFIG_PATH
+</code></pre>
+
+<p>たしかに空。 MagickWand.pcがあるディレクトリを探して</p>
+
+<pre><code class="language-bash">$ updatedb
+$ locate MagickWand.pc
+/usr/local/ImageMagick/lib/pkgconfig/MagickWand.pc
+/usr/local/src/ImageMagick-6.7.5-6/wand/MagickWand.pc
+/usr/local/src/ImageMagick-6.7.5-6/wand/MagickWand.pc.in
+</code></pre>
+
+<p>ってことで追加してみる。</p>
+
+<pre><code class="language-bash">$ export PKG_CONFIG_PATH=/usr/local/ImageMagick/lib/pkgconfig
+$ pecl install imagick
+</code></pre>
+
+<p>入った。</p>
+
+<pre><code class="language-bash">$ ls -la /usr/lib64/php/modules/imagick.so
+-rw-r--r-- 1 root root 1132254 Feb 16 00:00 /usr/lib64/php/modules/imagick.so
+
+$ pecl list
+INSTALLED PACKAGES, CHANNEL PECL.PHP.NET:
+=========================================
+PACKAGE VERSION STATE
+imagick 3.0.1 stable
+</code></pre>
+
+<p>あとは反映、確認</p>
+
+<pre><code class="language-bash">$ echo extension=imagick.so &gt; /etc/php.d/imagick.ini
+$ /etc/init.d/httpd restart
+$ php -i | grep imagick
+imagick
+imagick module =&gt; enabled
+imagick module version =&gt; 3.0.1
+imagick classes =&gt; Imagick, ImagickDraw, ImagickPixel, ImagickPixelIterator
+imagick.locale_fix =&gt; 0 =&gt; 0
+imagick.progress_monitor =&gt; 0 =&gt; 0
+</code></pre>
+
+				</article>
+			</section>
+			<nav>
+				<ul class="pagination pagination-sm justify-content-center">
+					<li class="page-item"><a class="page-link" href="/blog/2012/02/manage-vim-plugin-with-vundle/">Prev</a></li>
+					<li class="page-item"><a class="page-link" href="/blog/2012/02/switching-to-neobundle/">Next</a></li>
+				</ul>
+			</nav>
+			
+			<footer class="clearfix">
+	<div class="postmeta">
+		Written on <time datetime="2012-02-16">16 Feb, 2012</time>
+		 under <a class="post-category" href="/categories/server/">Server</a>
+	</div>
+	<div class="float-xs-left">
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.26 and hosted by <a href="https://aws.amazon.com/s3/">S3 + CloudFront</a>.
+	</div>
+	<div class="float-xs-right">
+		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>
+	</div>
+</footer>
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/662ce5e241.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+<script src="/assets/main.js"></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-258121-11', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
+
+
+

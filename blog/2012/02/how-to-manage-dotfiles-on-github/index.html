@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>DotfilesをGitHubで管理する - lowply.github.io</title>
+	<meta name="description" content="">
+	<meta name="author" content="lowply">
+	<meta name="generator" content="Hugo 0.26" />
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="lowply" />
+	<meta name="twitter:title" content="DotfilesをGitHubで管理する - lowply.github.io">
+	<meta name="twitter:description" content="">
+	<meta property="fb:app_id" content="1612273492388081">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="DotfilesをGitHubで管理する - lowply.github.io">
+	<meta property="og:url" content="https://lowply.github.io/blog/2012/02/how-to-manage-dotfiles-on-github/"/>
+	<meta property="og:image" content="http://lowply.github.io/assets/img/og.png"/>
+	<meta property="og:description" content="">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="alternate" type="application/rss+xml" title="lowply.github.io" href="/index.xml" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<link rel="stylesheet" href="/assets/main.css">
+</head>
+<body class="blog">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1612273492388081";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<div class="container article">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1><a href="/">lowply.github.io</a>/<a href="/blog/">blog</a></h1>
+			<section class="post">
+				<h2>
+					DotfilesをGitHubで管理する
+				</h2>
+				<article>
+					
+
+<p>最後の更新が1年以上前とは。。。気を取り直して、WordPressのバージョンも最新版に上げ、<a href="http://www.elmastudio.de/wordpress-themes/nilmini/">Nilmini</a>という良いThemeも見つけ、技術メインで再びいろいろ発信しようということで更新してみます。</p>
+
+<p>最初はライトなものから。メインのテキストエディタを<a href="http://www.artman21.com/jp/jedit_x/">Jedit</a>から<a href="http://code.google.com/p/macvim-kaoriya/">MacVim</a>へ移行しようか検討していて、その過程で.vimrcを複数環境で同期するためにGitHub（<a href="https://github.com/lowply/">github.com/lowply</a>）を使い始めました。その時のメモ。</p>
+
+<h5 id="vim本体">vim本体</h5>
+
+<p><del>まずvim用の.vimrc、MacVim用の.gvimrc。それから、プラグインを<a href="https://github.com/tpope/vim-pathogen">pathogen</a>で管理することにしたので.vimディレクトリを。プラグイン管理に<a href="https://github.com/gmarik/vundle">vundle</a>も使ってみたけど複雑になりすぎるので好きじゃないです。使いこなせてないだけなのかもしれないけど。</del></p>
+
+<p>2012/2/12 追記：vundleをしっかり調べてみたらかなり良かったので<a href="/blog/2012/02/manage-vim-plugin-with-vundle/">使い始めました</a>。すごいですこれ。</p>
+
+<p>pathogenでの管理をやめるので、autoload、bundle/ をrmではなくgit rmで削除しておきました。</p>
+
+<h5 id="カラースキーマ">カラースキーマ</h5>
+
+<p>Color Schemeには史上最も洗練された（と思っている）<a href="http://ethanschoonover.com/solarized">SOLARIZED</a>を一度検討したものの、紺背景に馴染めず、vim.orgで高ランキングを叩き出している<a href="https://github.com/tomasr/molokai">molokai.vim</a>を選択。派手な感じで良いです。もともとTextMate用の<a href="http://www.monokai.nl/blog/2006/07/15/textmate-color-theme/">Monokai</a>っていうのがベースらしいです。</p>
+
+<h5 id="ターミナル">ターミナル</h5>
+
+<p>インフラエンジニアという仕事柄、<a href="http://tmux.sourceforge.net/">tmux</a>がなくては仕事にならないので.tmux.confも。LionからTerminalが256color対応したので、ステータスバーをカラフルにしてます。<a href="http://www.gnu.org/software/screen/">screen</a>は使ってません。</p>
+
+<p>ちなみにコンソール上の色出力は<a href="http://frexx.de/xterm-256-notes/">256colors2.pl</a>が有名ですけど、tmuxのcolour numberをつけたバージョンを作成している方を発見。かなりテンション上がりました。<a href="http://ytaniike.posterous.com/256-colors-with-tmuxs-colour-numbers">256 colors with tmux&rsquo;s colour numbers. - What&rsquo;s Goin&rsquo; On Out There?</a> 実際に、これで色合わせしました。</p>
+
+<p>それから、Terminal.appのオリジナルテーマをFixture.terminalとして書き出して追加。これは単なるxmlで、Mac上でダブルクリックすればインポートできる形式になってます。便利。</p>
+
+<h5 id="githubに置く">githubに置く</h5>
+
+<p>全体的な管理方法としては、~/dotfilesというディレクトリを作り、その中をgitリポジトリとして、~/.vimrcなどはシンボリックリンクにする方法にしました。いろんな人のdotfileを見てると、どうもこれが一般的らしい。</p>
+
+<pre><code class="language-css">~/
+├── dotfiles
+│    ├── Fixture.terminal
+│    ├── .git
+│    ├── .gitignore
+│    ├── .gvimrc
+│    ├── README.md
+│    ├── symlink.sh
+│    ├── .tmux.conf
+│    ├── .vim
+│    └── .vimrc
+├── .gvimrc -&amp;gt; /root/dotfiles/.gvimrc
+├── .tmux.conf -&amp;gt; /root/dotfiles/.tmux.conf
+├── .vim -&amp;gt; /root/dotfiles/.vim
+└── .vimrc -&amp;gt; /root/dotfiles/.vimrc
+</code></pre>
+
+<p>あとは普通に</p>
+
+<pre><code class="language-bash">$ git add .
+$ git commit -m &quot;first commit&quot;
+$ git push origin master
+</code></pre>
+
+<p>あと、git pullした後に叩くだけでsymlinkを分散配置してくれるシェルスクリプトを書いてる人もいたので、これもいろいろ参考にしつつこんな感じで書いて追加。</p>
+
+<pre><code class="language-bash">#!/bin/sh
+cd $(dirname $0)
+for dotfile in .?*
+do
+    if [ $dotfile != '..' ] &amp;&amp; [ $dotfile != '.git' ]
+    then
+        ln -Fis &quot;$PWD/$dotfile&quot; $HOME
+    fi
+done
+</code></pre>
+
+<p>最後にmarkdown形式でREADME書いて完了。という感じです。</p>
+
+<p><a href="https://github.com/lowply/dotfiles">lowply/dotfiles - GitHub</a></p>
+
+<ul>
+<li>実はGitHubは初ではなく、昔作った<a href="https://github.com/lowply/Google-English">Google-English</a>というbookmarkletが置いてあった。英単語を検索するとき地味に便利。</li>
+<li>gitについて何も書かなかったけど、ググればこういう良い記事がたくさんある。<a href="http://rogerdudler.github.com/git-guide/index.ja.html">git - 簡単ガイド</a></li>
+<li>新しいWordPressのフルスクリーンエディットモード超いい。</li>
+</ul>
+
+				</article>
+			</section>
+			<nav>
+				<ul class="pagination pagination-sm justify-content-center">
+					<li class="page-item"><a class="page-link" href="/blog/2008/02/ltj-bukem-on-the-radio-1-drum-bass-show-with-fabio/">Prev</a></li>
+					<li class="page-item"><a class="page-link" href="/blog/2012/02/manage-vim-plugin-with-vundle/">Next</a></li>
+				</ul>
+			</nav>
+			
+			<footer class="clearfix">
+	<div class="postmeta">
+		Written on <time datetime="2012-02-07">07 Feb, 2012</time>
+		 under <a class="post-category" href="/categories/server/">Server</a>
+	</div>
+	<div class="float-xs-left">
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.26 and hosted by <a href="https://aws.amazon.com/s3/">S3 + CloudFront</a>.
+	</div>
+	<div class="float-xs-right">
+		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>
+	</div>
+</footer>
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/662ce5e241.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+<script src="/assets/main.js"></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-258121-11', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
+
+
+
