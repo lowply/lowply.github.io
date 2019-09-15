@@ -3,21 +3,21 @@ body
   a
     color: #337ab7
   div.container
+    h1
+      margin-bottom: 100px
+      font-size: 20px
+      font-weight: 300
+      a
+        color: #333
+        margin: 0 0.1em
+      a:first-child
+        margin-left: 0
+      a:hover
+        text-decoration: none
+        color: #999
     margin: 100px auto
     div.row
       div
-        > h1
-          margin-bottom: 100px
-          font-size: 20px
-          font-weight: 300
-          a
-            color: #333
-            margin: 0 0.1em
-          a:first-child
-            margin-left: 0
-          a:hover
-            text-decoration: none
-            color: #999
         > footer
           margin: 40px 0 0
           padding: 40px 0 0
@@ -37,14 +37,16 @@ body
             display: none
   div.container.index
     div.row
-      div
+      div:first-child
+        background-image: url("/images/main.png")
+        background-size: contain
+        background-position: left top
+        background-repeat: no-repeat
+        min-height: 300px
+        margin-bottom: 20px
+      div:last-child
         ul
-          background-image: url("/images/main.png")
-          background-position: right top
-          background-repeat: no-repeat
-          min-height: 500px
           li
-            width: 400px
             margin-bottom: 0.2em
             a
               margin-left: 0.3em
