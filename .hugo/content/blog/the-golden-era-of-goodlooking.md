@@ -9,6 +9,12 @@ title = "The Golden Era of Good Looking - Live Mix at Human Elements, March 2019
 
 This is a live recording mix I did at Human Elements in March 2019. All these stunning tunes are from Good Looking Records in it's late 90's.
 
+### Listen now
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/681407465&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
+### Tweets
+
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">今年の3月の Human Elements で久しぶりに初期の Good Looking 縛りをやることになって、せっかくだからということでその時ライブレコーディングしてたものを公開しました。よかったら聴いて下さい。ちなみに次回の Human Elements は来週です(宣伝)！ <a href="https://t.co/XYRJn7V5nb">https://t.co/XYRJn7V5nb</a></p>&mdash; Sho Mizutani (@lowply) <a href="https://twitter.com/lowply/status/1173276490537947139?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote>
 
 <blockquote class="twitter-tweet" data-conversation="none" data-theme="light" data-link-color="#2B7BB9"><p lang="ja" dir="ltr">今回ミックスにはかなり時間をかけたものの、選曲はあまり頭で考えず直感でこれだと思ったトラックだけを選びました。でも結果的に全て96年から2000年までのトラックに収まり、しかもそのほとんどが97年リリースだったということが後からわかって自分でも驚きました。当時のロンドンを体験したかった。</p>&mdash; Sho Mizutani (@lowply) <a href="https://twitter.com/lowply/status/1173276491620081665?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote>
@@ -16,10 +22,6 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 <blockquote class="twitter-tweet" data-conversation="none"><p lang="ja" dir="ltr">そういう理由でタイトルに The Golden Era を入れたんですが、もちろん2000年以降も Good Looking の素晴らしいトラックはたくさんあるし、今度は中期縛りというのもありかなあと思いました。というわけで再び宣伝ですが来週の Human Elements のチケットはこちらで買えます: <a href="https://t.co/UanhBvBSWk">https://t.co/UanhBvBSWk</a></p>&mdash; Sho Mizutani (@lowply) <a href="https://twitter.com/lowply/status/1173276493281054720?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-### Listen now
-
-<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/681407465&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
 
 ### Tracklist
 
