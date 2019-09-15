@@ -6,10 +6,20 @@
     <description>Recent content in Blogs on lowply.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 21 Aug 2017 22:04:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Sep 2019 21:56:00 +0900</lastBuildDate>
     
 	<atom:link href="https://lowply.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Golden Era of Good Looking - Live Mix at Human Elements, March 2019</title>
+      <link>https://lowply.github.io/blog/2019/09/the-golden-era-of-goodlooking/</link>
+      <pubDate>Sun, 15 Sep 2019 21:56:00 +0900</pubDate>
+      
+      <guid>https://lowply.github.io/blog/2019/09/the-golden-era-of-goodlooking/</guid>
+      <description> This is a live recording mix I did at Human Elements in March 2019. All these stunning tunes are from Good Looking Records in it&amp;rsquo;s early 90&amp;rsquo;s.
+Listen now  Tracklist 01 - 00:00:00 - Secret Liaisons - Source Direct - Good Looking Records, GLR015 02 - 00:04:00 - Loop Progression - Motive One - Good Looking Records, GLR024 03 - 00:08:00 - Progression Session - PHD &amp;amp; MC Conrad - Looking Good Records, LGR011 04 - 00:13:00 - Witness - Intense - Good Looking Records, GLREP005V 05 - 00:18:00 - Absolute Magnitude - Sonic Generation - Looking Good Records, LGR028 06 - 00:24:30 - Language - Tayla - Nexus Records, NEXUS003 07 - 00:29:00 - Desideradi - Artemis - Good Looking Records, GLR020 08 - 00:34:30 - Duality - PHD - Ascendant Grooves, AG007 09 - 00:39:00 - Italian Job - Second Vision - Good Looking Records, GLR029 10 - 00:43:30 - Presence - PHD &amp;amp; MC Conrad - Ascendant Grooves, AG001 11 - 00:47:30 - Planetary Funk Alert - Seba &amp;amp; MC Conrad - Good Looking Records, GLRV01  Download  Apple Lossless (best quality) 320k AAC3 320k MP3  </description>
+    </item>
     
     <item>
       <title>Human Elements Promo Mix Autumn 2016</title>
@@ -17,8 +27,7 @@
       <pubDate>Mon, 21 Aug 2017 22:04:00 +0900</pubDate>
       
       <guid>https://lowply.github.io/blog/2017/08/human-elements-promo-mix-autumn-2016/</guid>
-      <description>Moved from the site top.
-Description Original post in Facebook
+      <description>Listen now On SoundCloud  On Mixcloud  Description Original post in Facebook
  English follows Japanese:
 次回の Human Elements - 10.22(Sat) に向けてプロモミックスを作りました。自分なりに解釈した Human Elements の音ということで選曲してます。Human Elements は今年の夏に10周年を迎えましたが、今までいろんな人のサポートがあってここまでやってこれました。本当に感謝です。おかげさまで、場所が変わったりメンバーが変わったりしつつも自分たちの空気みたいなものは10年前と変わらずやっていけてる気がしています。
 しっかり公開するようなミックスを作ったのは5年ぶりなんですが、Human Elements の音ってなんだろう、本当にかけたい音はなんだろうと何回も自問して、作っては壊しを繰り返した結果、こういうミックスになりました。トラックリストを見ると改めて自分のルーツは Good Looking サウンドなんだなと感心するような並びになってます。Pulsaar, Blade, Vandera あたりは比較的新し目ですが最高に好きなアーティストたちだし、Furney, Random Movement, Redeyes あたりはDJするときには絶対かける。Makoto さんのトラックも、かけたいものが多すぎて迷うんですが、今回はなんとか3曲に抑えました。それから古株だと PFM, Second Vision なんかもいます。PFM の Driftin On By は出たばっかりですが、相変わらず PFM サウンドで嬉しくなりました。
@@ -460,6 +469,19 @@ pathogenでの管理をやめるので、autoload、bundle/ をrmではなくgit
 それから、Terminal.appのオリジナルテーマをFixture.terminalとして書き出して追加。これは単なるxmlで、Mac上でダブルクリックすればインポートできる形式になってます。便利。
 githubに置く 全体的な管理方法としては、~/dotfilesというディレクトリを作り、その中をgitリポジトリとして、~/.vimrcなどはシンボリックリンクにする方法にしました。いろんな人のdotfileを見てると、どうもこれが一般的らしい。
 ~/ ├── dotfiles │ ├── Fixture.terminal │ ├── .git │ ├── .gitignore │ ├── .gvimrc │ ├── README.md │ ├── symlink.sh │ ├── .tmux.conf │ ├── .vim │ └── .vimrc ├── .gvimrc -&amp;amp;gt; /root/dotfiles/.gvimrc ├── .tmux.conf -&amp;amp;gt; /root/dotfiles/.tmux.conf ├── .</description>
+    </item>
+    
+    <item>
+      <title>Human Elements 5th Anniversary Mix Vol.3 by lowply</title>
+      <link>https://lowply.github.io/blog/2011/07/human-elements-5th-promo-mix/</link>
+      <pubDate>Fri, 01 Jul 2011 00:00:00 +0900</pubDate>
+      
+      <guid>https://lowply.github.io/blog/2011/07/human-elements-5th-promo-mix/</guid>
+      <description>Human Elements 5th Anniversary 5djs 50mins mixes
+ 7&amp;frasl;30 (土) Human Elements@ Loop 5周年までの5週間、5人のDJが、毎週50分のMixを発表！
+We will post mixes from djs who is playing at Human Elements 5th Anniversary on 30th July 2011 every week. Enjoy
+ Listen now Not available on SoundCloud or Mixcloud
+Tracklist 01 - 00:00 - Stars Get Down - Subwave - Hospital Records 02 - 04:30 - Orion - Enei, Eastcolors - Blackout Music 03 - 07:10 - Designed Dreams - Krone - Fokuz Limited 04 - 09:40 - Mainstay - Sinistarr - Metalheadz 05 - 12:30 - Nine 8 - Heavy1 - HE:Digital 06 - 16:00 - Ghost Notes - Paradox - Paradox 07 - 20:00 - Barn (Break Remix) - Sato - Ingredients Records 08 - 22:30 - Submission - SpectraSoul - Celsius Records 09 - 26:40 - Speed - Ink &amp;amp; Perpetuum - Renegade Hardware 10 - 30:20 - Deeper Shadow - Smote - Dephrecords 11 - 35:50 - And I Love Her - Makoto - Creative Source 12 - 40:10 - To My Galaxy (Makoto Remix) - Electrosoul System - Kos.</description>
     </item>
     
     <item>

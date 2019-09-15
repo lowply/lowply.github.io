@@ -1,0 +1,2 @@
+User-agent: *
+https://lowply.github.io/sitemap.xml

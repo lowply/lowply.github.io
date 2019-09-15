@@ -8,9 +8,17 @@ title = "Human Elements Promo Mix Autumn 2016"
 
 +++
 
-Moved from the site top.
+### Listen now
 
-#### Description
+#### On SoundCloud
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/285698333&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
+#### On Mixcloud
+
+<iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Flowply%2Fhuman-elements-promo-mix-autumn-2016%2F" frameborder="0" ></iframe>
+
+### Description
 
 [Original post in Facebook](https://www.facebook.com/lowply/posts/10154480458523956)
 
@@ -26,9 +34,9 @@ Moved from the site top.
 
 > Artists I featured in the mix like Pulsaar, Blade, Vandera, Om Unit, Furney, Random Movement, Redeyes, Makoto, PFM, Second Vision... They are my heroes. One of many heroes. Especially please give an attention to the tune called "Italian Job" by Second Vision. It was released in 1999 when I was 17 yo, included in "Progression Sessions 3" by LTJ Bukem which made me into this Drum & Bass world unexpectedly. After 17 years passed I could use the track in my mix to promote our beloved party. It so called "Good Looking" sound and it doesn't fade at all even in between new tunes by Blade and Phase 2. Of course other tunes in the mix are great and I hope you enjoy it.
 
-#### Tracklist
+### Tracklist
 
-```
+```accesslog
 01 - 00:00:00 - Atomica - Thing
 02 - 00:02:30 - The Look - Pulsaar
 03 - 00:06:00 - Good Times - Pulsaar
@@ -55,9 +63,7 @@ Moved from the site top.
 24 - 01:16:00 - Space Cowboy (Makoto DnB Edit) - Makoto
 ```
 
-#### Listen & Download
+### Download
 
-- [SoundCloud](https://goo.gl/CvW8Yv)
-- [MixCloud](https://goo.gl/qtTC60)
-- [Download: Apple Lossless, better quality](https://goo.gl/jpSDrV)
-- [Download: mp3, same as SoundCloud download](https://goo.gl/YfTB6n)
+- [Apple Lossless (best quality)](https://www.dropbox.com/s/y8fbpom4ujhmr1h/Human%20Elements%20Promo%20Mix%20Autumn%202016%20%28Apple%20Lossless%29.m4a?dl=1)
+- [320k MP3 (same as SoundCloud download)](https://www.dropbox.com/s/19jeq0b09jrkihp/Human%20Elements%20Promo%20Mix%20Autumn%202016%20%28MP3%20320k%29.mp3?dl=1)

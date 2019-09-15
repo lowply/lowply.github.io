@@ -6,7 +6,8 @@
 <script src="https://use.fontawesome.com/662ce5e241.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-<script src="/assets/main.js"></script>
+{{ $js := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}"></script>
 
 {{ partial "_ga.html" . }}
 
