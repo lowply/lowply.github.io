@@ -21,7 +21,7 @@
  /tmp でコンパイルするので最初の yum で依存関係をインストールするときだけ sudo が必要です。バイナリは /usr/local/tmux に入るので適当に cd /usr/local/bin; ln -s /usr/local/tmux/bin/tmux . とかしてください。
 Hugo は gist を貼っつける shortcode があって良い。あと Twitter の shortcode もある。
 OK, this is the final and complete installation script of tmux-2.1. https://t.co/wzegeGqdQX
-&amp;mdash; lowply (@lowply) April 1, 2016  </description>
+&amp;mdash; Sho Mizutani (@lowply) April 1, 2016  </description>
     </item>
     
     <item>
