@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>{{if eq .Title .Site.Title}}{{ .Site.Title }}{{else}}{{ .Title }} - {{ .Site.Title }}{{end}}</title>
+	<meta name="description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
+	<meta name="author" content="lowply">
+	{{.Hugo.Generator}}
+	<meta name="twitter:card" content="summary">
+	{{ with .Site.Params.twitter }}<meta name="twitter:site" content="{{ . }}" />{{ end }}
+	<meta name="twitter:title" content="{{if eq .Title .Site.Title}}{{ .Site.Title }}{{else}}{{ .Title }} - {{ .Site.Title }}{{end}}">
+	<meta name="twitter:description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
+	<meta property="fb:app_id" content="1612273492388081">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="{{if eq .Title .Site.Title}}{{ .Site.Title }}{{else}}{{ .Title }} - {{ .Site.Title }}{{end}}">
+	<meta property="og:url" content="{{ .Permalink }}"/>
+	<meta property="og:image" content="http://lowply.github.io/assets/img/og.png"/>
+	<meta property="og:description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="/index.xml" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<link rel="stylesheet" href="/assets/main.css">
+</head>
+<body class="{{ .Section }}">
+
+{{ partial "_fb.html" . }}
