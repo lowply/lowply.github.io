@@ -6,7 +6,7 @@
 	<title>Hugo &#43; S3環境に移行した（インストール編） - lowply.github.io</title>
 	<meta name="description" content="やっとこのブログをWordPressからHugoに移動したのでその過程をメモしておく。この後にテーマ作成編が続く（予定）。">
 	<meta name="author" content="lowply">
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="lowply" />
 	<meta name="twitter:title" content="Hugo &#43; S3環境に移行した（インストール編） - lowply.github.io">
@@ -47,22 +47,14 @@
 					Hugo &#43; S3環境に移行した（インストール編）
 				</h2>
 				<article>
-					
-
-<p class="text-xs-center" style="margin-bottom: 60px;"><a href="https://gohugo.io/"><img src="/images/2015/08/hugo.png" style="width: 300px"></a></p>
-
+					<!-- raw HTML omitted -->
 <p>やっとこのブログをWordPressから<a href="https://gohugo.io/">Hugo</a>に移動したのでその過程をメモしておく。この後にテーマ作成編が続く（予定）。</p>
-
 <h3 id="hugo">Hugo</h3>
-
 <p>Hugoは高速なビルドが特徴の、Go製スタティックサイトジェネレータ。いろいろなところで紹介されているので説明は省略。今回は生成したサイトをAmazon S3でホストする。</p>
-
 <h3 id="環境">環境</h3>
-
 <p>Hugoは安定版を<a href="https://github.com/spf13/hugo/releases">バイナリ</a>でリリースしているが、開発版をソースからビルドしたいのでGoの環境を入れておく。デプロイはS3にするのでawscliが必要。また、プレビュー用のVirtual Hostを作るのでNginxを入れておく。これは別にApacheでもいい。</p>
-
-<pre><code class="language-bash">$ cat /etc/redhat-release
-CentOS Linux release 7.1.1503 (Core)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/redhat-release
+CentOS Linux release 7.1.1503 <span style="color:#f92672">(</span>Core<span style="color:#f92672">)</span>
 
 $ go version
 go version go1.4.2 linux/amd64
@@ -72,171 +64,129 @@ git version 1.8.3.1
 
 $ pyenv versions
   system
-* 2.7.10 (set by /root/.pyenv/version)
+* 2.7.10 <span style="color:#f92672">(</span>set by /root/.pyenv/version<span style="color:#f92672">)</span>
   3.4.3
 
 $ pip list | grep aws
-awscli (1.7.42)
+awscli <span style="color:#f92672">(</span>1.7.42<span style="color:#f92672">)</span>
 
 $ aws --version
 aws-cli/1.7.42 Python/2.7.10 Linux/3.10.0-229.7.2.el7.x86_64
 
 $ nginx -v
 nginx version: nginx/1.9.3
-</code></pre>
-
-<h3 id="hugoインストール">Hugoインストール</h3>
-
+</code></pre></div><h3 id="hugoインストール">Hugoインストール</h3>
 <p><a href="http://gohugo.io/overview/installing/">ドキュメント</a>通り。</p>
-
-<pre><code class="language-bash">$ go get -v github.com/spf13/hugo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -v github.com/spf13/hugo
 $ hugo version
 Hugo Static Site Generator v0.15-DEV BuildDate: 2015-07-06T00:25:59+09:00
-</code></pre>
-
-<h3 id="新しいhugoサイトを作る">新しいHugoサイトを作る</h3>
-
-<pre><code class="language-bash">$ hugo new site fixture.jp
+</code></pre></div><h3 id="新しいhugoサイトを作る">新しいHugoサイトを作る</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new site fixture.jp
 $ cd fixture.jp
 $ git clone --recursive https://github.com/spf13/hugoThemes themes
-</code></pre>
+</code></pre></div><p><code>theme.toml</code> はこんな感じ。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">baseurl</span> = <span style="color:#e6db74">&#34;http://fixture.jp&#34;</span>
+<span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;en-us&#34;</span>
+<span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;fixture.jp&#34;</span>
+<span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;furniture&#34;</span>
 
-<p><code>theme.toml</code> はこんな感じ。</p>
+[<span style="color:#a6e22e">permalinks</span>]
+    <span style="color:#a6e22e">blog</span> = <span style="color:#e6db74">&#34;/blog/:year/:month/:slug/&#34;</span>
 
-<pre><code class="language-toml">baseurl = &quot;http://fixture.jp&quot;
-languageCode = &quot;en-us&quot;
-title = &quot;fixture.jp&quot;
-theme = &quot;furniture&quot;
+[<span style="color:#a6e22e">taxonomies</span>]
+    <span style="color:#a6e22e">category</span> = <span style="color:#e6db74">&#34;categories&#34;</span>
 
-[permalinks]
-    blog = &quot;/blog/:year/:month/:slug/&quot;
+[<span style="color:#a6e22e">author</span>]
+    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Sho Mizutani&#34;</span>
 
-[taxonomies]
-    category = &quot;categories&quot;
-
-[author]
-    name = &quot;Sho Mizutani&quot;
-
-[params]
-    twitter = &quot;lowply&quot;
-    github = &quot;lowply&quot;
-</code></pre>
-
-<h3 id="nginxでプレビュー用のvhを作る">Nginxでプレビュー用のVHを作る</h3>
-
+[<span style="color:#a6e22e">params</span>]
+    <span style="color:#a6e22e">twitter</span> = <span style="color:#e6db74">&#34;lowply&#34;</span>
+    <span style="color:#a6e22e">github</span> = <span style="color:#e6db74">&#34;lowply&#34;</span>
+</code></pre></div><h3 id="nginxでプレビュー用のvhを作る">Nginxでプレビュー用のVHを作る</h3>
 <p>Mac上ではなくVPS上で開発するので、ブラウザから localhost:1313 を開いてチェック、というHugoが想定している使い方ができない。しょうがないので80番で待ち受けて 127.0.0.1:1313 にリバースプロキシするVirtual Hostを適当に作っておく。</p>
-
 <p><code>./run.sh</code> で走らせるようにしておくと便利。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+hugo server -Dw --baseUrl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test.fixture.jp&#34;</span> --appendPort<span style="color:#f92672">=</span>false --disableLiveReload<span style="color:#f92672">=</span>true
 
-<pre><code class="language-bash">#!/bin/bash
-
-hugo server -Dw --baseUrl=&quot;test.fixture.jp&quot; --appendPort=false --disableLiveReload=true
-
-# -D: publish draft
-# -w: watch file change and rebuild automatically
-# --baseURL: change base URL from localhost
-# --appendPort: don't append :1313 at the end of the base URL
-# --disableLiveReload: don't use live reload because it works only on local environment
-</code></pre>
-
-<p>詳細は<code>hugo server --help</code>にて。</p>
-
+<span style="color:#75715e"># -D: publish draft</span>
+<span style="color:#75715e"># -w: watch file change and rebuild automatically</span>
+<span style="color:#75715e"># --baseURL: change base URL from localhost</span>
+<span style="color:#75715e"># --appendPort: don&#39;t append :1313 at the end of the base URL</span>
+<span style="color:#75715e"># --disableLiveReload: don&#39;t use live reload because it works only on local environment</span>
+</code></pre></div><p>詳細は<code>hugo server --help</code>にて。</p>
 <h3 id="テスト記事を投稿して確認">テスト記事を投稿して確認</h3>
-
-<pre><code class="language-bash">$ hugo new blog/about.md
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new blog/about.md
 $ vim content/blog/about.md
 $ ./run.sh
-</code></pre>
-
-<p>ブラウザから <a href="http://test.fixture.jp/">http://test.fixture.jp/</a> を開いて見えていればOK。</p>
-
+</code></pre></div><p>ブラウザから <a href="http://test.fixture.jp/">http://test.fixture.jp/</a> を開いて見えていればOK。</p>
 <h3 id="s3-static-website-hosting">S3 Static Website Hosting</h3>
-
 <p>S3でのStatic Website Hostingについてはこのスライドがわかりやすい。</p>
-
 <p><a href="http://www.slideshare.net/horiyasu/amazon-s3web-27138902">Amazon S3による静的Webサイトホスティング</a></p>
-
 <p>この手順を参考に</p>
-
 <ul>
 <li>FQDNと同名のバケットを作る</li>
 <li>Static Website HostingをEnableにしたりBucket Policyを設定しておく</li>
 <li>Route53 にてAレコードをAliasにし、S3 Website Endpointsからバケット名を選択して登録</li>
 <li>Route53 を使っていない場合は普通にエンドポイントに対してCNAMEを設定</li>
 </ul>
-
 <p>とやっておく。その後適当なファイルをバケットに置いて確認。</p>
-
 <h3 id="s3にデプロイ">S3にデプロイ</h3>
-
 <p>デプロイには下記のようなスクリプトを作っておくと便利。<code>./sync.sh</code>でビルドしてsyncしてくれる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#/usr/bin/env bash</span>
 
-<pre><code class="language-bash">#/usr/bin/env bash
+<span style="color:#75715e"># for multibyte filenames</span>
+export LANG<span style="color:#f92672">=</span>en_US.UTF-8
 
-# for multibyte filenames
-export LANG=en_US.UTF-8
+LOGDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./log&#34;</span>
+PUBDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./public&#34;</span>
+LOGFILE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>LOGDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#66d9ef">$(</span>date +%y%m%d_%H%M%S<span style="color:#66d9ef">)</span><span style="color:#e6db74">.log&#34;</span>
+OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--profile default --no-follow-symlinks --delete&#34;</span>
+BUCKET<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s3://fixture.jp&#34;</span>
 
-LOGDIR=&quot;./log&quot;
-PUBDIR=&quot;./public&quot;
-LOGFILE=&quot;${LOGDIR}/$(date +%y%m%d_%H%M%S).log&quot;
-OPTS=&quot;--profile default --no-follow-symlinks --delete&quot;
-BUCKET=&quot;s3://fixture.jp&quot;
+logger<span style="color:#f92672">(){</span>
+	echo <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">: [Info] </span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | tee -a <span style="color:#e6db74">${</span>LOGFILE<span style="color:#e6db74">}</span>
+<span style="color:#f92672">}</span>
 
-logger(){
-	echo &quot;$(date): [Info] ${1}&quot; | tee -a ${LOGFILE}
-}
+error<span style="color:#f92672">(){</span>
+	echo <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">: [Error] </span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | tee -a <span style="color:#e6db74">${</span>LOGFILE<span style="color:#e6db74">}</span> 1&gt;&amp;<span style="color:#ae81ff">2</span> 
+	exit <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">}</span>
 
-error(){
-	echo &quot;$(date): [Error] ${1}&quot; | tee -a ${LOGFILE} 1&gt;&amp;2 
-	exit 1
-}
-
-main(){
-	type aws &gt; /dev/null 2&gt;&amp;1 || error &quot;aws cli is not installed&quot;
-	type hugo &gt; /dev/null 2&gt;&amp;1 || error &quot;hugo is not installed&quot;
+main<span style="color:#f92672">(){</span>
+	type aws &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;aws cli is not installed&#34;</span>
+	type hugo &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> error <span style="color:#e6db74">&#34;hugo is not installed&#34;</span>
 	hugo
-	[ -d ${LOGDIR} ] || mkdir ${LOGDIR}
- 	logger &quot;Sync starts&quot;
-	aws s3 ${OPTS} sync \
-		--exclude &quot;assets/.sass-cache/*&quot; \
-		${PUBDIR} ${BUCKET} | tee -a ${LOGFILE}
- 	logger &quot;Sync complete&quot;
-}
+	<span style="color:#f92672">[</span> -d <span style="color:#e6db74">${</span>LOGDIR<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> mkdir <span style="color:#e6db74">${</span>LOGDIR<span style="color:#e6db74">}</span>
+ 	logger <span style="color:#e6db74">&#34;Sync starts&#34;</span>
+	aws s3 <span style="color:#e6db74">${</span>OPTS<span style="color:#e6db74">}</span> sync <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		--exclude <span style="color:#e6db74">&#34;assets/.sass-cache/*&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		<span style="color:#e6db74">${</span>PUBDIR<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>BUCKET<span style="color:#e6db74">}</span> | tee -a <span style="color:#e6db74">${</span>LOGFILE<span style="color:#e6db74">}</span>
+ 	logger <span style="color:#e6db74">&#34;Sync complete&#34;</span>
+<span style="color:#f92672">}</span>
 
-main &quot;$@&quot;
-</code></pre>
-
-<p>ブラウザで確認して見れていたらOK。</p>
-
+main <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>ブラウザで確認して見れていたらOK。</p>
 <h3 id="記事のインポート">記事のインポート</h3>
-
 <p>WordPressからエクスポートしたxmlを元に適当にインポートする。HTMLはMarkdownにする。探すといろいろツールもあるし、正規表現と格闘するのもよい。</p>
-
 <p>この記事がすごく参考になった。<a href="http://rakuishi.com/archives/wordpress-to-hugo/">WordPress から Hugo に乗り換えました - rakuishi.com</a></p>
-
 <h3 id="feed-url">Feed URL</h3>
-
 <p>最後にフィードのURLを変更する。WordPressの場合 <code>/blog/feed/</code> だったのでこれを <code>/index.xml</code> にリダイレクトさせたい。S3のコンソール画面、Bucket Property -&gt; Static Website Hosting -&gt; Edit Redirection Rules にて</p>
-
-<pre><code class="language-xml">&lt;RoutingRules&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;RoutingRules&gt;</span>
     ...
-    &lt;RoutingRule&gt;
-        &lt;Condition&gt;
-            &lt;KeyPrefixEquals&gt;blog/feed/&lt;/KeyPrefixEquals&gt;
-        &lt;/Condition&gt;
-        &lt;Redirect&gt;
-            &lt;ReplaceKeyWith&gt;index.xml&lt;/ReplaceKeyWith&gt;
-            &lt;HttpRedirectCode&gt;301&lt;/HttpRedirectCode&gt;
-        &lt;/Redirect&gt;
-    &lt;/RoutingRule&gt;
+    <span style="color:#f92672">&lt;RoutingRule&gt;</span>
+        <span style="color:#f92672">&lt;Condition&gt;</span>
+            <span style="color:#f92672">&lt;KeyPrefixEquals&gt;</span>blog/feed/<span style="color:#f92672">&lt;/KeyPrefixEquals&gt;</span>
+        <span style="color:#f92672">&lt;/Condition&gt;</span>
+        <span style="color:#f92672">&lt;Redirect&gt;</span>
+            <span style="color:#f92672">&lt;ReplaceKeyWith&gt;</span>index.xml<span style="color:#f92672">&lt;/ReplaceKeyWith&gt;</span>
+            <span style="color:#f92672">&lt;HttpRedirectCode&gt;</span>301<span style="color:#f92672">&lt;/HttpRedirectCode&gt;</span>
+        <span style="color:#f92672">&lt;/Redirect&gt;</span>
+    <span style="color:#f92672">&lt;/RoutingRule&gt;</span>
 	...
-&lt;/RoutingRules&gt;
-</code></pre>
-
-<p><code>ReplaceKeyWith</code> と <code>ReplaceKeyPrefixWith</code> があって一瞬はまったので注意。ちゃんとドキュメント読もう。。。</p>
-
+<span style="color:#f92672">&lt;/RoutingRules&gt;</span>
+</code></pre></div><p><code>ReplaceKeyWith</code> と <code>ReplaceKeyPrefixWith</code> があって一瞬はまったので注意。ちゃんとドキュメント読もう。。。</p>
 <p><a href="http://docs.aws.amazon.com/ja_jp/AmazonS3/latest/dev/HowDoIWebsiteConfiguration.html">バケットをウェブサイトホスティング用に設定 - Amazon Simple Storage Service</a></p>
-
 <p>次はテーマ作成について書く。</p>
 
 				</article>
@@ -287,7 +237,7 @@ main &quot;$@&quot;
 		 under <a class="post-category" href="/categories/server/">Server</a>
 	</div>
 	<div class="float-xs-left">
-		Generated by <a href="https://gohugo.io/">Hugo</a> 0.57.2 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.68.3 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
 	</div>
 	<div class="float-xs-right">
 		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>

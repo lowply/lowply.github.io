@@ -6,7 +6,7 @@
 	<title>Mountain Lionにdnsmasqをインストールするメモ - lowply.github.io</title>
 	<meta name="description" content="">
 	<meta name="author" content="lowply">
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="lowply" />
 	<meta name="twitter:title" content="Mountain Lionにdnsmasqをインストールするメモ - lowply.github.io">
@@ -47,120 +47,65 @@
 					Mountain Lionにdnsmasqをインストールするメモ
 				</h2>
 				<article>
-					
-
-<p>タイトル通りではあるけど、いろいろハマったのでメモ。</p>
-
+					<p>タイトル通りではあるけど、いろいろハマったのでメモ。</p>
 <p><a href="http://www.thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a>というのは簡易DNS/DHCPサーバー。/etc/hostsを書き換えるよりもう少し低いレイヤーでレコードを書き換えてくれるイメージ（フォワーダーと呼ばれたりする）。なので、Aレコードだけではなくほとんどのレコード書き換えができたりします。詳細は<a href="http://ja.wikipedia.org/wiki/Dnsmasq">Wikipedia</a>とかで。今回はMXレコードを書き換えたい事情があって導入してみた。</p>
-
 <h4 id="インストール">インストール</h4>
-
 <p>いつも通り、homebrew様。brew後に出てくるビールの絵文字がかわいい。</p>
-
-<pre><code class="language-bash">$ brew update &amp;&amp; brew install dnsmasq
-</code></pre>
-
-<h4 id="設定">設定</h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew update <span style="color:#f92672">&amp;&amp;</span> brew install dnsmasq
+</code></pre></div><h4 id="設定">設定</h4>
 <p>confを複製して編集</p>
-
-<pre><code class="language-bash">$ cp -a /usr/local/Cellar/dnsmasq/2.65/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp -a /usr/local/Cellar/dnsmasq/2.65/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
 $ vim /usr/local/etc/dnsmasq.conf
-</code></pre>
-
-<p>以下を書き換え</p>
-
-<pre><code class="language-bash">resolv-file=/etc/resolv.dnsmasq.conf
-listen-address=127.0.0.1
-conf-dir=/usr/local/etc/dnsmasq.d
-</code></pre>
-
-<p>conf用ディレクトリを作成</p>
-
-<pre><code class="language-bash">$ mkdir /usr/local/etc/dnsmasq.d
-</code></pre>
-
-<p>plistを複製。Macの場合、launchctlがこのplistに書かれているオプションとかをつけてバイナリを実行する。</p>
-
-<pre><code class="language-bash">$ sudo cp /usr/local/Cellar/dnsmasq/2.65/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
-</code></pre>
-
-<p>現在のDNSキャッシュサーバーのIPを、dnsmasq用のresolv.confに書く。フィルタにマッチしなかった場合これに問い合わせることになる。</p>
-
-<pre><code class="language-bash">$ cat /etc/resolv.conf
+</code></pre></div><p>以下を書き換え</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">resolv-file<span style="color:#f92672">=</span>/etc/resolv.dnsmasq.conf
+listen-address<span style="color:#f92672">=</span>127.0.0.1
+conf-dir<span style="color:#f92672">=</span>/usr/local/etc/dnsmasq.d
+</code></pre></div><p>conf用ディレクトリを作成</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir /usr/local/etc/dnsmasq.d
+</code></pre></div><p>plistを複製。Macの場合、launchctlがこのplistに書かれているオプションとかをつけてバイナリを実行する。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo cp /usr/local/Cellar/dnsmasq/2.65/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
+</code></pre></div><p>現在のDNSキャッシュサーバーのIPを、dnsmasq用のresolv.confに書く。フィルタにマッチしなかった場合これに問い合わせることになる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/resolv.conf
 $ sudo vim /etc/resolv.dnsmasq.conf
-</code></pre>
-
-<p>起動</p>
-
-<pre><code class="language-bash">$ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-</code></pre>
-
-<p>確認</p>
-
-<pre><code class="language-bash">$ scutil --dns
-$ ps ax | grep [d]nsmasq
-</code></pre>
-
-<p>キャッシュサーバーをdnsmasqに変更（この時点でミスがあると名前が引けなくなる）</p>
-
-<pre><code class="language-bash">$ sudo networksetup -setdnsservers Wi-Fi 127.0.0.1
-</code></pre>
-
-<p>確認</p>
-
-<pre><code class="language-bash">$ dig apple.com A
+</code></pre></div><p>起動</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+</code></pre></div><p>確認</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ scutil --dns
+$ ps ax | grep <span style="color:#f92672">[</span>d<span style="color:#f92672">]</span>nsmasq
+</code></pre></div><p>キャッシュサーバーをdnsmasqに変更（この時点でミスがあると名前が引けなくなる）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo networksetup -setdnsservers Wi-Fi 127.0.0.1
+</code></pre></div><p>確認</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dig apple.com A
 ;; ANSWER SECTION:
 apple.com.		1715	IN	A	17.172.224.47
 apple.com.		1715	IN	A	17.149.160.49
-</code></pre>
-
-<p>ためしに変更をかける。書式はこんな感じで、confにいろいろヘルプが書いてある。</p>
-
-<pre><code class="language-bash">$ echo &quot;address=/apple.com/127.0.0.1&quot; &gt; /usr/local/etc/dnsmasq.d/apple.com
-</code></pre>
-
-<p>再起動</p>
-
-<pre><code class="language-bash">$ sudo launchctl unload -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+</code></pre></div><p>ためしに変更をかける。書式はこんな感じで、confにいろいろヘルプが書いてある。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#e6db74">&#34;address=/apple.com/127.0.0.1&#34;</span> &gt; /usr/local/etc/dnsmasq.d/apple.com
+</code></pre></div><p>再起動</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo launchctl unload -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 $ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 $ sudo dscacheutil -flushcache
-</code></pre>
-
-<p>見てみる</p>
-
-<pre><code class="language-bash">$ dig apple.com
+</code></pre></div><p>見てみる</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dig apple.com
 ;; ANSWER SECTION:
 apple.com.		0	IN	A	127.0.0.1
-</code></pre>
-
-<p>変わってる。ちなみにMXレコードの場合はこんな感じで書く。</p>
-
-<pre><code class="language-bash">$ cat /usr/local/etc/dnsmasq.d/fixture.jp
-mx-host=fixture.jp,mail.example.com,10
-</code></pre>
-
-<h4 id="感想">感想</h4>
-
+</code></pre></div><p>変わってる。ちなみにMXレコードの場合はこんな感じで書く。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /usr/local/etc/dnsmasq.d/fixture.jp
+mx-host<span style="color:#f92672">=</span>fixture.jp,mail.example.com,10
+</code></pre></div><h4 id="感想">感想</h4>
 <p>はい、めんどくさいですね。けどレコードが自由自在に書き換えられて、ローカルで開発するときとか一つ世界が広がると思うのでオススメです。</p>
-
 <h4 id="備考">備考</h4>
-
 <p>バグなのかわからないけど、launchctl unload &amp;&amp; launchctl loadでうまくconfigを参照してくれないことがある。その場合はMacの環境設定側のDNSを一旦空にして（つまりルーターとかを見に行くようにして）もう一回127.0.0.1に設定してあげると直る。で、それを元に下記みたいな再起動スクリプトとかを書いておくと便利。</p>
-
-<pre><code class="language-bash">#!/bin/sh
-
-ps ax | grep [d]nsmasq
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+ps ax | grep <span style="color:#f92672">[</span>d<span style="color:#f92672">]</span>nsmasq
 sudo launchctl unload -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-ps ax | grep [d]nsmasq
+ps ax | grep <span style="color:#f92672">[</span>d<span style="color:#f92672">]</span>nsmasq
 dscacheutil -flushcache
 sudo networksetup -setdnsservers Wi-Fi empty
 sudo networksetup -setdnsservers Wi-Fi 127.0.0.1
-</code></pre>
-
-<h4 id="余談">余談</h4>
-
+</code></pre></div><h4 id="余談">余談</h4>
 <ul>
 <li><code>brew install zsh</code> で5.0.2が入ってびっくりした。<a href="http://zsh.sourceforge.net/Arc/source.html">本家zsh.orgには今のところ5.0.0までしか出てない</a>し。<a href="https://github.com/zsh-users/zsh">github</a>側には5.0.2まで上がってるけど。</li>
 <li><code>brew install imagemagick</code> が速すぎてもう一回びっくりした。しかもほぼ最新の6.8.0。コンパイル済みbottole.tar.gzを落としてきてるだけだから当たり前なんだけど、改めてhomebrewやばい。</li>
@@ -214,7 +159,7 @@ sudo networksetup -setdnsservers Wi-Fi 127.0.0.1
 		 under <a class="post-category" href="/categories/server/">Server</a>
 	</div>
 	<div class="float-xs-left">
-		Generated by <a href="https://gohugo.io/">Hugo</a> 0.57.2 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.68.3 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
 	</div>
 	<div class="float-xs-right">
 		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>

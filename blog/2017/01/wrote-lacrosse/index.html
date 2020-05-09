@@ -6,7 +6,7 @@
 	<title>AWS Route 53用のCLIツールをGoで書いた - lowply.github.io</title>
 	<meta name="description" content="">
 	<meta name="author" content="lowply">
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="lowply" />
 	<meta name="twitter:title" content="AWS Route 53用のCLIツールをGoで書いた - lowply.github.io">
@@ -47,91 +47,64 @@
 					AWS Route 53用のCLIツールをGoで書いた
 				</h2>
 				<article>
-					
-
-<p>AWS Route 53 上の特定の FQDN に対して value と TTL を指定して UPSERT をリクエストするコマンドラインツールを書いた。元々は気楽なシェルスクリプトだったものを、練習も兼ねて Go で書き直して GitHub Release へのデプロイまでちゃんとやってみた。</p>
-
+					<p>AWS Route 53 上の特定の FQDN に対して value と TTL を指定して UPSERT をリクエストするコマンドラインツールを書いた。元々は気楽なシェルスクリプトだったものを、練習も兼ねて Go で書き直して GitHub Release へのデプロイまでちゃんとやってみた。</p>
 <p><a href="https://github.com/lowply/lacrosse">lowply/lacrosse: A simple CLI tool to update DNS records on Amazon Route 53</a></p>
-
 <h3 id="動機">動機</h3>
-
 <p>そもそもは、 <a href="https://letsencrypt.org/">Let’s Encrypt</a> のドメイン認証を <a href="https://github.com/lukas2511/dehydrated">lukas2511/dehydrated</a> を使って <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-01#section-7.5">dns-01 challenge</a> で実行したくて、それ用の hook スクリプト内で手軽に <code>_acme-challenge.example.com</code> への <code>TXT</code> レコードを設定したいというのがきっかけだった。これを使うと <a href="https://github.com/lukas2511/dehydrated/blob/master/docs/examples/hook.sh">hook.sh</a> の <code>deploy_challenge</code> 部分を下記のように書ける。</p>
-
-<pre><code class="language-bash">deploy_challenge() {
-    local DOMAIN=&quot;${1}&quot; TOKEN_FILENAME=&quot;${2}&quot; TOKEN_VALUE=&quot;${3}&quot;
-    lacrosse _acme-challenge.${DOMAIN} TXT ${TOKEN_VALUE} 300 default
-}
-</code></pre>
-
-<p>で、これが個人的にすごく便利で気に入っていたので、 思いついて Go で書き直してみることにした。パッケージの依存関係については <a href="https://github.com/Masterminds/glide">Masterminds/glide</a>、クロスコンパイルには <a href="https://github.com/mitchellh/gox">mitchellh/gox</a>、CI には <a href="https://travis-ci.org/lowply/lacrosse/">Travis CI</a>、デプロイはタグ打って push すると Travis が ビルドしてバイナリを <a href="https://github.com/lowply/lacrosse/releases">GitHub Release</a> に上げてくれる、という感じでシンプルに、あまり複雑なライブラリとかは使わないようにした。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">deploy_challenge<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    local DOMAIN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> TOKEN_FILENAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> TOKEN_VALUE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>3<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+    lacrosse _acme-challenge.<span style="color:#e6db74">${</span>DOMAIN<span style="color:#e6db74">}</span> TXT <span style="color:#e6db74">${</span>TOKEN_VALUE<span style="color:#e6db74">}</span> <span style="color:#ae81ff">300</span> default
+<span style="color:#f92672">}</span>
+</code></pre></div><p>で、これが個人的にすごく便利で気に入っていたので、 思いついて Go で書き直してみることにした。パッケージの依存関係については <a href="https://github.com/Masterminds/glide">Masterminds/glide</a>、クロスコンパイルには <a href="https://github.com/mitchellh/gox">mitchellh/gox</a>、CI には <a href="https://travis-ci.org/lowply/lacrosse/">Travis CI</a>、デプロイはタグ打って push すると Travis が ビルドしてバイナリを <a href="https://github.com/lowply/lacrosse/releases">GitHub Release</a> に上げてくれる、という感じでシンプルに、あまり複雑なライブラリとかは使わないようにした。</p>
 <p>一番苦労したのはテストで、Route 53 へのリクエストに対するレスポンスをエミュレートするモックを作るのに手間取った。</p>
-
 <h3 id="route53ifaceを使ってテストを書く">route53ifaceを使ってテストを書く</h3>
-
 <p><a href="https://github.com/aws/aws-sdk-go">aws/aws-sdk-go</a> にはスタブのために用意されたインターフェイス <a href="https://docs.aws.amazon.com/sdk-for-go/api/service/route53/route53iface/">route53iface</a> がある。</p>
-
 <blockquote>
 <p>The stub package, route53iface, can be used to provide alternative implementations of service clients, such as mocking the client for testing.</p>
 </blockquote>
-
 <p>これを使うと、例えば Route 53 をこういう構造体で表現して使った場合</p>
-
-<pre><code class="language-go">type Route53 struct {
-    Client route53iface.Route53API
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Route53</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Client</span> <span style="color:#a6e22e">route53iface</span>.<span style="color:#a6e22e">Route53API</span>
 }
 
-r := &amp;Route53{
-    Client: route53.New(sess),
+<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Route53</span>{
+    <span style="color:#a6e22e">Client</span>: <span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">sess</span>),
 }
-</code></pre>
-
-<p>テスト側は <code>Client</code> のモックを用意すればいいので</p>
-
-<pre><code class="language-go">type mockRoute53Client struct {
-    route53iface.Route53API
+</code></pre></div><p>テスト側は <code>Client</code> のモックを用意すればいいので</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">mockRoute53Client</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">route53iface</span>.<span style="color:#a6e22e">Route53API</span>
 }
 
-r := &amp;Route53{
-    Client: &amp;mockRoute53Client{},
+<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Route53</span>{
+    <span style="color:#a6e22e">Client</span>: <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">mockRoute53Client</span>{},
 }
-</code></pre>
-
-<p>という感じで書く。そしてこの <code>mockRoute53Client</code> にメソッドを生やして実際の挙動を上書きしていくイメージ。</p>
-
+</code></pre></div><p>という感じで書く。そしてこの <code>mockRoute53Client</code> にメソッドを生やして実際の挙動を上書きしていくイメージ。</p>
 <p>例えば <code>ChangeResourceRecordSets</code> という関数のモックを作りたい場合、まず <a href="https://docs.aws.amazon.com/sdk-for-go/api/service/route53/route53iface/">route53iface</a> を見て引数と戻り値をチェック。</p>
-
-<pre><code class="language-go">ChangeResourceRecordSets(*route53.ChangeResourceRecordSetsInput) (*route53.ChangeResourceRecordSetsOutput, error)
-</code></pre>
-
-<p><code>*route53.ChangeResourceRecordSetsOutput</code> を内部で作って返してあげれば良いということがわかる。</p>
-
-<pre><code class="language-go">type mockRoute53Client struct {
-    route53iface.Route53API
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ChangeResourceRecordSets</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">ChangeResourceRecordSetsInput</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">ChangeResourceRecordSetsOutput</span>, <span style="color:#66d9ef">error</span>)
+</code></pre></div><p><code>*route53.ChangeResourceRecordSetsOutput</code> を内部で作って返してあげれば良いということがわかる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">mockRoute53Client</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">route53iface</span>.<span style="color:#a6e22e">Route53API</span>
 }
 
-...snip...
+<span style="color:#f92672">...</span><span style="color:#a6e22e">snip</span><span style="color:#f92672">...</span>
 
-func ptr(s string) *string {
-    return &amp;s
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ptr</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#66d9ef">string</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">s</span>
 }
 
-func (m *mockRoute53Client) ChangeResourceRecordSets(*route53.ChangeResourceRecordSetsInput) (*route53.ChangeResourceRecordSetsOutput, error) {
-    time := time.Now().UTC()
-    r := &amp;route53.ChangeResourceRecordSetsOutput{
-        ChangeInfo: &amp;route53.ChangeInfo{
-            Comment:     ptr(&quot;This is a test&quot;),
-            Id:          ptr(&quot;XXXXXXXXXX&quot;),
-            Status:      ptr(&quot;INSYNC&quot;),
-            SubmittedAt: &amp;time,
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mockRoute53Client</span>) <span style="color:#a6e22e">ChangeResourceRecordSets</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">ChangeResourceRecordSetsInput</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">ChangeResourceRecordSetsOutput</span>, <span style="color:#66d9ef">error</span>) {
+    <span style="color:#a6e22e">time</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UTC</span>()
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">ChangeResourceRecordSetsOutput</span>{
+        <span style="color:#a6e22e">ChangeInfo</span>: <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">route53</span>.<span style="color:#a6e22e">ChangeInfo</span>{
+            <span style="color:#a6e22e">Comment</span>:     <span style="color:#a6e22e">ptr</span>(<span style="color:#e6db74">&#34;This is a test&#34;</span>),
+            <span style="color:#a6e22e">Id</span>:          <span style="color:#a6e22e">ptr</span>(<span style="color:#e6db74">&#34;XXXXXXXXXX&#34;</span>),
+            <span style="color:#a6e22e">Status</span>:      <span style="color:#a6e22e">ptr</span>(<span style="color:#e6db74">&#34;INSYNC&#34;</span>),
+            <span style="color:#a6e22e">SubmittedAt</span>: <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">time</span>,
         },
     }
-    return r, nil
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">r</span>, <span style="color:#66d9ef">nil</span>
 }
-</code></pre>
-
-<p>あとは普通にテストコードを書く。下記の例では、<code>route53.go</code> の <code>RequestChange()</code> 内で、モック側の <code>ChangeResourceRecordSets()</code> が呼ばれ、実際に AWS の API にアクセスしないでもテストを行える。</p>
-
+</code></pre></div><p>あとは普通にテストコードを書く。下記の例では、<code>route53.go</code> の <code>RequestChange()</code> 内で、モック側の <code>ChangeResourceRecordSets()</code> が呼ばれ、実際に AWS の API にアクセスしないでもテストを行える。</p>
 <pre><code>func TestRoute53_RequestChange(t *testing.T) {
     r := &amp;Route53{
         Client: &amp;mockRoute53Client{},
@@ -141,10 +114,7 @@ func (m *mockRoute53Client) ChangeResourceRecordSets(*route53.ChangeResourceReco
         t.Errorf(&quot;Error: &quot;, err)
     }
 }
-</code></pre>
-
-<h3 id="まとめ">まとめ</h3>
-
+</code></pre><h3 id="まとめ">まとめ</h3>
 <p>Goは良い。</p>
 
 				</article>
@@ -195,7 +165,7 @@ func (m *mockRoute53Client) ChangeResourceRecordSets(*route53.ChangeResourceReco
 		 under <a class="post-category" href="/categories/go/">Go</a>
 	</div>
 	<div class="float-xs-left">
-		Generated by <a href="https://gohugo.io/">Hugo</a> 0.57.2 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.68.3 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
 	</div>
 	<div class="float-xs-right">
 		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>

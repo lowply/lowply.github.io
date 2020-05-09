@@ -6,7 +6,7 @@
 	<title>Dockerが公式にOS Xに対応したので試してみた - lowply.github.io</title>
 	<meta name="description" content="">
 	<meta name="author" content="lowply">
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="lowply" />
 	<meta name="twitter:title" content="Dockerが公式にOS Xに対応したので試してみた - lowply.github.io">
@@ -47,20 +47,9 @@
 					Dockerが公式にOS Xに対応したので試してみた
 				</h2>
 				<article>
-					
-
-<h3 id="boot2docker">boot2docker</h3>
-
-<blockquote class="blockquote">
-  <p class="m-b-0">
-    First, install the Docker binary which will forward all commands to a remote docker daemon
-    Second, install Boot2Docker, which is a super-lightweight Linux VM capable of running a docker daemon on your Mac with the smallest possible overhead. Currently it occupies 24MB on disk and boots in less than 10 seconds.
-  </p>
-  <footer class="blockquote-footer"><cite title=""><a href="http://blog.docker.io/2014/02/docker-0-8-quality-new-builder-features-btrfs-storage-osx-support/">DOCKER 0.8: QUALITY, NEW BUILDER FEATURES, BTRFS, OSX SUPPORT</a></cite></footer>
-</blockquote>
-
+					<h3 id="boot2docker">boot2docker</h3>
+<!-- raw HTML omitted -->
 <p>とのこと。まず<a href="https://github.com/steeve/boot2docker">boot2docker</a>について。これはなんだ、と。</p>
-
 <ul>
 <li>これまでMacでDockerを使う場合はVirtualBoxなりVMware FusionなりでUbuntuとかを動かして、その中でDockerを使う必要があった</li>
 <li>しかしそれでは毎回最初の一歩が重くてDockerのメリットが活かせないし、ネイティブにDockerを使えたほうが何かと便利</li>
@@ -69,55 +58,29 @@
 <li>boot2dockerが起動している状態であれば、OS XのターミナルからDockerを直接操作できる（Docker 0.8になって公式にOS Xをサポートした、というのはこの部分かと）</li>
 <li>これについてさらっとこのページの一番下（About the way Docker works on Mac OS X）に書いてある。MacにはLXCとかがないからねーということで。：<a href="http://docs.docker.io/en/latest/installation/mac/">Requirements and Installation on Mac OS X 10.6 Snow Leopard - Docker Documentation</a></li>
 </ul>
-
 <p>という理解でいいのでしょうか？たぶん合ってる。要はboot2docker stopするとTerminalからdockerコマンド使えない。その関係性をdaemonとclientと言ってる。</p>
-
 <h3 id="インストール手順">インストール手順</h3>
-
 <p>Oracle VirtualBox 必須。ここからDL &amp; インストロール。<a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></p>
-
 <p>ドキュメントではgithubからcurlしてるけど、tapを追加すればhomebrewで入れられる。</p>
-
-<pre><code class="language-bash">$ brew tap homebrew/binary
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew tap homebrew/binary
 $ brew install docker boot2docker
 $ docker -v
 Docker version 0.8.0, build cc3a8c8
-</code></pre>
-
-<p>これも必須（docker - VM間の通信用）</p>
-
-<pre><code class="language-bash">export DOCKER_HOST=tcp://
-</code></pre>
-
-<p>Tiny Core Linuxのisoを格納するディレクトリを適当に作って適当に移動</p>
-
-<pre><code class="language-bash">$ cd &amp;&amp; mkdir docker &amp;&amp; cd docker
-</code></pre>
-
-<p>VirtualBox上にディスクイメージを準備・起動。initでisoがDLされる。.vmdkも後でここにできる。</p>
-
-<pre><code class="language-bash">$ boot2docker init
+</code></pre></div><p>これも必須（docker - VM間の通信用）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export DOCKER_HOST<span style="color:#f92672">=</span>tcp://
+</code></pre></div><p>Tiny Core Linuxのisoを格納するディレクトリを適当に作って適当に移動</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd <span style="color:#f92672">&amp;&amp;</span> mkdir docker <span style="color:#f92672">&amp;&amp;</span> cd docker
+</code></pre></div><p>VirtualBox上にディスクイメージを準備・起動。initでisoがDLされる。.vmdkも後でここにできる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ boot2docker init
 $ boot2docker up
-</code></pre>
-
-<p>確認</p>
-
-<pre><code class="language-bash">$ boot2docker status
- [2014-02-09 00:39:35] boot2docker-vm is running.
-</code></pre>
-
-<p>これでTerminalからdockerが使える。CentOSをpullして</p>
-
-<pre><code class="language-bash">$ docker pull centos
-</code></pre>
-
-<p>コンテナに入る</p>
-
-<pre><code class="language-bash">$ docker run -i -t centos /bin/bash
-</code></pre>
-
-<p>あとは普通にdocker。なんていうか全体的にシンプルかつ最善を尽くした感じの良いソリューションで素敵。</p>
-
+</code></pre></div><p>確認</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ boot2docker status
+ <span style="color:#f92672">[</span>2014-02-09 00:39:35<span style="color:#f92672">]</span> boot2docker-vm is running.
+</code></pre></div><p>これでTerminalからdockerが使える。CentOSをpullして</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker pull centos
+</code></pre></div><p>コンテナに入る</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run -i -t centos /bin/bash
+</code></pre></div><p>あとは普通にdocker。なんていうか全体的にシンプルかつ最善を尽くした感じの良いソリューションで素敵。</p>
 <p>それにしてもコンテナ型VMの速度にはびっくりする。昔OpenVZ好きじゃなかったけど、LXCはLinuxカーネルにも取り込まれたり、もうすぐ1.0も出たりと期待できる。今のところプロダクション環境より検証とかテストに向いてるイメージ。</p>
 
 				</article>
@@ -168,7 +131,7 @@ $ boot2docker up
 		 under <a class="post-category" href="/categories/server/">Server</a>
 	</div>
 	<div class="float-xs-left">
-		Generated by <a href="https://gohugo.io/">Hugo</a> 0.57.2 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.68.3 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
 	</div>
 	<div class="float-xs-right">
 		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>

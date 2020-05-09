@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -363,11 +363,6 @@
   </url>
   
   <url>
-    <loc>https://lowply.github.io/categories/typo/font/</loc>
-    <lastmod>2006-11-26T22:48:53+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lowply.github.io/blog/2006/11/a-brahman-met-in-thar-desert/</loc>
     <lastmod>2006-11-26T22:23:51+09:00</lastmod>
   </url>
@@ -570,6 +565,10 @@
   <url>
     <loc>https://lowply.github.io/blog/2006/04/google-calendar/</loc>
     <lastmod>2006-04-14T00:13:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lowply.github.io/categories/typo/font/</loc>
   </url>
   
 </urlset>

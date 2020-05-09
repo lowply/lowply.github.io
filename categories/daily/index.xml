@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daily on lowply.github.io</title>
@@ -33,7 +33,7 @@ dotfiles/.osx at master · mathiasbynens/dotfiles · GitHub
 要はdefaultsコマンドで大概の設定、例えばDockのサイズとか、Trackpadの設定とかをGUIを通さずにできるので、これをまとめてスクリプトにしたということで。これを叩けば一発で自分好みのFinderになるよ、と。でFinderだけではなくSafariやTerminal, TimeMachineなども設定できる。
 それと、GUIではできない設定、例えば ~/Library を表示させたり、Dashboardを無効化したりするのも含めて何入れてもいいので、じっくり自分の.osxを作ると良い。とりあえず今のところ、こんな感じの簡単な設定を入れて、dotfilesの仲間に加えた。
 dotfiles/.osx at master · lowply/dotfiles · GitHub
-# # ~/.osx # # disable dashboard defaults write com.apple.dashboard mcx-disabled -boolean YES # I like overlay scrollbars defaults write NSGlobalDomain AppleShowScrollBars -string &amp;quot;WhenScrolling&amp;quot; # make ~/Library visible chflags nohidden ~/Library # # Killall Apps # for app in Finder Dock SystemUIServer do killall &amp;quot;$app&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 done  NEXTSTEP/OSXのこういうところが本当にすごいと思う。</description>
+# # ~/.osx # # disable dashboard defaults write com.apple.dashboard mcx-disabled -boolean YES # I like overlay scrollbars defaults write NSGlobalDomain AppleShowScrollBars -string &amp;#34;WhenScrolling&amp;#34; # make ~/Library visible chflags nohidden ~/Library # # Killall Apps # for app in Finder Dock SystemUIServer do killall &amp;#34;$app&amp;#34; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 done NEXTSTEP/OSXのこういうところが本当にすごいと思う。</description>
     </item>
     
     <item>
@@ -49,10 +49,10 @@ dotfiles/.osx at master · lowply/dotfiles · GitHub
 で、ちょっとターミナルを使えば、この「アーカイブしてインストール」を手動で行うことができる。
 手順1 まずはお決まりのBoot USBを、ココらへんを参考にして適当に作り、そっから起動させる。ここでディスクユーティリティを使って起動ディスクのチェックなどをしてもいい。
 手順2 メニューの「ユーティリティ」から「ターミナル」を起動する。この状態では最初からroot（なんでもできるスーパーユーザー）になっているので、ターミナル上で以下のコマンドを打つ。
-$ cd /Volumes/Macintosh\ HD/ $ mkdir old_system $ mv * .* old_system  実行していることは単純で、メインの起動ディスクに移動 → ディレクトリを作成 → 全ファイルをそこに移動 という感じ。3行目はバッククォートとシングルクォーテーションの違いに気をつけてください。
+$ cd /Volumes/Macintosh\ HD/ $ mkdir old_system $ mv * .* old_system 実行していることは単純で、メインの起動ディスクに移動 → ディレクトリを作成 → 全ファイルをそこに移動 という感じ。3行目はバッククォートとシングルクォーテーションの違いに気をつけてください。
 手順3 あとはターミナルを終了して普通にインストールプロセスを開始。インストール後は起動ディスク直下にold_systemというフォルダができてるので、そこから不要なファイルを消したり、必要なデータを新システムに持ってきたりすればいい。
 所感  Snow Leopardの頃からやってて今まで特に不具合はないですが、自己責任でおねがいします。特にrootでシェルに入るので慎重に。 Mountain Lionを使ってみて、一番嬉しかったのはMail.appのルールがiCloud経由で同期してくれること。あとiMessage便利すぎ。  3行目は最初 mv $(ls -A -I &#39;old_system&#39;) old_system とか考えてみたものの、DarwinにはGNU lsが入っていなくて -A も -I も使えなかったから普通にmvしてる。  141024 追記 Yosemiteがでましたね。ls -A が行けるようになったぽいので、@k_teru 氏の知見をもとに
-$ cd /Volumes/Macintosh\ HD/ $ FILES=$(ls -A) &amp;amp;amp;&amp;amp;amp; mkdir old &amp;amp;amp;&amp;amp;amp; mv ${FILES} old  としてみてはどうかなと。</description>
+$ cd /Volumes/Macintosh\ HD/ $ FILES=$(ls -A) &amp;amp;amp;&amp;amp;amp; mkdir old &amp;amp;amp;&amp;amp;amp; mv ${FILES} old としてみてはどうかなと。</description>
     </item>
     
     <item>

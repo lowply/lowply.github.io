@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Server on lowply.github.io</title>
@@ -21,7 +21,7 @@
  /tmp でコンパイルするので最初の yum で依存関係をインストールするときだけ sudo が必要です。バイナリは /usr/local/tmux に入るので適当に cd /usr/local/bin; ln -s /usr/local/tmux/bin/tmux . とかしてください。
 Hugo は gist を貼っつける shortcode があって良い。あと Twitter の shortcode もある。
 OK, this is the final and complete installation script of tmux-2.1. https://t.co/wzegeGqdQX
-&amp;mdash; Sho Mizutani (@lowply) April 1, 2016  </description>
+&amp;mdash; lowply (@lowply) April 1, 2016  </description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@ OK, this is the final and complete installation script of tmux-2.1. https://t.co
       <description>やっとこのブログをWordPressからHugoに移動したのでその過程をメモしておく。この後にテーマ作成編が続く（予定）。
 Hugo Hugoは高速なビルドが特徴の、Go製スタティックサイトジェネレータ。いろいろなところで紹介されているので説明は省略。今回は生成したサイトをAmazon S3でホストする。
 環境 Hugoは安定版をバイナリでリリースしているが、開発版をソースからビルドしたいのでGoの環境を入れておく。デプロイはS3にするのでawscliが必要。また、プレビュー用のVirtual Hostを作るのでNginxを入れておく。これは別にApacheでもいい。
-$ cat /etc/redhat-release CentOS Linux release 7.1.1503 (Core) $ go version go version go1.4.2 linux/amd64 $ git version git version 1.8.3.1 $ pyenv versions system * 2.7.10 (set by /root/.pyenv/version) 3.4.3 $ pip list | grep aws awscli (1.7.42) $ aws --version aws-cli/1.7.42 Python/2.7.10 Linux/3.10.0-229.7.2.el7.x86_64 $ nginx -v nginx version: nginx/1.9.3  Hugoインストール ドキュメント通り。
+$ cat /etc/redhat-release CentOS Linux release 7.1.1503 (Core) $ go version go version go1.4.2 linux/amd64 $ git version git version 1.8.3.1 $ pyenv versions system * 2.7.10 (set by /root/.pyenv/version) 3.4.3 $ pip list | grep aws awscli (1.7.42) $ aws --version aws-cli/1.7.42 Python/2.7.10 Linux/3.10.0-229.7.2.el7.x86_64 $ nginx -v nginx version: nginx/1.9.3 Hugoインストール ドキュメント通り。
 $ go get -v github.com/spf13/hugo $ hugo version Hugo Static Site Generator v0.</description>
     </item>
     
@@ -52,8 +52,12 @@ $ go get -v github.com/spf13/hugo $ hugo version Hugo Static Site Generator v0.<
       <pubDate>Sun, 09 Feb 2014 02:09:46 +0900</pubDate>
       
       <guid>https://lowply.github.io/blog/2014/02/docker-tryout/</guid>
-      <description>boot2docker First, install the Docker binary which will forward all commands to a remote docker daemon Second, install Boot2Docker, which is a super-lightweight Linux VM capable of running a docker daemon on your Mac with the smallest possible overhead. Currently it occupies 24MB on disk and boots in less than 10 seconds. DOCKER 0.8: QUALITY, NEW BUILDER FEATURES, BTRFS, OSX SUPPORT  とのこと。まずboot2dockerについて。これはなんだ、と。
- これまでMacでDockerを使う場合はVirtualBoxなりVMware FusionなりでUbuntuとかを動かして、その中でDockerを使う必要があった しかしそれでは毎回最初の一歩が重くてDockerのメリットが活かせないし、ネイティブにDockerを使えたほうが何かと便利 そこでboot2dockerというものが考案された これは厳密にはソフトウェアではなく、Dockerを動かすことに特化したTiny Core Linuxベースのisoイメージと、それをインストールしたVirtualBoxをコントロールするシェルスクリプトの組み合わせ boot2dockerが起動している状態であれば、OS XのターミナルからDockerを直接操作できる（Docker 0.</description>
+      <description>boot2docker とのこと。まずboot2dockerについて。これはなんだ、と。
+ これまでMacでDockerを使う場合はVirtualBoxなりVMware FusionなりでUbuntuとかを動かして、その中でDockerを使う必要があった しかしそれでは毎回最初の一歩が重くてDockerのメリットが活かせないし、ネイティブにDockerを使えたほうが何かと便利 そこでboot2dockerというものが考案された これは厳密にはソフトウェアではなく、Dockerを動かすことに特化したTiny Core Linuxベースのisoイメージと、それをインストールしたVirtualBoxをコントロールするシェルスクリプトの組み合わせ boot2dockerが起動している状態であれば、OS XのターミナルからDockerを直接操作できる（Docker 0.8になって公式にOS Xをサポートした、というのはこの部分かと） これについてさらっとこのページの一番下（About the way Docker works on Mac OS X）に書いてある。MacにはLXCとかがないからねーということで。：Requirements and Installation on Mac OS X 10.6 Snow Leopard - Docker Documentation  という理解でいいのでしょうか？たぶん合ってる。要はboot2docker stopするとTerminalからdockerコマンド使えない。その関係性をdaemonとclientと言ってる。
+インストール手順 Oracle VirtualBox 必須。ここからDL &amp;amp; インストロール。Downloads – Oracle VM VirtualBox
+ドキュメントではgithubからcurlしてるけど、tapを追加すればhomebrewで入れられる。
+$ brew tap homebrew/binary $ brew install docker boot2docker $ docker -v Docker version 0.8.0, build cc3a8c8 これも必須（docker - VM間の通信用）
+export DOCKER_HOST=tcp:// Tiny Core Linuxのisoを格納するディレクトリを適当に作って適当に移動</description>
     </item>
     
     <item>
@@ -66,13 +70,13 @@ $ go get -v github.com/spf13/hugo $ hugo version Hugo Static Site Generator v0.<
 で、CentOS使い恒例のlibevent2.0系問題。epelやrpmforgeなどのレポジトリにもまだ2.0のrpmは出てないのでいろいろな手法がポストされてますね。
 libevent1.4系はyum removeするとmemcachedが消えたりして依存関係がきついので、消さずに2.0をソースから（prefix切って）入れて共存させたいなー、と思ってたらすごくシンプルな方法を見つけたのでメモ。
 まずlibeventをprefix付きでコンパイル
-$ ./configure --prefix=/usr/local/libevent2 $ make $ make install $ echo &amp;quot;/usr/local/libevent2/lib&amp;quot; &amp;gt;&amp;gt; /etc/ld.so.conf.d/libevent2.conf $ ldconfig  tmuxをconfigureするときにCFLAGSとLDFLAGSを指定
-$ ./configure --prefix=/usr/local/tmux CFLAGS=&amp;quot;-I/usr/local/libevent2/include&amp;quot; LDFLAGS=&amp;quot;-L/usr/local/libevent2/lib&amp;quot; $ make $ make install  これだけでOK。
+$ ./configure --prefix=/usr/local/libevent2 $ make $ make install $ echo &amp;#34;/usr/local/libevent2/lib&amp;#34; &amp;gt;&amp;gt; /etc/ld.so.conf.d/libevent2.conf $ ldconfig tmuxをconfigureするときにCFLAGSとLDFLAGSを指定
+$ ./configure --prefix=/usr/local/tmux CFLAGS=&amp;#34;-I/usr/local/libevent2/include&amp;#34; LDFLAGS=&amp;#34;-L/usr/local/libevent2/lib&amp;#34; $ make $ make install これだけでOK。
 参考にしたstack exchangeのフォーラムには、本来なら &amp;ndash;with-libevent=dir みたいなconfigure optionがあるべきだよね、というコメントがあるので今後のtmuxに期待したい。
 他には、こんな感じでldconfigとpkg-configを設定してやる方法もある。
 tmux のインストール | ja.528p.com
 130523 追記 ./configure --help をよく見たら LIBEVENT_CFLAGS と LIBEVENT_LIBS という環境変数が指定できると書いてあった。しかも1.7の時にはすでにあった。。。こちらの方が良さげだ、というわけで下記を試してみたらうまくいった。
-$ ./configure --prefix=/usr/local/tmux LIBEVENT_LIBS=&amp;quot;-L/usr/local/libevent2/lib -levent&amp;quot; LIBEVENT_CFLAGS=&amp;quot;-I/usr/local/libevent2/include&amp;quot; $ make $ make install  160401 追記 tmux2.1をコンパイルするスクリプトを書いた</description>
+$ ./configure --prefix=/usr/local/tmux LIBEVENT_LIBS=&amp;#34;-L/usr/local/libevent2/lib -levent&amp;#34; LIBEVENT_CFLAGS=&amp;#34;-I/usr/local/libevent2/include&amp;#34; $ make $ make install 160401 追記 tmux2.1をコンパイルするスクリプトを書いた</description>
     </item>
     
     <item>
@@ -84,14 +88,16 @@ $ ./configure --prefix=/usr/local/tmux LIBEVENT_LIBS=&amp;quot;-L/usr/local/libe
       <description>タイトル通りではあるけど、いろいろハマったのでメモ。
 dnsmasqというのは簡易DNS/DHCPサーバー。/etc/hostsを書き換えるよりもう少し低いレイヤーでレコードを書き換えてくれるイメージ（フォワーダーと呼ばれたりする）。なので、Aレコードだけではなくほとんどのレコード書き換えができたりします。詳細はWikipediaとかで。今回はMXレコードを書き換えたい事情があって導入してみた。
 インストール いつも通り、homebrew様。brew後に出てくるビールの絵文字がかわいい。
-$ brew update &amp;amp;&amp;amp; brew install dnsmasq  設定 confを複製して編集
-$ cp -a /usr/local/Cellar/dnsmasq/2.65/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf $ vim /usr/local/etc/dnsmasq.conf  以下を書き換え
-resolv-file=/etc/resolv.dnsmasq.conf listen-address=127.0.0.1 conf-dir=/usr/local/etc/dnsmasq.d  conf用ディレクトリを作成
-$ mkdir /usr/local/etc/dnsmasq.d  plistを複製。Macの場合、launchctlがこのplistに書かれているオプションとかをつけてバイナリを実行する。
-$ sudo cp /usr/local/Cellar/dnsmasq/2.65/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons  現在のDNSキャッシュサーバーのIPを、dnsmasq用のresolv.confに書く。フィルタにマッチしなかった場合これに問い合わせることになる。
-$ cat /etc/resolv.conf $ sudo vim /etc/resolv.dnsmasq.conf  起動
-$ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist  確認
-$ scutil --dns $ ps ax | grep [d]nsmasq  キャッシュサーバーをdnsmasqに変更（この時点でミスがあると名前が引けなくなる）</description>
+$ brew update &amp;amp;&amp;amp; brew install dnsmasq 設定 confを複製して編集
+$ cp -a /usr/local/Cellar/dnsmasq/2.65/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf $ vim /usr/local/etc/dnsmasq.conf 以下を書き換え
+resolv-file=/etc/resolv.dnsmasq.conf listen-address=127.0.0.1 conf-dir=/usr/local/etc/dnsmasq.d conf用ディレクトリを作成
+$ mkdir /usr/local/etc/dnsmasq.d plistを複製。Macの場合、launchctlがこのplistに書かれているオプションとかをつけてバイナリを実行する。
+$ sudo cp /usr/local/Cellar/dnsmasq/2.65/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons 現在のDNSキャッシュサーバーのIPを、dnsmasq用のresolv.confに書く。フィルタにマッチしなかった場合これに問い合わせることになる。
+$ cat /etc/resolv.conf $ sudo vim /etc/resolv.dnsmasq.conf 起動
+$ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist 確認
+$ scutil --dns $ ps ax | grep [d]nsmasq キャッシュサーバーをdnsmasqに変更（この時点でミスがあると名前が引けなくなる）
+$ sudo networksetup -setdnsservers Wi-Fi 127.0.0.1 確認
+$ dig apple.</description>
     </item>
     
     <item>
@@ -101,11 +107,12 @@ $ scutil --dns $ ps ax | grep [d]nsmasq  キャッシュサーバーをdnsmasq�
       
       <guid>https://lowply.github.io/blog/2013/02/solarized-termtrans-option/</guid>
       <description>vim + molokaiを使っていて背景がおかしいというエントリーを書いた後、これが再現するのはtmuxを使っている時だけということがわかった。具体的には
- Terminal.app on Mountain Lion declare -x TERM=&amp;ldquo;xterm-256color&amp;rdquo; tmux 1.7 vim + molokai  という環境の時。
+ Terminal.app on Mountain Lion declare -x TERM=&amp;quot;xterm-256color&amp;rdquo; tmux 1.7 vim + molokai  という環境の時。
 で、ある日何気なくsolarizedのreadmeを読んでいたらこんな記述が。
-g:solarized_termtrans
-If you use a terminal emulator with a transparent background and Solarized isn&amp;rsquo;t displaying the background color transparently, set this to 1 and Solarized will use the default (transparent) background of the terminal emulator. urxvt required this in my testing; iTerm2 did not.
-Note that on Mac OS X Terminal.app, solarized_termtrans is set to 1 by default as this is almost always the best option.</description>
+君がターミナルを透過背景に設定していて、Solarizedの時だけ透過にならないなら、これを1にするべし。そうすればSolarizedはしっかり透過になるよ。けどMac OS XのTerminal.appの場合はこれはデフォルトで1になってるよ。唯一、terminfoがxterm-256colorをサポートするときは例外だよ。 つまりどういうことだ？と思いつつ、とりあえずカラースキームをsolarizedに変えてまずはトライ。
+やっぱり再現した。で、.vimrcにこれを追加。
+let g:solarized_termtrans=1 うまくいった！こういう気づかいステキ。というわけでmolokaiからsolarizedに乗り換えました。solarizedのファイルサイズがmolokaiの約6倍ある理由がわかった気がする。
+dotfilesも更新。</description>
     </item>
     
     <item>
@@ -116,12 +123,12 @@ Note that on Mac OS X Terminal.app, solarized_termtrans is set to 1 by default a
       <guid>https://lowply.github.io/blog/2013/01/how-to-set-locale-to-english-with-terminal-app/</guid>
       <description>2013/02/01 追記: 結局 ssh_config を修正。
 コンソールメッセージが日本語なのは嫌じゃないですか。でlocaleの設定変えようと思って
-$ cat /etc/sysconfig/i18n LANG=&amp;quot;en_US.UTF-8&amp;quot;  こんな感じにしても、次回sshすると
-$ echo $LANG ja_JP.UTF-8 $ locale | grep LC_CTYPE LC_CTYPE=&amp;quot;ja_JP.UTF-8&amp;quot;  とか言われてイラッとする場合。
+$ cat /etc/sysconfig/i18n LANG=&amp;#34;en_US.UTF-8&amp;#34; こんな感じにしても、次回sshすると
+$ echo $LANG ja_JP.UTF-8 $ locale | grep LC_CTYPE LC_CTYPE=&amp;#34;ja_JP.UTF-8&amp;#34; とか言われてイラッとする場合。
 調べてみると[計算機] Lion からの ssh ログイン先で locale がどうのこうの、といわれる。
-どうやら Lion から ssh をするときに LC_* 環境変数を送っているのが問題らしい。   なるほど手元の10.8.2でも確かに /etc/ssh_config に
-SendEnv LANG LC_*  という記述があった。ただ、これ編集したくないなあ。。。と思ってたら、Terminal.appにそれを制御する設定を見つけた。
- この「起動時にロケール環境変数を設定」をオフにして、Terminal.appを再起動すればOK。
+なるほど手元の10.8.2でも確かに /etc/ssh_config に
+SendEnv LANG LC_* という記述があった。ただ、これ編集したくないなあ。。。と思ってたら、Terminal.appにそれを制御する設定を見つけた。
+この「起動時にロケール環境変数を設定」をオフにして、Terminal.appを再起動すればOK。
 2013/02/01 追記：これを行うことで、Terminalがローカル環境の日本語ファイル名を正しく表示してくれないことがわかったので、結局 /etc/ssh_config を修正した。~/.ssh/configでSendEnvをOverrideできないか調べてみたけど、UnSendEnvとか各所から提案されつつも実現していないらしい。
 といってもOS Xの言語を英語にしている人には関係ないです。
 ココにそれっぽいことは書いてあったのは見つけた。→ Beginning OS X Lion/インフラ整備編</description>
@@ -140,7 +147,7 @@ vimのカラースキームにmolokaiを使ってる人、少なくないんじ�
 で、これを無効にするために、vimのカラースキーム定義とかいう完全に未知の世界を必死にさまよって、やっと該当の行を発見したのでpatch化した。たった1行だけど。。。
 「molokaiのこれは仕様です」とか、「このパッチはカラースキーム的におかしい」とかあったら教えて下さい。
 120817 UPDATE : パッチを当てるときはこんな感じで。（vim プラグインの位置は適宜変更）
-$ cd /tmp $ git clone git://gist.github.com/3351367.git $ patch -u ~/dotfiles/.vim/bundle/molokai/colors/molokai.vim &amp;lt; /tmp/3351367/molokai.patch  </description>
+$ cd /tmp $ git clone git://gist.github.com/3351367.git $ patch -u ~/dotfiles/.vim/bundle/molokai/colors/molokai.vim &amp;lt; /tmp/3351367/molokai.patch </description>
     </item>
     
     <item>
@@ -151,7 +158,7 @@ $ cd /tmp $ git clone git://gist.github.com/3351367.git $ patch -u ~/dotfiles/.v
       <guid>https://lowply.github.io/blog/2012/07/block-spam-with-procmail/</guid>
       <description>久々に癖のある.procmailレシピを書いたのでメモ。
 やりたいこと：NGワードファイルを参照して、SubjectかFromにマッチする単語があれば捨てる
-NGWORD=$HOME/.ngwords :0 * ^Subject:\/.* * ? test -s $NGWORD * ? echo &amp;quot;$MATCH&amp;quot; | /usr/bin/nkf -wZ2 | /bin/sed &#39;s/[[:space:][:punct:]]//g&#39; | /bin/fgrep -iqf $NGWORD .Trash/ :0 E * ^From:\/.* * ? test -s $NGWORD * ? echo &amp;quot;$MATCH&amp;quot; | /usr/bin/nkf -wZ2 | /bin/sed &#39;s/[[:space:][:punct:]]//g&#39; | /bin/fgrep -iqf $NGWORD .Trash/  以下、一部解説。パイプ部分は一個ずつ書いた。
+NGWORD=$HOME/.ngwords :0 * ^Subject:\/.* * ? test -s $NGWORD * ? echo &amp;quot;$MATCH&amp;quot; | /usr/bin/nkf -wZ2 | /bin/sed &#39;s/[[:space:][:punct:]]//g&#39; | /bin/fgrep -iqf $NGWORD .Trash/ :0 E * ^From:\/.* * ? test -s $NGWORD * ? echo &amp;quot;$MATCH&amp;quot; | /usr/bin/nkf -wZ2 | /bin/sed &#39;s/[[:space:][:punct:]]//g&#39; | /bin/fgrep -iqf $NGWORD .Trash/ 以下、一部解説。パイプ部分は一個ずつ書いた。
  * ^Subject:\/.* メールの件名を対象 * ? test -s $NGWORD .ngwordsファイルの存在確認 * ? echo &amp;quot;$MATCH&amp;quot; 対象（件名）をecho nkf -wZ2 iso-9022-jpの文字列をUTF-8にし（-w）全角スペースを半角スペース二つに変換（-Z2） /bin/sed &#39;s/[[:space:][:punct:]]//g&#39; 空白スペース([:space:]) と「!</description>
     </item>
     
@@ -162,7 +169,7 @@ NGWORD=$HOME/.ngwords :0 * ^Subject:\/.* * ? test -s $NGWORD * ? echo &amp;quot;
       
       <guid>https://lowply.github.io/blog/2012/05/imagemagick67-imagick3-error/</guid>
       <description>ImageMagick 6.7 + PECL::imagickのインストール | fixture.jpで書いた方法でImageMagickをセットアップしたサーバーで、こんなエラーが出るようになった。
-$ php -v PHP Warning: PHP Startup: Unable to load dynamic library &#39;/usr/lib64/php/modules/imagick.so&#39; - libWand.so.10: cannot open shared object file: No such file or directory in Unknown on line 0 PHP 5.3.3 (cli) (built: Mar 30 2011 13:51:54) Copyright (c) 1997-2010 The PHP Group Zend Engine v2.3.0, Copyright (c) 1998-2010 Zend Technologies  libWandがないという。。。少ししか調べてないが、libWand.soはlibMagickWand.soって名前に変わった疑いあり。ちらほら見かけたsymlinkを/usr/lib以下に張る方法も効果なし。
+$ php -v PHP Warning: PHP Startup: Unable to load dynamic library &amp;#39;/usr/lib64/php/modules/imagick.so&amp;#39; - libWand.so.10: cannot open shared object file: No such file or directory in Unknown on line 0 PHP 5.3.3 (cli) (built: Mar 30 2011 13:51:54) Copyright (c) 1997-2010 The PHP Group Zend Engine v2.3.0, Copyright (c) 1998-2010 Zend Technologies libWandがないという。。。少ししか調べてないが、libWand.soはlibMagickWand.soって名前に変わった疑いあり。ちらほら見かけたsymlinkを/usr/lib以下に張る方法も効果なし。
 ImageMagickとPECL::Imagickはそれぞれ
 $ convert --version Version: ImageMagick 6.7.6-5 2012-04-16 Q16 http://www.imagemagick.org Copyright: Copyright (C) 1999-2012 ImageMagick Studio LLC Features: OpenMP $ pecl list Installed packages, channel pecl.</description>
     </item>
@@ -175,9 +182,9 @@ $ convert --version Version: ImageMagick 6.7.6-5 2012-04-16 Q16 http://www.image
       <guid>https://lowply.github.io/blog/2012/03/new-sakura-vps-cent62-getting-started/</guid>
       <description>さくらのVPS v3 2Gプランを借りたので、最初にやったことをメモ。
 環境確認 契約後メールで送られてきたパスワードでログイン。まずはrootパスワード変更。
-$ passwd  3コア。
-$ cat /proc/cpuinfo | grep &amp;quot;model name&amp;quot; model name : Intel(R) Xeon(R) CPU E5645 model name : Intel(R) Xeon(R) CPU E5645 model name : Intel(R) Xeon(R) CPU E5645  メモリ2GB。
-$ cat /proc/meminfo | grep Mem MemTotal: 2054804 kB MemFree: 1482476 kB $ free -m total used free shared buffers cached Mem: 2006 558 1447 0 50 393 -/+ buffers/cache: 115 1891 Swap: 4031 0 4031  驚愕の200GB。ざっくり言うと / → 50GB /home → 150GB という割り当てっぽい。</description>
+$ passwd 3コア。
+$ cat /proc/cpuinfo | grep &amp;#34;model name&amp;#34; model name : Intel(R) Xeon(R) CPU E5645 model name : Intel(R) Xeon(R) CPU E5645 model name : Intel(R) Xeon(R) CPU E5645 メモリ2GB。
+$ cat /proc/meminfo | grep Mem MemTotal: 2054804 kB MemFree: 1482476 kB $ free -m total used free shared buffers cached Mem: 2006 558 1447 0 50 393 -/+ buffers/cache: 115 1891 Swap: 4031 0 4031 驚愕の200GB。ざっくり言うと / → 50GB /home → 150GB という割り当てっぽい。</description>
     </item>
     
     <item>
@@ -187,8 +194,8 @@ $ cat /proc/meminfo | grep Mem MemTotal: 2054804 kB MemFree: 1482476 kB $ free -
       
       <guid>https://lowply.github.io/blog/2012/03/how-to-revert-dev-name-to-eth-on-centos6-dell-machine/</guid>
       <description>根幹部分の変更のせいで多方面での迷惑が予想されるRHEL6系OSのネットワークデバイス名問題、例えば「em1ではなくeth0を使いたい」という場合、下記のマニュアルが参考になる。注：DELLマシンの場合。
-To disable the use of the new naming scheme, during installation (attended or automated), pass the kernel command line parameter biosdevname=0 on the boot command line. Consistent Network Device Naming in Linux [PDF]  上記の「カーネルコマンドラインパラメータに渡す」ということをPXE Boot環境で実行したかったので、pxelinux.cfg/defaultに
-default CL6.2_64 label CL6.2_64 kernel vmlinuz append ks=http://[IPADDR]/CL6.2_64.cfg ksdevice=eth0 load initrd=initrd.img devfs=nomount biosdevname=0  と書いておいてPXE→起動すると何事も無かったかのようにeth0, eth1&amp;hellip;という感じで使えた。。。あまりないと思うけど稼働中のOSに対して設定する方法も書いてあるので、詳細はPDFの参照を。</description>
+上記の「カーネルコマンドラインパラメータに渡す」ということをPXE Boot環境で実行したかったので、pxelinux.cfg/defaultに
+default CL6.2_64 label CL6.2_64 kernel vmlinuz append ks=http://[IPADDR]/CL6.2_64.cfg ksdevice=eth0 load initrd=initrd.img devfs=nomount biosdevname=0 と書いておいてPXE→起動すると何事も無かったかのようにeth0, eth1&amp;hellip;という感じで使えた。。。あまりないと思うけど稼働中のOSに対して設定する方法も書いてあるので、詳細はPDFの参照を。</description>
     </item>
     
     <item>
@@ -198,22 +205,14 @@ default CL6.2_64 label CL6.2_64 kernel vmlinuz append ks=http://[IPADDR]/CL6.2_6
       
       <guid>https://lowply.github.io/blog/2012/02/using-time-as-condition-of-mod_rewrite/</guid>
       <description>これは知らなかった。
-TIME_YEAR
-TIME_MON
-TIME_DAY
-TIME_HOUR
-TIME_MIN
-TIME_SEC
-TIME_WDAY
-TIME
-mod_rewrite - Apache HTTP Server  RewriteCondにTIMEで始まる時間・期間指定変数があって、秒単位の細かい指定でURLのリライトができる。例えば午前3時から4時半の間は毎日バッチを走らせるのでメンテ画面に飛ばしたい、とかいう場合は
-ErrorDocument 503 /maintenance.html RewriteEngine on RewriteCond %{REQUEST_URI} !/maintenance.html RewriteCond %{TIME_HOUR}%{TIME_MIN} &amp;gt; 0300 RewriteCond %{TIME_HOUR}%{TIME_MIN} &amp;lt; 0430 RewriteRule ^.*$ - [R=503,L]  とか書ける。[1]
+RewriteCondにTIMEで始まる時間・期間指定変数があって、秒単位の細かい指定でURLのリライトができる。例えば午前3時から4時半の間は毎日バッチを走らせるのでメンテ画面に飛ばしたい、とかいう場合は
+ErrorDocument 503 /maintenance.html RewriteEngine on RewriteCond %{REQUEST_URI} !/maintenance.html RewriteCond %{TIME_HOUR}%{TIME_MIN} &amp;gt; 0300 RewriteCond %{TIME_HOUR}%{TIME_MIN} &amp;lt; 0430 RewriteRule ^.*$ - [R=503,L] とか書ける。[1]
 今までcronで行なっていたサイトのオープン、クローズ、メンテなどなど、全部これでいいじゃん！なんというスイスアーミーナイフ。
 ただ、詳細までまとめたドキュメントが見当たらず、いろいろ見た感じだと
  TIMEの後がそれぞれ年月日時分秒曜日のものは、その数字を返す（月は0-11になるので注意） TIME単体だと曜日以外をまとめた数字が返る 比較演算子 &amp;lt;, &amp;gt;, = を使って条件を作れる  こういうことらしい。
 [1] メンテ画面を503で出すのも勉強になった。via mod_rewrite (.htaccess) で簡単メンテナンスモード @ php-tips
 see also
- Mod_Rewrite Variables Cheatsheet / TIME Advanced Techniques with mod_rewrite - Apache HTTP Server / Time-Dependent Rewriting mod_rewriteで期間指定のリダイレクト » gmt-24.</description>
+ Mod_Rewrite Variables Cheatsheet / TIME Advanced Techniques with mod_rewrite - Apache HTTP Server / Time-Dependent Rewriting mod_rewriteで期間指定のリダイレクト » gmt-24.net  </description>
     </item>
     
     <item>
@@ -222,11 +221,12 @@ see also
       <pubDate>Wed, 22 Feb 2012 00:04:31 +0900</pubDate>
       
       <guid>https://lowply.github.io/blog/2012/02/how-to-work-wordpress-with-reverse-proxy/</guid>
-      <description>環境 # uname -orm 2.6.9-67.ELsmp i686 GNU/Linux # cat /etc/issue CentOS release 4.9 (Final) Kernel \r on an \m NOTICE: Support for CentOS 4 ends on Feb 29th, 2012 # php -v PHP 5.1.6 (cli) (built: Jul 31 2008 00:08:07) Copyright (c) 1997-2006 The PHP Group Zend Engine v2.1.0, Copyright (c) 1998-2006 Zend Technologies  WordPress3.3.1を入れたい = php5.3以上が必須。ということで更新がおそーいレポジトリを使ってるredhat系OSにとっては悩ましいところですね。特にCentOS4系。まあ、そもそも稼働中のシステムなのでphpのアップデートは避けたいという環境。
+      <description>環境 # uname -orm 2.6.9-67.ELsmp i686 GNU/Linux # cat /etc/issue CentOS release 4.9 (Final) Kernel \r on an \m NOTICE: Support for CentOS 4 ends on Feb 29th, 2012 # php -v PHP 5.1.6 (cli) (built: Jul 31 2008 00:08:07) Copyright (c) 1997-2006 The PHP Group Zend Engine v2.1.0, Copyright (c) 1998-2006 Zend Technologies WordPress3.3.1を入れたい = php5.3以上が必須。ということで更新がおそーいレポジトリを使ってるredhat系OSにとっては悩ましいところですね。特にCentOS4系。まあ、そもそも稼働中のシステムなのでphpのアップデートは避けたいという環境。
 しょうがないので、Apache(2.2.22) + PHP(5.3.10)をソースから入れて、8080とかで上げてリバースプロキシで特定のリクエストを飛ばすことにした。具体的には
-http://www.example.com/blog/ ---&amp;gt; http://www.example.com:8080/  ということがしたい。（コンパイル周りも少し手こずったのでそのうち書く）
+http://www.example.com/blog/ ---&amp;gt; http://www.example.com:8080/ ということがしたい。（コンパイル周りも少し手こずったのでそのうち書く）
 リバースプロキシ インストールできたら、VHなどなどを設定して8080とかのポートで上げる。WordPressもDocumentRootにDLして解凍しておく。ログにエラーが出ていないかなど、いろいろ確認して問題なければブラウザから接続。
-http://www.example.com:8080/  これをhttp://www.</description>
+http://www.example.com:8080/ これをhttp://www.example.com/blog/で見せたいので、稼働中の方のApacheにリバースプロキシの設定を入れる。
+ProxyPass /blog/ http://www.</description>
     </item>
     
     <item>
@@ -240,7 +240,7 @@ http://www.example.com:8080/  これをhttp://www.</description>
 neobundle それとは別の経緯で、いろいろ調べてる時に知ったのがneobundle。neocomplcacheとかunite.vimの作者のShougo氏がvundleをリメイクし、昨年9月にリリースされたもの。一番のポイントは、「unite.vimインターフェイスの実装」とのことで、とても良さそうだったので切り替えてみた。
 Hack #238: neobundle.vim で plugin をモダンに管理する
 依存関係とかもあって、今の.vimrcのNeoBundle部分はこんな感じになった。
-NeoBundle &#39;Shougo/neobundle.vim&#39; NeoBundle &#39;Shougo/vimproc&#39; NeoBundle &#39;Shougo/vimshell&#39; NeoBundle &#39;Shougo/unite.vim&#39; NeoBundle &#39;Shougo/neocomplcache&#39; NeoBundle &#39;tomasr/molokai&#39;  unite.vimも勉強したいなー。</description>
+NeoBundle &amp;#39;Shougo/neobundle.vim&amp;#39;NeoBundle &amp;#39;Shougo/vimproc&amp;#39;NeoBundle &amp;#39;Shougo/vimshell&amp;#39;NeoBundle &amp;#39;Shougo/unite.vim&amp;#39;NeoBundle &amp;#39;Shougo/neocomplcache&amp;#39;NeoBundle &amp;#39;tomasr/molokai&amp;#39;unite.vimも勉強したいなー。</description>
     </item>
     
     <item>
@@ -251,8 +251,8 @@ NeoBundle &#39;Shougo/neobundle.vim&#39; NeoBundle &#39;Shougo/vimproc&#39; NeoB
       <guid>https://lowply.github.io/blog/2012/02/how-to-install-pecl-imagick-with-latest-imagemagick/</guid>
       <description>ImageMagick 6.6 系のときはこんなことなかった気がするんだけど、 PECL::imagick のインストールがこける。こちらの記事を見つつも、微妙に環境が違うし、 /usr/bin/php-config とか編集したくないし、何か別の方法があるはずと思って探ってみた。
  [PHP]Imagickのインストールエラーの対処法 - DQNEO起業日記 PHP 拡張モジュールImagickの導入時に遭遇したPECLのバグの回避策など - r_nobuホームページ   とりあえず現状
-$ uname -orm 2.6.18-238.el5 x86_64 GNU/Linux $ cat /etc/issue CentOS release 5.7 (Final) Kernel \r on an \m  ここから最新のsrcをDL。ImageMagick: Downloads
-$ cd /usr/local/src/ $ wget ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/ImageMagick-6.7.5-6.tar.bz2 $ tar vxjf ImageMagick-6.7.5-6.tar.bz2 $ cd ImageMagick-6.7.5-6 - perlで使うかもしれないので $ ./configure --prefix=/usr/local/ImageMagick --with-perl $ make &amp;amp;&amp;amp; make install $ cd /usr/local/bin $ ln -s /usr/local/ImageMagick/bin/* .</description>
+$ uname -orm 2.6.18-238.el5 x86_64 GNU/Linux $ cat /etc/issue CentOS release 5.7 (Final) Kernel \r on an \m ここから最新のsrcをDL。ImageMagick: Downloads
+$ cd /usr/local/src/ $ wget ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/ImageMagick-6.7.5-6.tar.bz2 $ tar vxjf ImageMagick-6.7.5-6.tar.bz2 $ cd ImageMagick-6.7.5-6 - perlで使うかもしれないので $ ./configure --prefix=/usr/local/ImageMagick --with-perl $ make &amp;amp;&amp;amp; make install $ cd /usr/local/bin $ ln -s /usr/local/ImageMagick/bin/* . ここまではいい。</description>
     </item>
     
     <item>
@@ -266,7 +266,7 @@ gmarik/vundle - GitHub
 120217 追記：結局neobundleにしました。
 個人的には
  ~/.vim/bundle 内にまとまってくれる 使うときは~/.vimrcに1行書くだけ。GitHubで公開されてるものはパスを書く GitHubで公開されているものは自動的にsubmoduleになってくれる vi画面内で管理できる。:BundleInstall! で自動アップデートやばい  dotfilesをGitHubで管理しているので、submoduleとしてインストール。
-$ cd ~/dotfiles $ git submodule add https://github.com/gmarik/vundle.git .vim/bundle/vundle  こんな感じでbundleディレクトリ内に置いてvundle自体をvundleで管理できます。
+$ cd ~/dotfiles $ git submodule add https://github.com/gmarik/vundle.git .vim/bundle/vundle こんな感じでbundleディレクトリ内に置いてvundle自体をvundleで管理できます。
 参考サイト：
  Hack #215: Vundle で plugin をモダンに管理する Vundle入れたら、Vimのプラグイン管理が楽になった Vimプラグインの管理をVundleにしてみた  </description>
     </item>

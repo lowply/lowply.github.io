@@ -6,7 +6,7 @@
 	<title>ReverseProxy配下でWordPressを動作させる - lowply.github.io</title>
 	<meta name="description" content="">
 	<meta name="author" content="lowply">
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="lowply" />
 	<meta name="twitter:title" content="ReverseProxy配下でWordPressを動作させる - lowply.github.io">
@@ -47,90 +47,47 @@
 					ReverseProxy配下でWordPressを動作させる
 				</h2>
 				<article>
-					
-
-<h4 id="環境">環境</h4>
-
-<pre><code class="language-bash"># uname -orm
+					<h4 id="環境">環境</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># uname -orm</span>
 2.6.9-67.ELsmp i686 GNU/Linux
 
-# cat /etc/issue
-CentOS release 4.9 (Final)
-Kernel \r on an \m
-NOTICE: Support for CentOS 4 ends on Feb 29th, 2012
+<span style="color:#75715e"># cat /etc/issue</span>
+CentOS release 4.9 <span style="color:#f92672">(</span>Final<span style="color:#f92672">)</span>
+Kernel <span style="color:#ae81ff">\r</span> on an <span style="color:#ae81ff">\m</span>
+NOTICE: Support <span style="color:#66d9ef">for</span> CentOS <span style="color:#ae81ff">4</span> ends on Feb 29th, <span style="color:#ae81ff">2012</span>
 
-# php -v
-PHP 5.1.6 (cli) (built: Jul 31 2008 00:08:07)
-Copyright (c) 1997-2006 The PHP Group
-Zend Engine v2.1.0, Copyright (c) 1998-2006 Zend Technologies
-</code></pre>
-
-<p>WordPress3.3.1を入れたい = php5.3以上が必須。ということで更新がおそーいレポジトリを使ってるredhat系OSにとっては悩ましいところですね。特にCentOS4系。まあ、そもそも稼働中のシステムなのでphpのアップデートは避けたいという環境。</p>
-
+<span style="color:#75715e"># php -v</span>
+PHP 5.1.6 <span style="color:#f92672">(</span>cli<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>built: Jul <span style="color:#ae81ff">31</span> <span style="color:#ae81ff">2008</span> 00:08:07<span style="color:#f92672">)</span>
+Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 1997-2006 The PHP Group
+Zend Engine v2.1.0, Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 1998-2006 Zend Technologies
+</code></pre></div><p>WordPress3.3.1を入れたい = php5.3以上が必須。ということで更新がおそーいレポジトリを使ってるredhat系OSにとっては悩ましいところですね。特にCentOS4系。まあ、そもそも稼働中のシステムなのでphpのアップデートは避けたいという環境。</p>
 <p>しょうがないので、Apache(2.2.22) + PHP(5.3.10)をソースから入れて、8080とかで上げてリバースプロキシで特定のリクエストを飛ばすことにした。具体的には</p>
-
-<pre><code class="language-bash">http://www.example.com/blog/ ---&gt; http://www.example.com:8080/
-</code></pre>
-
-<p>ということがしたい。（コンパイル周りも少し手こずったのでそのうち書く）</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://www.example.com/blog/ ---&gt; http://www.example.com:8080/
+</code></pre></div><p>ということがしたい。（コンパイル周りも少し手こずったのでそのうち書く）</p>
 <h4 id="リバースプロキシ">リバースプロキシ</h4>
-
 <p>インストールできたら、VHなどなどを設定して8080とかのポートで上げる。WordPressもDocumentRootにDLして解凍しておく。ログにエラーが出ていないかなど、いろいろ確認して問題なければブラウザから接続。</p>
-
-<pre><code class="language-bash">http://www.example.com:8080/
-</code></pre>
-
-<p>これを<a href="http://www.example.com/blog/で見せたいので、稼働中の方のApacheにリバースプロキシの設定を入れる。">http://www.example.com/blog/で見せたいので、稼働中の方のApacheにリバースプロキシの設定を入れる。</a></p>
-
-<pre><code class="language-bash">ProxyPass /blog/ http://www.example.com:8080/blog/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://www.example.com:8080/
+</code></pre></div><p>これをhttp://www.example.com/blog/で見せたいので、稼働中の方のApacheにリバースプロキシの設定を入れる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ProxyPass /blog/ http://www.example.com:8080/blog/
 ProxyPassReverse /blog/ http://www.example.com:8080/blog/
-</code></pre>
-
-<p>ブラウザから確認、表示された。</p>
-
-<pre><code class="language-bash">http://www.example.com/blog/
-</code></pre>
-
-<h4 id="wordpressの設定">WordPressの設定</h4>
-
+</code></pre></div><p>ブラウザから確認、表示された。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://www.example.com/blog/
+</code></pre></div><h4 id="wordpressの設定">WordPressの設定</h4>
 <p>DBを作って、WordPressのウィザードからインストールを実行して管理画面に入る。設定→一般→WordPress アドレス (URL)、サイトアドレス(URL)を見ると</p>
-
-<pre><code class="language-bash">http://www.example.com:8080/blog/
-</code></pre>
-
-<p>こうなってるので</p>
-
-<pre><code class="language-bash">http://www.example.com/blog/
-</code></pre>
-
-<p>と変える。そしてトップページにアクセス！すると残念なことに</p>
-
-<pre><code class="language-bash">http://www.example.com/
-</code></pre>
-
-<p>へリダイレクトされる。。。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://www.example.com:8080/blog/
+</code></pre></div><p>こうなってるので</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://www.example.com/blog/
+</code></pre></div><p>と変える。そしてトップページにアクセス！すると残念なことに</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://www.example.com/
+</code></pre></div><p>へリダイレクトされる。。。</p>
 <h4 id="解決">解決</h4>
-
 <p>やはりリバースプロキシ配下で動かすことは無理なのか、と諦めつつ「reverse proxy wordpress」とかでググるとこんな記事を発見。</p>
-
 <p><a href="http://sqz.jp/blog/mae/2010/06/wordpress.html">リバースプロキシ環境でのwordpressの設置 - position:absolute; | 株式会社スクイズ研究所</a></p>
-
-<blockquote class="blockquote">
-  <p class="m-b-0">
-    ブログのURLなどはHTTP_HOSTを参照して設定するため、アプリケーションサーバーのhost名がそのブログのHOST名になってしまいますし、他にもざっと見ですが8か所ほどHTTP_HOSTを参照している部分があるので、インストール時以外にもなんらかの対応を施す必要があります。
-  </p>
-  <footer class="blockquote-footer"><cite title=""></cite></footer>
-</blockquote>
-
+<!-- raw HTML omitted -->
 <p>なるほどー。ということでwp-config.phpに下記を追加したところ、無事に動作した。</p>
-
-<pre><code class="language-bash">$_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
-$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-</code></pre>
-
-<p>「クリティカルな影響がないとは言い切れません」という注意付きですが、ひと通り見てとりあえず問題はなさそう。とても助かりました。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$_SERVER<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HTTP_HOST&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> $_SERVER<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HTTP_X_FORWARDED_HOST&#39;</span><span style="color:#f92672">]</span>;
+$_SERVER<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;REMOTE_ADDR&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> $_SERVER<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span style="color:#f92672">]</span>;
+</code></pre></div><p>「クリティカルな影響がないとは言い切れません」という注意付きですが、ひと通り見てとりあえず問題はなさそう。とても助かりました。</p>
 
 				</article>
 			</section>
@@ -180,7 +137,7 @@ $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		 under <a class="post-category" href="/categories/server/">Server</a>
 	</div>
 	<div class="float-xs-left">
-		Generated by <a href="https://gohugo.io/">Hugo</a> 0.57.2 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.68.3 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
 	</div>
 	<div class="float-xs-right">
 		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>

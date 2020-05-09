@@ -1,5 +1,5 @@
 <p>
-	{{ $path := "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images" }}
+	{{ $path := "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images" }}
 	<a href="{{ $path }}/{{ .Get "album" }}/{{ .Get "name" }}.jpg" title="{{ .Get "name" }}">
 		{{ if eq (.Get "orientation") "portrait" }}
 		<img src="{{ $path }}/{{ .Get "album" }}/{{ .Get "name" }}.jpg" width="50%" alt="{{ .Get "name" }}">

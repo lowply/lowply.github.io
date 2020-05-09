@@ -6,7 +6,7 @@
 	<title>新さくらのVPS &#43; CentOS 6.2 で最初にやったことメモ - lowply.github.io</title>
 	<meta name="description" content="">
 	<meta name="author" content="lowply">
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="lowply" />
 	<meta name="twitter:title" content="新さくらのVPS &#43; CentOS 6.2 で最初にやったことメモ - lowply.github.io">
@@ -47,227 +47,149 @@
 					新さくらのVPS &#43; CentOS 6.2 で最初にやったことメモ
 				</h2>
 				<article>
-					
-
-<p><a href="http://vps.sakura.ad.jp/">さくらのVPS v3 2Gプラン</a>を借りたので、最初にやったことをメモ。</p>
-
+					<p><a href="http://vps.sakura.ad.jp/">さくらのVPS v3 2Gプラン</a>を借りたので、最初にやったことをメモ。</p>
 <h4 id="環境確認">環境確認</h4>
-
 <p>契約後メールで送られてきたパスワードでログイン。まずはrootパスワード変更。</p>
-
-<pre><code class="language-bash">$ passwd
-</code></pre>
-
-<p>3コア。</p>
-
-<pre><code class="language-bash">$ cat /proc/cpuinfo | grep &quot;model name&quot;
-model name : Intel(R) Xeon(R) CPU E5645
-model name : Intel(R) Xeon(R) CPU E5645
-model name : Intel(R) Xeon(R) CPU E5645
-</code></pre>
-
-<p>メモリ2GB。</p>
-
-<pre><code class="language-bash">$ cat /proc/meminfo | grep Mem
-MemTotal: 2054804 kB
-MemFree: 1482476 kB
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ passwd
+</code></pre></div><p>3コア。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /proc/cpuinfo | grep <span style="color:#e6db74">&#34;model name&#34;</span>
+model name : Intel<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> Xeon<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> CPU E5645
+model name : Intel<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> Xeon<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> CPU E5645
+model name : Intel<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> Xeon<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> CPU E5645
+</code></pre></div><p>メモリ2GB。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /proc/meminfo | grep Mem
+MemTotal: <span style="color:#ae81ff">2054804</span> kB
+MemFree: <span style="color:#ae81ff">1482476</span> kB
 
 $ free -m
  total used free shared buffers cached
-Mem: 2006 558 1447 0 50 393
--/+ buffers/cache: 115 1891
-Swap: 4031 0 4031
-</code></pre>
-
-<p>驚愕の200GB。ざっくり言うと / → 50GB /home → 150GB という割り当てっぽい。</p>
-
-<pre><code class="language-bash">$ df -h
+Mem: <span style="color:#ae81ff">2006</span> <span style="color:#ae81ff">558</span> <span style="color:#ae81ff">1447</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">50</span> <span style="color:#ae81ff">393</span>
+-/+ buffers/cache: <span style="color:#ae81ff">115</span> <span style="color:#ae81ff">1891</span>
+Swap: <span style="color:#ae81ff">4031</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4031</span>
+</code></pre></div><p>驚愕の200GB。ざっくり言うと / → 50GB /home → 150GB という割り当てっぽい。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ df -h
 Filesystem                         Size  Used Avail Use% Mounted on
 /dev/mapper/vg_www1343uf-lv_root   50G   1.4G   46G   3% /
-tmpfs                              1004M    0 1004M   0% /dev/shm
+tmpfs                              1004M    <span style="color:#ae81ff">0</span> 1004M   0% /dev/shm
 /dev/vda1                          485M   32M  428M   7% /boot
 /dev/mapper/vg_www1343uf-lv_home   144G  188M  136G   1% /home
-</code></pre>
-
-<p>CentOS 6.2 64bit。</p>
-
-<pre><code class="language-bash">$ cat /etc/issue
-CentOS release 6.2 (Final)
-Kernel \r on an \m
+</code></pre></div><p>CentOS 6.2 64bit。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/issue
+CentOS release 6.2 <span style="color:#f92672">(</span>Final<span style="color:#f92672">)</span>
+Kernel <span style="color:#ae81ff">\r</span> on an <span style="color:#ae81ff">\m</span>
 
 $ uname -a
-Linux xxx.sakura.ne.jp 2.6.32-220.7.1.el6.x86_64 #1 SMP Wed Mar 7 00:52:02 GMT 2012 x86_64 x86_64 x86_64 GNU/Linux
-</code></pre>
-
-<p>リッスンポート。最初は22番と25番が上がってる。</p>
-
-<pre><code class="language-bash">$ netstat -tanp | grep LISTEN
-tcp 0 0 127.0.0.1:25 0.0.0.0:* LISTEN 1260/master
-tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 22726/sshd
-tcp 0 0 ::1:25 :::* LISTEN 1260/master
-tcp 0 0 :::22 :::* LISTEN 22726/sshd
-</code></pre>
-
-<p>IPアドレス。</p>
-
-<pre><code class="language-bash">$ ifconfig -a | grep -w inet
+Linux xxx.sakura.ne.jp 2.6.32-220.7.1.el6.x86_64 <span style="color:#75715e">#1 SMP Wed Mar 7 00:52:02 GMT 2012 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></div><p>リッスンポート。最初は22番と25番が上がってる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ netstat -tanp | grep LISTEN
+tcp <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 127.0.0.1:25 0.0.0.0:* LISTEN 1260/master
+tcp <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0.0.0.0:22 0.0.0.0:* LISTEN 22726/sshd
+tcp <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> ::1:25 :::* LISTEN 1260/master
+tcp <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> :::22 :::* LISTEN 22726/sshd
+</code></pre></div><p>IPアドレス。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ifconfig -a | grep -w inet
 inet addr:xxx.xxx.xxx.xxx Bcast:xxx.xxx.xxx.xxx Mask:255.255.254.0
 inet addr:127.0.0.1 Mask:255.0.0.0
-</code></pre>
-
-<p>OSアップデートは最新版なので変化なし。</p>
-
-<pre><code class="language-bash">$ yum update
-</code></pre>
-
-<h4 id="sshとユーザー周り">SSHとユーザー周り</h4>
-
+</code></pre></div><p>OSアップデートは最新版なので変化なし。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ yum update
+</code></pre></div><h4 id="sshとユーザー周り">SSHとユーザー周り</h4>
 <p>SSH設定変更。ポートを変えて、パスワード認証を切る。rootログインはそのうちオフにする。</p>
-
-<pre><code class="language-bash">$ cd /etc/ssh/
-$ cp -ip sshd_config{,.120329}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /etc/ssh/
+$ cp -ip sshd_config<span style="color:#f92672">{</span>,.120329<span style="color:#f92672">}</span>
 $ vi sshd_config
 $ diff sshd_config.120329 sshd_config
 13c13
-&lt; #Port 22
+&lt; <span style="color:#75715e">#Port 22</span>
 ---
-&gt; Port XXXXXX # &lt;---- As you like
+&gt; Port XXXXXX <span style="color:#75715e"># &lt;---- As you like</span>
 66c66
 &lt; PasswordAuthentication yes
 ---
 &gt; PasswordAuthentication no
 
-</code></pre>
-
-<p>wheelで一般ユーザー作る。</p>
-
-<pre><code class="language-bash">$ useradd sho -g wheel
+</code></pre></div><p>wheelで一般ユーザー作る。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ useradd sho -g wheel
 $ passwd sho
-</code></pre>
-
-<p>rootと一般ユーザー用に.ssh作って、公開鍵を登録。</p>
-
-<pre><code class="language-bash">$ cd /home/sho
+</code></pre></div><p>rootと一般ユーザー用に.ssh作って、公開鍵を登録。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /home/sho
 $ mkdir .ssh
-$ chmod 700 .ssh
+$ chmod <span style="color:#ae81ff">700</span> .ssh
 $ vi .ssh/authorized_keys
-$ chmod 600 .ssh/authorized_keys
+$ chmod <span style="color:#ae81ff">600</span> .ssh/authorized_keys
 $ chown -R sho:wheel .ssh
-</code></pre>
-
-<pre><code class="language-bash">$ cd /root
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /root
 $ mkdir .ssh
-$ chmod 700 .ssh
+$ chmod <span style="color:#ae81ff">700</span> .ssh
 $ vi .ssh/authorized_keys
-$ chmod 600 .ssh/authorized_keys
-</code></pre>
-
-<p>wheelグループにはパスワードなしでsudoさせる。</p>
-
-<pre><code class="language-bash">$ cd /etc
-$ cp -ip sudors{,.120329}
+$ chmod <span style="color:#ae81ff">600</span> .ssh/authorized_keys
+</code></pre></div><p>wheelグループにはパスワードなしでsudoさせる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /etc
+$ cp -ip sudors<span style="color:#f92672">{</span>,.120329<span style="color:#f92672">}</span>
 $ visudo
 $ diff sudoers.120329 sudoers
 105c105
-&lt; # %wheel ALL=(ALL) NOPASSWD: ALL
+&lt; <span style="color:#75715e"># %wheel ALL=(ALL) NOPASSWD: ALL</span>
 ---
-&gt; %wheel ALL=(ALL) NOPASSWD: ALL
-</code></pre>
-
-<h4 id="ロケールとbash">ロケールとBash</h4>
-
+&gt; %wheel ALL<span style="color:#f92672">=(</span>ALL<span style="color:#f92672">)</span> NOPASSWD: ALL
+</code></pre></div><h4 id="ロケールとbash">ロケールとBash</h4>
 <p>日本語やなのでロケールを変える。</p>
-
-<pre><code class="language-bash">$ cd /etc/sysconfig
-$ cp -ip i18n{,.120329}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /etc/sysconfig
+$ cp -ip i18n<span style="color:#f92672">{</span>,.120329<span style="color:#f92672">}</span>
 $ vi i18n
 $ diff i18n.120329 i18n
 1,2c1
-&lt; LANG=&quot;C&quot;
-&lt; SYSFONT=&quot;latarcyrheb-sun16&quot;
+&lt; LANG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C&#34;</span>
+&lt; SYSFONT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;latarcyrheb-sun16&#34;</span>
 ---
-&gt; LANG=&quot;en_US.UTF-8&quot;
+&gt; LANG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
 
-</code></pre>
-
-<p>.bashrcを編集。あんまり良くないけどとりあえずUbuntu使ってた時のそのまま持ってきた。</p>
-
-<pre><code class="language-bash">$ cd
-$ mv .bashrc{,.120329}
+</code></pre></div><p>.bashrcを編集。あんまり良くないけどとりあえずUbuntu使ってた時のそのまま持ってきた。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd
+$ mv .bashrc<span style="color:#f92672">{</span>,.120329<span style="color:#f92672">}</span>
 $ vi .bashrc
-</code></pre>
-
-<p>エイリアスは好みで。tmuxのショートカットと、viをvimに張ったぐらい。</p>
-
-<pre><code class="language-bash">$ vi .bash_aliases
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias vi='vim'
-alias tm='tmux -2 a || tmux -2'
-</code></pre>
-
-<p>lessをカスタム。</p>
-
-<pre><code class="language-bash">$ cp -ip .bash_profile{,.120329}
+</code></pre></div><p>エイリアスは好みで。tmuxのショートカットと、viをvimに張ったぐらい。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vi .bash_aliases
+alias rm<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rm -i&#39;</span>
+alias cp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cp -i&#39;</span>
+alias mv<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mv -i&#39;</span>
+alias vi<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vim&#39;</span>
+alias tm<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux -2 a || tmux -2&#39;</span>
+</code></pre></div><p>lessをカスタム。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp -ip .bash_profile<span style="color:#f92672">{</span>,.120329<span style="color:#f92672">}</span>
 $ vi .bash_profile
 $ diff .bash_profile.120329 .bash_profile
 12a13
-&gt; export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
-</code></pre>
-
-<h4 id="tmuxとdotfilesとvim">tmuxとdotfilesとvim</h4>
-
+&gt; export LESS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]&#39;</span>
+</code></pre></div><h4 id="tmuxとdotfilesとvim">tmuxとdotfilesとvim</h4>
 <p>なにはともあれ<a href="http://tmux.sourceforge.net/">tmux</a>入れる（ここからダウンロード：<a href="http://tmux.sourceforge.net/">http://tmux.sourceforge.net/</a>）</p>
-
-<pre><code class="language-bash">$ yum install libevent libevent-devel ncurses ncurses-devel
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ yum install libevent libevent-devel ncurses ncurses-devel
 $ cd /usr/local/src
 $ wget http://downloads.sourceforge.net/project/tmux/tmux/tmux-1.6/tmux-1.6.tar.gz
 $ tar vxzf tmux-1.6.tar.gz
 $ cd tmux-1.6
-$ ./configure --prefix=/usr/local/tmux
+$ ./configure --prefix<span style="color:#f92672">=</span>/usr/local/tmux
 $ make
 $ make install
-</code></pre>
-
-<p>おお、ここ空っぽなんだ。</p>
-
-<pre><code class="language-bash">$ cd /usr/local/bin/
+</code></pre></div><p>おお、ここ空っぽなんだ。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /usr/local/bin/
 $ ls -la
-</code></pre>
-
-<p>リンク張る。</p>
-
-<pre><code class="language-bash">$ ln -s /usr/local/tmux/bin/tmux .
-</code></pre>
-
-<p>いよいよ<a href="http://fixture.jp/blog/2012/02/how-to-manage-dotfiles-on-github/">dotfiles</a>。gitは最初から入ってる。</p>
-
-<pre><code class="language-bash">$ cd
+</code></pre></div><p>リンク張る。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ln -s /usr/local/tmux/bin/tmux .
+</code></pre></div><p>いよいよ<a href="http://fixture.jp/blog/2012/02/how-to-manage-dotfiles-on-github/">dotfiles</a>。gitは最初から入ってる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd
 $ git clone --recursive git://github.com/lowply/dotfiles.git
 $ cd dotfiles
 $ sh symlink.sh
 $ vi
-</code></pre>
-
-<p>一回vim立ち上げる時にエラー出るけど気にしない。</p>
-
-<pre><code class="language-bash">:NeoBundleInstall
+</code></pre></div><p>一回vim立ち上げる時にエラー出るけど気にしない。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">:NeoBundleInstall
 :q
-</code></pre>
-
-<p>ここで入るプラグインは「<a href="http://fixture.jp/blog/2012/02/switching-to-neobundle/">neobundleでvimプラグイン管理</a>」を参照。</p>
-
+</code></pre></div><p>ここで入るプラグインは「<a href="http://fixture.jp/blog/2012/02/switching-to-neobundle/">neobundleでvimプラグイン管理</a>」を参照。</p>
 <p>vim抜けたらvimprocをmakeしておく。</p>
-
-<pre><code class="language-bash">$ cd .vim/bundle/vimproc
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd .vim/bundle/vimproc
 $ make -f make_unix.mak
-</code></pre>
-
-<h4 id="所感">所感</h4>
-
+</code></pre></div><h4 id="所感">所感</h4>
 <p>とりあえず今回はユーザー作成、SSH設定、dotfiles、tmux、vimあたりまで。作業してて、yumとかmakeとかの体感速度が上がった気がした。それにOSの起動も速い。さくらさんスゴイっす。</p>
-
 <p>抜けとかオススメの設定あったらツッコミお願いします。</p>
 
 				</article>
@@ -318,7 +240,7 @@ $ make -f make_unix.mak
 		 under <a class="post-category" href="/categories/server/">Server</a>
 	</div>
 	<div class="float-xs-left">
-		Generated by <a href="https://gohugo.io/">Hugo</a> 0.57.2 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
+		Generated by <a href="https://gohugo.io/">Hugo</a> 0.68.3 and hosted by <a href="https://pages.github.com/">GitHub Pages</a>.
 	</div>
 	<div class="float-xs-right">
 		<i class="fa fa-rss"></i> <a href="/index.xml">Feed</a>
