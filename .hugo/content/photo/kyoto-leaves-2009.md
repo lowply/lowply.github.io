@@ -3,7 +3,7 @@ title = "Kyoto Leaves 2009"
 date = "2010-01-02T01:20:35+09:00"
 draft = false
 location  = "Kyoto, Japan"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/kyoto-leaves-2009/SDIM1659.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/kyoto-leaves-2009/SDIM1659.jpg"
 camera = "Sigma DP2"
 +++
 

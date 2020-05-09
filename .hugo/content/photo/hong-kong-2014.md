@@ -5,7 +5,7 @@ description = ""
 draft = false
 location = "Hong Kong"
 title = "Hong Kong 2014"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/hong-kong-2014/GR003905.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/hong-kong-2014/GR003905.jpg"
 
 +++
 

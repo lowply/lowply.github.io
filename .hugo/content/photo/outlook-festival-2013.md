@@ -4,7 +4,7 @@ date = "2013-09-02T00:00:00+09:00"
 description = ""
 draft = false
 location  = "Pula, Croatia"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/outlook-festival-2013/IMG_2498.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/outlook-festival-2013/IMG_2498.jpg"
 camera = "Ricoh GR"
 +++
 

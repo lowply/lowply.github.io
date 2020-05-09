@@ -3,7 +3,7 @@ title = "DP2 First Impression 2009"
 date = "2009-04-26T00:00:00+09:00"
 draft = false
 location  = "Tokyo, Japan"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/dp2-first-impression-2009/SDIM0045.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/dp2-first-impression-2009/SDIM0045.jpg"
 camera = "Sigma DP2"
 +++
 

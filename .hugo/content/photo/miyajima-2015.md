@@ -5,7 +5,7 @@ description = ""
 draft = false
 location = "Hiroshima, Japan"
 title = "Miyajima 2015"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/miyajima-2015/DSCF3935.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/miyajima-2015/DSCF3935.jpg"
 
 +++
 

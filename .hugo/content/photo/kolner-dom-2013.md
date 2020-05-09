@@ -4,7 +4,7 @@ date = "2013-09-05T00:00:00+09:00"
 description = ""
 draft = false
 location  = "Köln, Germany"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/kolner-dom-2013/IMG_3106.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/kolner-dom-2013/IMG_3106.jpg"
 camera = "Ricoh GR"
 +++
 

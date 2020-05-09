@@ -4,7 +4,7 @@ date = "2013-10-18T00:00:00+09:00"
 description = ""
 draft = false
 location  = "Kyoto, Japan"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/kenninji-2013/IMG_3636.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/kenninji-2013/IMG_3636.jpg"
 camera = "Ricoh GR"
 +++
 

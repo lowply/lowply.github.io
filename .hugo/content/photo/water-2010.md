@@ -3,7 +3,7 @@ title = "Water 2010"
 date = "2010-12-05T02:25:25+09:00"
 draft = false
 location  = "Multiple parts in Japan"
-topimg = "https://s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/water-2010/SDIM0057.jpg"
+topimg = "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images/water-2010/SDIM0057.jpg"
 camera = "Sigma DP2"
 +++
 
