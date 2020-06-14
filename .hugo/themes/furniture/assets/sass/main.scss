@@ -124,6 +124,21 @@ body {
               border-left: solid 5px #999;
             }
           }
+          table tr th,
+          table tr td {
+            padding: 0.3em 1em 0.3em 0;
+          }
+          table tr th {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            border-bottom: solid 1px #eee;
+          }
+          table tr:first-child td {
+            padding-top: 0.5em;
+          }
+          table tr:nth-child(2n) td {
+            background: #f7f7f7;
+          }
         }
 
         div.share {

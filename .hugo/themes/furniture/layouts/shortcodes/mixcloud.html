@@ -1,0 +1,14 @@
+<iframe width="100%" height="400" src="https://www.mixcloud.com/widget/iframe/?feed=%2Flowply%2Flive-mix-at-human-elements-dec-2019%2F" frameborder="0" ></iframe>
+
+<p>
+	{{ $path := "https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/images" }}
+	<a href="{{ $path }}/{{ .Get "album" }}/{{ .Get "name" }}.jpg" title="{{ .Get "name" }}">
+		{{ if eq (.Get "orientation") "portrait" }}
+		<img src="{{ $path }}/{{ .Get "album" }}/{{ .Get "name" }}.jpg" width="50%" alt="{{ .Get "name" }}">
+		{{ else if eq (.Get "orientation") "square" }}
+			<img src="{{ $path }}/{{ .Get "album" }}/{{ .Get "name" }}.jpg" width="80%" alt="{{ .Get "name" }}">
+		{{ else }}
+			<img src="{{ $path }}/{{ .Get "album" }}/{{ .Get "name" }}.jpg" width="100%" alt="{{ .Get "name" }}">
+		{{ end }}
+	</a>
+</p>

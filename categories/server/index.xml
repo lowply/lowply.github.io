@@ -52,12 +52,8 @@ $ go get -v github.com/spf13/hugo $ hugo version Hugo Static Site Generator v0.<
       <pubDate>Sun, 09 Feb 2014 02:09:46 +0900</pubDate>
       
       <guid>https://lowply.github.io/blog/2014/02/docker-tryout/</guid>
-      <description>boot2docker とのこと。まずboot2dockerについて。これはなんだ、と。
- これまでMacでDockerを使う場合はVirtualBoxなりVMware FusionなりでUbuntuとかを動かして、その中でDockerを使う必要があった しかしそれでは毎回最初の一歩が重くてDockerのメリットが活かせないし、ネイティブにDockerを使えたほうが何かと便利 そこでboot2dockerというものが考案された これは厳密にはソフトウェアではなく、Dockerを動かすことに特化したTiny Core Linuxベースのisoイメージと、それをインストールしたVirtualBoxをコントロールするシェルスクリプトの組み合わせ boot2dockerが起動している状態であれば、OS XのターミナルからDockerを直接操作できる（Docker 0.8になって公式にOS Xをサポートした、というのはこの部分かと） これについてさらっとこのページの一番下（About the way Docker works on Mac OS X）に書いてある。MacにはLXCとかがないからねーということで。：Requirements and Installation on Mac OS X 10.6 Snow Leopard - Docker Documentation  という理解でいいのでしょうか？たぶん合ってる。要はboot2docker stopするとTerminalからdockerコマンド使えない。その関係性をdaemonとclientと言ってる。
-インストール手順 Oracle VirtualBox 必須。ここからDL &amp;amp; インストロール。Downloads – Oracle VM VirtualBox
-ドキュメントではgithubからcurlしてるけど、tapを追加すればhomebrewで入れられる。
-$ brew tap homebrew/binary $ brew install docker boot2docker $ docker -v Docker version 0.8.0, build cc3a8c8 これも必須（docker - VM間の通信用）
-export DOCKER_HOST=tcp:// Tiny Core Linuxのisoを格納するディレクトリを適当に作って適当に移動</description>
+      <description>boot2docker First, install the Docker binary which will forward all commands to a remote docker daemon Second, install Boot2Docker, which is a super-lightweight Linux VM capable of running a docker daemon on your Mac with the smallest possible overhead. Currently it occupies 24MB on disk and boots in less than 10 seconds. DOCKER 0.8: QUALITY, NEW BUILDER FEATURES, BTRFS, OSX SUPPORT  とのこと。まずboot2dockerについて。これはなんだ、と。
+ これまでMacでDockerを使う場合はVirtualBoxなりVMware FusionなりでUbuntuとかを動かして、その中でDockerを使う必要があった しかしそれでは毎回最初の一歩が重くてDockerのメリットが活かせないし、ネイティブにDockerを使えたほうが何かと便利 そこでboot2dockerというものが考案された これは厳密にはソフトウェアではなく、Dockerを動かすことに特化したTiny Core Linuxベースのisoイメージと、それをインストールしたVirtualBoxをコントロールするシェルスクリプトの組み合わせ boot2dockerが起動している状態であれば、OS XのターミナルからDockerを直接操作できる（Docker 0.</description>
     </item>
     
     <item>
@@ -109,10 +105,9 @@ $ dig apple.</description>
       <description>vim + molokaiを使っていて背景がおかしいというエントリーを書いた後、これが再現するのはtmuxを使っている時だけということがわかった。具体的には
  Terminal.app on Mountain Lion declare -x TERM=&amp;quot;xterm-256color&amp;rdquo; tmux 1.7 vim + molokai  という環境の時。
 で、ある日何気なくsolarizedのreadmeを読んでいたらこんな記述が。
-君がターミナルを透過背景に設定していて、Solarizedの時だけ透過にならないなら、これを1にするべし。そうすればSolarizedはしっかり透過になるよ。けどMac OS XのTerminal.appの場合はこれはデフォルトで1になってるよ。唯一、terminfoがxterm-256colorをサポートするときは例外だよ。 つまりどういうことだ？と思いつつ、とりあえずカラースキームをsolarizedに変えてまずはトライ。
-やっぱり再現した。で、.vimrcにこれを追加。
-let g:solarized_termtrans=1 うまくいった！こういう気づかいステキ。というわけでmolokaiからsolarizedに乗り換えました。solarizedのファイルサイズがmolokaiの約6倍ある理由がわかった気がする。
-dotfilesも更新。</description>
+g:solarized_termtrans
+If you use a terminal emulator with a transparent background and Solarized isn&#39;t displaying the background color transparently, set this to 1 and Solarized will use the default (transparent) background of the terminal emulator. urxvt required this in my testing; iTerm2 did not.
+Note that on Mac OS X Terminal.app, solarized_termtrans is set to 1 by default as this is almost always the best option.</description>
     </item>
     
     <item>
@@ -126,9 +121,9 @@ dotfilesも更新。</description>
 $ cat /etc/sysconfig/i18n LANG=&amp;#34;en_US.UTF-8&amp;#34; こんな感じにしても、次回sshすると
 $ echo $LANG ja_JP.UTF-8 $ locale | grep LC_CTYPE LC_CTYPE=&amp;#34;ja_JP.UTF-8&amp;#34; とか言われてイラッとする場合。
 調べてみると[計算機] Lion からの ssh ログイン先で locale がどうのこうの、といわれる。
-なるほど手元の10.8.2でも確かに /etc/ssh_config に
+どうやら Lion から ssh をするときに LC_* 環境変数を送っているのが問題らしい。   なるほど手元の10.8.2でも確かに /etc/ssh_config に
 SendEnv LANG LC_* という記述があった。ただ、これ編集したくないなあ。。。と思ってたら、Terminal.appにそれを制御する設定を見つけた。
-この「起動時にロケール環境変数を設定」をオフにして、Terminal.appを再起動すればOK。
+ この「起動時にロケール環境変数を設定」をオフにして、Terminal.appを再起動すればOK。
 2013/02/01 追記：これを行うことで、Terminalがローカル環境の日本語ファイル名を正しく表示してくれないことがわかったので、結局 /etc/ssh_config を修正した。~/.ssh/configでSendEnvをOverrideできないか調べてみたけど、UnSendEnvとか各所から提案されつつも実現していないらしい。
 といってもOS Xの言語を英語にしている人には関係ないです。
 ココにそれっぽいことは書いてあったのは見つけた。→ Beginning OS X Lion/インフラ整備編</description>
@@ -194,7 +189,7 @@ $ cat /proc/meminfo | grep Mem MemTotal: 2054804 kB MemFree: 1482476 kB $ free -
       
       <guid>https://lowply.github.io/blog/2012/03/how-to-revert-dev-name-to-eth-on-centos6-dell-machine/</guid>
       <description>根幹部分の変更のせいで多方面での迷惑が予想されるRHEL6系OSのネットワークデバイス名問題、例えば「em1ではなくeth0を使いたい」という場合、下記のマニュアルが参考になる。注：DELLマシンの場合。
-上記の「カーネルコマンドラインパラメータに渡す」ということをPXE Boot環境で実行したかったので、pxelinux.cfg/defaultに
+To disable the use of the new naming scheme, during installation (attended or automated), pass the kernel command line parameter biosdevname=0 on the boot command line. Consistent Network Device Naming in Linux [PDF]  上記の「カーネルコマンドラインパラメータに渡す」ということをPXE Boot環境で実行したかったので、pxelinux.cfg/defaultに
 default CL6.2_64 label CL6.2_64 kernel vmlinuz append ks=http://[IPADDR]/CL6.2_64.cfg ksdevice=eth0 load initrd=initrd.img devfs=nomount biosdevname=0 と書いておいてPXE→起動すると何事も無かったかのようにeth0, eth1&amp;hellip;という感じで使えた。。。あまりないと思うけど稼働中のOSに対して設定する方法も書いてあるので、詳細はPDFの参照を。</description>
     </item>
     
@@ -205,14 +200,22 @@ default CL6.2_64 label CL6.2_64 kernel vmlinuz append ks=http://[IPADDR]/CL6.2_6
       
       <guid>https://lowply.github.io/blog/2012/02/using-time-as-condition-of-mod_rewrite/</guid>
       <description>これは知らなかった。
-RewriteCondにTIMEで始まる時間・期間指定変数があって、秒単位の細かい指定でURLのリライトができる。例えば午前3時から4時半の間は毎日バッチを走らせるのでメンテ画面に飛ばしたい、とかいう場合は
+TIME_YEAR
+TIME_MON
+TIME_DAY
+TIME_HOUR
+TIME_MIN
+TIME_SEC
+TIME_WDAY
+TIME
+mod_rewrite - Apache HTTP Server  RewriteCondにTIMEで始まる時間・期間指定変数があって、秒単位の細かい指定でURLのリライトができる。例えば午前3時から4時半の間は毎日バッチを走らせるのでメンテ画面に飛ばしたい、とかいう場合は
 ErrorDocument 503 /maintenance.html RewriteEngine on RewriteCond %{REQUEST_URI} !/maintenance.html RewriteCond %{TIME_HOUR}%{TIME_MIN} &amp;gt; 0300 RewriteCond %{TIME_HOUR}%{TIME_MIN} &amp;lt; 0430 RewriteRule ^.*$ - [R=503,L] とか書ける。[1]
 今までcronで行なっていたサイトのオープン、クローズ、メンテなどなど、全部これでいいじゃん！なんというスイスアーミーナイフ。
 ただ、詳細までまとめたドキュメントが見当たらず、いろいろ見た感じだと
  TIMEの後がそれぞれ年月日時分秒曜日のものは、その数字を返す（月は0-11になるので注意） TIME単体だと曜日以外をまとめた数字が返る 比較演算子 &amp;lt;, &amp;gt;, = を使って条件を作れる  こういうことらしい。
 [1] メンテ画面を503で出すのも勉強になった。via mod_rewrite (.htaccess) で簡単メンテナンスモード @ php-tips
 see also
- Mod_Rewrite Variables Cheatsheet / TIME Advanced Techniques with mod_rewrite - Apache HTTP Server / Time-Dependent Rewriting mod_rewriteで期間指定のリダイレクト » gmt-24.net  </description>
+ Mod_Rewrite Variables Cheatsheet / TIME Advanced Techniques with mod_rewrite - Apache HTTP Server / Time-Dependent Rewriting mod_rewriteで期間指定のリダイレクト » gmt-24.</description>
     </item>
     
     <item>

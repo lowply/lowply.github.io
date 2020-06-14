@@ -4,8 +4,8 @@
   "description": "Furniture - A hugo theme for lowply.github.io",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass --output-style compressed --source-map true ./static/assets/main.sass -o ./static/assets",
-    "sassw": "node-sass -w --output-style compressed --source-map true ./static/assets/main.sass -o ./static/assets"
+    "sass": "node-sass --output-style compressed --source-map true ./assets/sass/main.scss -o ./static/assets",
+    "sassw": "node-sass -w --output-style compressed --source-map true ./assets/sass/main.scss -o ./static/assets"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/lowply/furniture#readme",
   "dependencies": {
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.14.1"
   }
 }

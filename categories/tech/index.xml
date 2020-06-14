@@ -70,10 +70,15 @@ Appleサイトに見るグローバルメニューの画像置換手法 | fixtur
 Pinboard: social bookmarking for introverts
 2010年の年末に、Yahoo!がDeliciousを閉鎖するっていう騒ぎがあって、その時に多くの人がPinboardに流れた。自分もその時にアカウントを作ったけど、2006年から6年以上使ってきたDeliciousに愛着もあってすぐに乗り換えたりはしなかった。
 今回乗り換えたのは、せっかく1年前に買い手が見つかったにも関わらずこの1年で良い方向に進化しなかった（余計な機能が増えてスピードが遅くなった）っていうのと、いつかPinboardみたいなテイストのサービスを作りたいと思ってるから。
-SBMはこうでなくては、という仕上がり。とにかく速い。あとInstapaperとの連携がナイス。ユーザーが増えるごとにサインアップ料金が増えるのも良いアイデアなので、お早めに。
-Pinboard: bookmarks for lowply
-see also:
- ブックマークサービスは基本に戻れ: Deliciousを捨ててPinboardに乗り移る理由 Delicious終了に備えて、Pinboardを使いこなす！ Deliciousの代替にはPinboardがオススメ   </description>
+- Speed, speed, speed
+- An information-dense user interface.
+- An ad-free site with no third-party tracking.
+- A way to save notes and other snippets of text as bookmarks.
+- No length limits on descriptions.
+- A way to quickly save and restore open tabs.
+- Built-in integration with Instapaper.
+- A fandom-friendly site.
+- Built-in sync of links and favorites from multiple Twitter accounts.</description>
     </item>
     
     <item>
@@ -83,7 +88,7 @@ see also:
       
       <guid>https://lowply.github.io/blog/2012/02/revel-is-ios-and-cloud-generation-app/</guid>
       <description>Adobe Revelすごい。
-定額無制限ストレージとかはさておき、個人的にすごいと思ったのはこの2つ。
+Adobe® Revelは、iPad、iPhone、Macからフォトライブラリへのアクセスを提供するデジタルフォトソリューションです。容量制限の問題や手作業による同期の手間に煩わされることはありません。   定額無制限ストレージとかはさておき、個人的にすごいと思ったのはこの2つ。
 Mac AppがiOS AppのUI OSから&amp;quot;Mac&amp;rdquo; の名が取れたMountain Lionといい、デスクトップの終わりが近いんだなあ、と。このUIはマウス／トラックパッドでは使いにくい。でも逆にそれが象徴的。デスクトップアプリの扱いがこの程度ということは、そういうことだ。
 実ファイルはクラウド上 写真を右クリックして、良くある「Finderに表示」をやろうと思っても、できない。Adobeのサーバー上の画像データが実ファイル扱いだから。ローカルにはキャッシュのみ。この感覚はiPhoto/ApertureにとってのPhoto Streamとは別世界だ。バックアップどうすればいいのか少し気になるけど。
 iPad3がRetina Displayになるっぽいのでなおさら期待。
@@ -97,8 +102,12 @@ See Also : 2648-120211 Adobe Revelっていいかも: shiology</description>
       
       <guid>https://lowply.github.io/blog/2007/11/yahoo-ui-css-comes-perfect/</guid>
       <description>いつの間にかYahoo UIが 2.3.0にバージョンアップしていて、CSSシリーズも今までで一番たくさんのアップデートが行われた模様。 その中で特に嬉しかったのがFonts CSSの以下のアップデート。
-2, 3が特に熱い！わけなんですが、内容としては「bodyのline-heigtにつけていた全称セレクタを取ったよ」、「基本line-heightを1.22emから1.231にして、単位（em）を取ったよ」ということ。以前「YUI Library CSS toolsがバージョンアップ」って記事で書いた不満点2点をやっと解消してくれました。Yahoo UI万歳！
-なんか今までのReset、Fonts、Gridに加えてBaseっていうシリーズも追加されたようです。良く見ていないけど、これも便利そう。一回リセットを適用したあとに、マージンとフォント関係を統一させる感じかな？</description>
+* Updated %-to-px conversion charted for increased accuracy across browsers
+* Move body line-height away from * wildcard selector. Now it is part of the initial BODY rule set.
+* Changed core lineheight from 1.22em to 1.231 (no units)
+* Changed code,pre to not use font-property shorthand syntax
+* Tweaked the sizing fix for monospace font size (pre,code...)
+* Added &#34;kbd,samp,tt&#34; as new selectors for monospaced font stuff</description>
     </item>
     
     <item>
@@ -135,7 +144,8 @@ clearfixはハックだらけな上に、要素にクラス名をひとつ増や
       <guid>https://lowply.github.io/blog/2007/01/think-tagometer/</guid>
       <description>とっくに年も明けてしまいましたが、あけましておめでとうございます。12月はいろいろ楽しいことも忙しいこともあり、すっかり更新をほったらかしてました。
 さて、ずっとやりたかった&amp;quot;tagometer&amp;quot;をつけてみたのでまとめ。
-■ http://del.icio.us/help/tagometer■ はてなブックマーク - ヘルプ - 自分のブログに「○○users」を表示
+■ http://del.icio.us/help/tagometer
+■ はてなブックマーク - ヘルプ - 自分のブログに「○○users」を表示
 delicious派なのですが、日本でははてブが一番メジャーなので両刀使いです。
 設置はエントリー・アーカイブに上記からコピペしたソースを貼り付けただけ。簡単すぎて半信半疑だったのですが、あっさりと動きました。ただ、僕の場合は一箇所CSSを書き直さなきゃいけなかったんですが、これは設置するブログによってさまざまでしょう。
 被ブクマ数が多いのはやっぱり、このブログで唯一のビッグ・エントリー「Googleカレンダーを携帯で見る方法：補足」ですが、そのほかにもごくたまーにブクマされていてうれしいです。特に検索プラグインなどの自作もののエントリーとか、なんかの使用法とか、なんか役立ってる感があります。というか役に立たないエントリーはブクマされませんよね普通。そんなわけで2007年もよろしくおねがいいたします。</description>
@@ -211,7 +221,7 @@ uniqlo NY sohoも美しさ・伝わりやすさ・動かす楽しさがパーフ
 で紹介されているGoogle Calendarの使い方がすごい！と思ったのですが、 カレンダーを公開にしなくても携帯から見ることができる方法を発見。
 Gcalの設定画面で、携帯から見たいカレンダーの名前をクリックし、一番下に出てくる「Private Address:」の中の「HTML」ボタンをクリックします。（※参考画像） そして出てきたURLをクリック、移動後のカレンダーページの右上のタブから「Agenda」を選択。そのページのURLを携帯に送れば、見れます。
 原理としては、「Calendar Address:」というのは公開しているカレンダーのための一元的なURLで、「Private Address:」の方はそこにランダムな文字列を付加して認証不要の参照ができるようにしたもの、ということかな。
-設定項目の下には、上に引用したような記述もあるので、このURLは他人には公開しないことを前提として用意されているようです。また、リセットボタンを押すことによって任意のタイミングで文字列をランダムに変える手段を提供しているのがすごいです。 えーつまりまとめると、
+This is the private address for this calendar. Don&#39;t share this address with others unless you want them to see all the events on this calendar.   設定項目の下には、上に引用したような記述もあるので、このURLは他人には公開しないことを前提として用意されているようです。また、リセットボタンを押すことによって任意のタイミングで文字列をランダムに変える手段を提供しているのがすごいです。 えーつまりまとめると、
 http://www.google.com/calendar/embed?src=アカウント名%40gmail.com&amp;amp;pvttk=ランダムな文字列&amp;amp;mode=AGENDA
 ということになります。スケジュールの参照だけなら特に認証する必要ない、というたたみラボの大井氏の意見にすごく賛成です。出先で「この日空いてる？」って聞かれたとき、単に見れれば良いわけですから。これはもう手放せないです。こういう手段もきっちり用意しているところが、やっぱりGoogleですね。
 2007/05/25 追記
@@ -294,7 +304,12 @@ Flickrほどソーシャルな感じではないのですが、あえて差別�
       <guid>https://lowply.github.io/blog/2006/06/css-reboot-web-design-2006/</guid>
       <description>■ CSS Reboot に見るウェブデザインのトレンド : Lucky bag::blog
 CSS Rebootというサイトで、今のウェブデザインのトレンドがわかるよ、というエントリー。
-1024px幅については、A List Apart が採用した幅 1024px のレイアウトというエントリーでも触れられています。ちょっと前に右サイドメニューを追加したmixiのトップもほぼ同じ幅。
+んで、Christian Montoyaが今回の Reboot でのデザインのトレンドについて書いていたんだけど、大雑把に書き出してみると下記のような感じ。
+- 1024px の幅
+- Silk Icons の使用
+- 暗い背景に明るい色のテキスト
+- 大きめのフッタ
+Lucky bag::blog  1024px幅については、A List Apart が採用した幅 1024px のレイアウトというエントリーでも触れられています。ちょっと前に右サイドメニューを追加したmixiのトップもほぼ同じ幅。
 いくつか関わっているサイトにGoogle Analyticsで簡単なアクセス解析をしているのですが、ビジターのディスプレイ解像度をチェックしてみると 1024pxは一番多く、1280px以上の人も結構多い。800x600の時代は終わったのかもしれないです。むしろ携帯端末のVGA化、フルブラウザの登場+パケット定額+TV対応、iPod向けムービーコンテンツ、YouTubeの台頭なんかで、640x480というサイズが見直されてくるのかもしれません。
 それと、以前紹介した「Silk Icons」はやっぱり多用されているらしいです。背景も黒がトレンドということで、特に鏡面反射画像が映えるのはApple的解釈だと黒なのかなあ、と。。。トレンドを特に追うわけでもないですが、2006年という年を刻んでおければなあと思います。</description>
     </item>
@@ -306,7 +321,7 @@ CSS Rebootというサイトで、今のウェブデザインのトレンドが�
       
       <guid>https://lowply.github.io/blog/2006/06/yahoo-ui-library-css-tools-is-cool/</guid>
       <description>Yahoo!（US）が提供しているJavaScriptのライブラリ「Yahoo! User Interface Library」。Flashチックなアニメーションやフォルダ等の階層ツリー表示を簡単に作成できるってことで使ったことは無いけどすごいなあと思っていたところ、5/8にバージョン「0.10.0」となってCSSのライブラリも登場。こちらは簡単で、項目も3つだけ。
- CSS Page Grids：一番作業効率に寄与してくれるであろう、段組レイアウト用CSS。大急ぎで段組レイアウトやろうとするときはかなり助かるはず。grids.cssを外部CSSとして読み込んで(X)HTMLソースもコピペですばやく段組が作れます。ただし互換モードだと崩れるとのこと。doctype宣言に注意。それと、   CSS Fonts：これはCSSファイル自体も便利ですが、一番素敵なのは、「フォントを&amp;quot;X&amp;quot;pxの大きさにしたかったら&amp;quot;Y&amp;quot;%を指定しなさい」という絶対指定⇔相対指定変換表。ちなみに同じ相対サイズでもem指定より%指定の方が正確性が高いとのこと。
+ CSS Page Grids：一番作業効率に寄与してくれるであろう、段組レイアウト用CSS。大急ぎで段組レイアウトやろうとするときはかなり助かるはず。grids.cssを外部CSSとして読み込んで(X)HTMLソースもコピペですばやく段組が作れます。ただし互換モードだと崩れるとのこと。doctype宣言に注意。それと、  Grids rely on the width of an &amp;quot;em&amp;quot; provided by [Fonts CSS](http://com1.devnet.scd.yahoo.com/yui/fonts/index.html); that file must be included. For the sake of this document, the convenience declarations within [Reset CSS](http://com1.devnet.scd.yahoo.com/yui/reset/index.html) are also assumed. 3ping.org  上記のように残り2つのCSSも同時に読み込んで使うことが推奨されています。  CSS Fonts：これはCSSファイル自体も便利ですが、一番素敵なのは、「フォントを&amp;quot;X&amp;quot;pxの大きさにしたかったら&amp;quot;Y&amp;quot;%を指定しなさい」という絶対指定⇔相対指定変換表。ちなみに同じ相対サイズでもem指定より%指定の方が正確性が高いとのこと。
   CSS Reset：全要素のマージン・パディングを0にしてフォントサイズを100%にしてリスト要素を…　というやつ。これはブラウザ個別にもっているdefault CSSの微妙な差を一度リセットする常套手段ですが、人（サイト）それぞれなので参考という感じで。
   Yahoo!謹製PDF版カンニングペーパーもあるようです。</description>
     </item>
@@ -318,8 +333,14 @@ CSS Rebootというサイトで、今のウェブデザインのトレンドが�
       
       <guid>https://lowply.github.io/blog/2006/05/escape-from-table-layout-a-study-of-mixi/</guid>
       <description>ためになるエントリーが多い3ping.orgからmixiをXHTML+CSSで組みなおすというエントリー。
-3分の1というのは素晴らしい。CSSのソースも非常に洗練されていて、「一通りプロパティを覚えてCSSを使えるようになった」という人は絶対目を通したほうが良いと思います。一意のdiv要素内のタグに対して、極力クラス名を割り当てないでスタイルを適用するという、「カスケーディング」の理解が深まるはず。これがCSSの本当の魅力なんだと思います。 XHTMLとCSSの詳細な構造をグラフィカルにたどれるFirefoxの拡張FireBugを使うと、より勉強になります。最新バージョンにはJSのデバッガも付いて、かなり強力なコーディングツールになってます。
-2006/05/28追記 東京webデザイナー日記：日経平均銘柄225社サイトの脱テーブル率調査 興味深い資料です。</description>
+- テーブルで組まれたmixiのhtmlファイル容量が48KB (自分のページ調べ)
+- XHTML+CSSで構成されたhtmlファイル容量が16KB
+この軽量化率が他のページにも当てはまるとすれば、mixiをXHTML+CSSで書き直すだけでhtmlファイルのトラフィックを3分の1にする事が出来る。mixiの１日のPVは1000万と聞いたけど、削減される転送量は月で何テラだろう。サーバー管理費にするといくらだろう。 3ping.org  3分の1というのは素晴らしい。CSSのソースも非常に洗練されていて、「一通りプロパティを覚えてCSSを使えるようになった」という人は絶対目を通したほうが良いと思います。一意のdiv要素内のタグに対して、極力クラス名を割り当てないでスタイルを適用するという、「カスケーディング」の理解が深まるはず。これがCSSの本当の魅力なんだと思います。 XHTMLとCSSの詳細な構造をグラフィカルにたどれるFirefoxの拡張FireBugを使うと、より勉強になります。最新バージョンにはJSのデバッガも付いて、かなり強力なコーディングツールになってます。
+- JavaScript debugger for stepping through code one line at a time
+- Status bar icon shows you when there is an error in a web page
+- A console that shows errors from JavaScript and CSS
+- Log messages from JavaScript in your web page to the console (bye bye &amp;quot;alert debugging&amp;quot;)
+- An JavaScript command line (no more &amp;quot;javascript:&amp;quot; in the URL bar)</description>
     </item>
     
     <item>
@@ -329,7 +350,12 @@ CSS Rebootというサイトで、今のウェブデザインのトレンドが�
       
       <guid>https://lowply.github.io/blog/2006/05/using-livedoor-reader/</guid>
       <description>スーパー・アルファ &amp;ldquo;[N]ネタフル&amp;rdquo; よりlivedoor readerの良さを伝えるチャットというエントリー。
-これ使ってない人には何のことだかわからないし、使っていても僕のように「ピン」の活用を知らない人間にとっては驚きの会話。やってみると・・・まさしく、PしてO！！さらにCと組み合わせ、自動更新ONでタブに常駐がベスト。ためになります。http://reader.livedoor.com/ のポップアップ・ブロックをオフにするのをお忘れなく。
+いしたにの発言: enter、enter、たまにshift＋enter
+いしたにの発言: pしてo
+いしたにの発言: これ！
+いしたにの発言: 次はshift↓ですけどね
+いしたにの発言: Pしてoの感激で他は覚えますよ
+ これ使ってない人には何のことだかわからないし、使っていても僕のように「ピン」の活用を知らない人間にとっては驚きの会話。やってみると・・・まさしく、PしてO！！さらにCと組み合わせ、自動更新ONでタブに常駐がベスト。ためになります。http://reader.livedoor.com/ のポップアップ・ブロックをオフにするのをお忘れなく。
  Livedoor Reader  </description>
     </item>
     
@@ -376,7 +402,8 @@ CSS Rebootというサイトで、今のウェブデザインのトレンドが�
       <guid>https://lowply.github.io/blog/2006/05/future-of-firefox-and-google/</guid>
       <description>Googleの技術者が語る「Firefoxへの深いかかわり」 : ITpro
 GoogleとFirefoxは今後も連携を強めていくらしい、という記事。いろいろと書いてあり興味深いですが一番気になったのは、
- Whatと呼ぶ，ローカルにデータを保存する機能をサポートする。WhatはMozilla，Apple，Operaが参加するWthatワーキング・グループで標準化が行われている仕様。cookieの拡張だが，cookieのようにデータそのものをHTTPリクエストに含めることはないfrom ITpro : 2006/05/01 という部分。気になります。なんというか最近特にIE vs その他みたいな構図が目立つ気がします。</description>
+ Whatと呼ぶ，ローカルにデータを保存する機能をサポートする。WhatはMozilla，Apple，Operaが参加するWthatワーキング・グループで標準化が行われている仕様。cookieの拡張だが，cookieのようにデータそのものをHTTPリクエストに含めることはないfrom ITpro : 2006/05/01
+ という部分。気になります。なんというか最近特にIE vs その他みたいな構図が目立つ気がします。</description>
     </item>
     
     <item>
@@ -386,7 +413,8 @@ GoogleとFirefoxは今後も連携を強めていくらしい、という記事�
       
       <guid>https://lowply.github.io/blog/2006/04/google-maps-euro/</guid>
       <description>Google Maps in Europe 発表。
- Accompanying this release, we have greatly improved high resolution imagery coverage for Europe in both Google Maps and Google Earth. Check out the Eiffel Tower in Paris, Olympiastadion in Berlin, and the Grand Canal in Venice.from Google Official Blog : 2006/04/26 先日から、MapsとLocalの名称を統合するという発表もあったり、APIもv2が出たりと動きがありましたが、今回は4ヶ国同時対応です。さらに、衛星写真の解像度が日本のMapsの数倍高くなっているので、エッフェル塔かなり。
+ Accompanying this release, we have greatly improved high resolution imagery coverage for Europe in both Google Maps and Google Earth. Check out the Eiffel Tower in Paris, Olympiastadion in Berlin, and the Grand Canal in Venice.from Google Official Blog : 2006/04/26
+ 先日から、MapsとLocalの名称を統合するという発表もあったり、APIもv2が出たりと動きがありましたが、今回は4ヶ国同時対応です。さらに、衛星写真の解像度が日本のMapsの数倍高くなっているので、エッフェル塔かなり。
 いろいろ発見できるのが一つの楽しみですが、またそんなチャンスが増えました。
  Google Official Blog  </description>
     </item>

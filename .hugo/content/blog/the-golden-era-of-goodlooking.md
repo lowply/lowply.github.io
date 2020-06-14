@@ -1,10 +1,10 @@
 +++
 categories = ["Music"]
 date = "2019-09-15T21:56:00+09:00"
-description = "The Golden Era of Good Looking - Live Mix at Human Elements, March 2019"
+description = "The Golden Era of Good Looking - Live Mix at Human Elements March 2019"
 draft = false
 slug = "the-golden-era-of-goodlooking"
-title = "The Golden Era of Good Looking - Live Mix at Human Elements, March 2019"
+title = "The Golden Era of Good Looking - Live Mix at Human Elements March 2019"
 +++
 
 This is a live recording mix I did at Human Elements in March 2019. All these stunning tunes are from Good Looking Records in it's late 90's.
@@ -15,13 +15,11 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 
 ### Tweets
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">今年の3月の Human Elements で久しぶりに初期の Good Looking 縛りをやることになって、せっかくだからということでその時ライブレコーディングしてたものを公開しました。よかったら聴いて下さい。ちなみに次回の Human Elements は来週です(宣伝)！ <a href="https://t.co/XYRJn7V5nb">https://t.co/XYRJn7V5nb</a></p>&mdash; Sho Mizutani (@lowply) <a href="https://twitter.com/lowply/status/1173276490537947139?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote>
+{{< tweet 1173276490537947139 >}}
 
-<blockquote class="twitter-tweet" data-conversation="none" data-theme="light" data-link-color="#2B7BB9"><p lang="ja" dir="ltr">今回ミックスにはかなり時間をかけたものの、選曲はあまり頭で考えず直感でこれだと思ったトラックだけを選びました。でも結果的に全て96年から2000年までのトラックに収まり、しかもそのほとんどが97年リリースだったということが後からわかって自分でも驚きました。当時のロンドンを体験したかった。</p>&mdash; Sho Mizutani (@lowply) <a href="https://twitter.com/lowply/status/1173276491620081665?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote>
+{{< tweet 1173276491620081665 >}}
 
-<blockquote class="twitter-tweet" data-conversation="none"><p lang="ja" dir="ltr">そういう理由でタイトルに The Golden Era を入れたんですが、もちろん2000年以降も Good Looking の素晴らしいトラックはたくさんあるし、今度は中期縛りというのもありかなあと思いました。というわけで再び宣伝ですが来週の Human Elements のチケットはこちらで買えます: <a href="https://t.co/UanhBvBSWk">https://t.co/UanhBvBSWk</a></p>&mdash; Sho Mizutani (@lowply) <a href="https://twitter.com/lowply/status/1173276493281054720?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote>
-
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{< tweet 1173276493281054720 >}}
 
 ### Tracklist
 
