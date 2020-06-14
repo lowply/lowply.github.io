@@ -11,7 +11,7 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 
 ### Listen now
 
-<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/681407465&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+<iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Flowply%2Fthe-golden-era-of-good-looking-live-mix-at-human-elements-march-2019%2F" frameborder="0" ></iframe>
 
 ### Tweets
 
@@ -23,24 +23,24 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 
 ### Tracklist
 
-```accesslog
-01 - 00:00:00 - Secret Liaisons - Source Direct - Good Looking Records, GLR015
-02 - 00:04:00 - Loop Progression - Motive One - Good Looking Records, GLR024
-03 - 00:08:00 - Progression Session - PHD & MC Conrad - Looking Good Records, LGR011
-04 - 00:13:00 - Witness - Intense - Good Looking Records, GLREP005V
-05 - 00:18:00 - Absolute Magnitude - Sonic Generation - Looking Good Records, LGR028
-06 - 00:24:30 - Language - Tayla - Nexus Records, NEXUS003
-07 - 00:29:00 - Desideradi - Artemis - Good Looking Records, GLR020
-08 - 00:34:30 - Duality - PHD - Ascendant Grooves, AG007
-09 - 00:39:00 - Italian Job - Second Vision - Good Looking Records, GLR029
-10 - 00:43:30 - Presence - PHD & MC Conrad - Ascendant Grooves, AG001
-11 - 00:47:30 - Planetary Funk Alert - Seba & MC Conrad - Good Looking Records, GLRV01
-```
+\# | Track | Artist | Label
+-- | -- | -- | --
+01 | Secret Liaisons | Source Direct | Good Looking Records, GLR015
+02 | Loop Progression | Motive One | Good Looking Records, GLR024
+03 | Progression Session | PHD & MC Conrad | Looking Good Records, LGR011
+04 | Witness | Intense | Good Looking Records, GLREP005V
+05 | Absolute Magnitude | Sonic Generation | Looking Good Records, LGR028
+06 | Language | Tayla | Nexus Records, NEXUS003
+07 | Desideradi | Artemis | Good Looking Records, GLR020
+08 | Duality | PHD | Ascendant Grooves, AG007
+09 | Italian Job | Second Vision | Good Looking Records, GLR029
+10 | Presence | PHD & MC Conrad | Ascendant Grooves, AG001
+11 | Planetary Funk Alert | Seba & MC Conrad | Good Looking Records, GLRV01
 
 ### Download
 - [Apple Lossless (best quality)](https://www.dropbox.com/s/map40y03g0beekp/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28Apple%20Lossless%29.m4a?dl=1)
-- [320k AAC3](https://www.dropbox.com/s/map40y03g0beekp/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28Apple%20Lossless%29.m4a?dl=1)
-- [320k MP3](https://www.dropbox.com/s/nysvmm0x453epma/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28MP3%20320k%29.mp3?dl=1)
+- [AAC 320k](https://www.dropbox.com/s/map40y03g0beekp/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28Apple%20Lossless%29.m4a?dl=1)
+- [MP3 320k](https://www.dropbox.com/s/nysvmm0x453epma/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28MP3%20320k%29.mp3?dl=1)
 
 ### Past mixes
 
