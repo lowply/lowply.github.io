@@ -156,21 +156,6 @@ body {
               vertical-align: top !important;
             }
           }
-
-          div.hb-button.http {
-            height: 20px;
-            line-height: 20px;
-          }
-
-          div.hb-button.http {
-            small:before {
-              content: "(";
-            }
-
-            small:after {
-              content: ")";
-            }
-          }
         }
       }
     }
