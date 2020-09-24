@@ -1,11 +1,4 @@
-+++
-categories = ["Music"]
-date = "2019-09-15T21:56:00+09:00"
-description = "The Golden Era of Good Looking - Live Mix at Human Elements March 2019"
-draft = false
-slug = "the-golden-era-of-goodlooking"
-title = "The Golden Era of Good Looking - Live Mix at Human Elements March 2019"
-+++
+# The Golden Era of Good Looking - Live Mix at Human Elements March 2019
 
 This is a live recording mix I did at Human Elements in March 2019. All these stunning tunes are from Good Looking Records in it's late 90's.
 
@@ -15,11 +8,11 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 
 ### Tweets
 
-{{< tweet 1173276490537947139 >}}
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">今年の3月の Human Elements で久しぶりに初期の Good Looking 縛りをやることになって、せっかくだからということでその時ライブレコーディングしてたものを公開しました。よかったら聴いて下さい。ちなみに次回の Human Elements は来週です(宣伝)！ <a href="https://t.co/XYRJn7V5nb">https://t.co/XYRJn7V5nb</a></p>&mdash; lowply (@lowply) <a href="https://twitter.com/lowply/status/1173276490537947139?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-{{< tweet 1173276491620081665 >}}
+<blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="ja" dir="ltr">今回ミックスにはかなり時間をかけたものの、選曲はあまり頭で考えず直感でこれだと思ったトラックだけを選びました。でも結果的に全て96年から2000年までのトラックに収まり、しかもそのほとんどが97年リリースだったということが後からわかって自分でも驚きました。当時のロンドンを体験したかった。</p>&mdash; lowply (@lowply) <a href="https://twitter.com/lowply/status/1173276491620081665?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-{{< tweet 1173276493281054720 >}}
+<blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="ja" dir="ltr">そういう理由でタイトルに The Golden Era を入れたんですが、もちろん2000年以降も Good Looking の素晴らしいトラックはたくさんあるし、今度は中期縛りというのもありかなあと思いました。というわけで再び宣伝ですが来週の Human Elements のチケットはこちらで買えます: <a href="https://t.co/UanhBvBSWk">https://t.co/UanhBvBSWk</a></p>&mdash; lowply (@lowply) <a href="https://twitter.com/lowply/status/1173276493281054720?ref_src=twsrc%5Etfw">September 15, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### Tracklist
 
@@ -51,8 +44,13 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 
 <p class="text-xs-center" style="">
     <a href="https://www.facebook.com/events/443508232913925/">
-        <img src="/images/2019/09/HE_20190922_fin_1_flyer_190829.png" style="width: 100%;">
+        <img src="https://github.com/lowply/lowply.github.io/raw/master/static/images/2019/09/HE_20190922_fin_1_flyer_190829.png" style="width: 100%;">
     </a>
 </p>
 
 Ticket available at: [he190922.peatix.com](https://he190922.peatix.com/)
+
+---
+
+Updated: 2019-09-15T21:56:00+09:00
+[Original content on GitHub.com](https://github.com/lowply/lowply.github.io/blob/master/content/blog/the-golden-era-of-goodlooking.md)
