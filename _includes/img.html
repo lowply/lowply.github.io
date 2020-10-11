@@ -1,0 +1,19 @@
+{% if include.orientation == "portrait" %}
+    {% assign w = "50%" %}
+{% elsif include.orientation == "square" %}
+    {% assign w = "80%" %}
+{% else %}
+    {% assign w = "100%" %}
+{% endif %}
+
+{% if site.url == "https://lowply.github.io" %}
+    {% assign imgpath = site.imghost | append: "/lowply.github.io/images" %}
+{% else %}
+    {% assign imgpath = "/images" %}
+{% endif %}
+
+<p>
+    <a href="{{ imgpath }}{{ page.id }}/{{ include.name }}" title="{{ include.name }}">
+    <img src="{{ imgpath }}{{ page.id }}/{{ include.name }}" width="{{ w }}" alt="{{ include.name }}">
+    </a>
+</p>
