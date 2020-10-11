@@ -1,0 +1,24 @@
+{% include header.html %}
+
+<div class="container post">
+    <div class="row">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h1><a href="/">{{ site.title }}</a></h1>
+            <h2>
+                {{ page.title }}
+                {% if page.location %}<span class="location">{{ page.location }}<span>{% endif %}
+                        {% if page.camera %}<span class="camera">{{ page.camera }}<span>{% endif %}
+            </h2>
+
+            <div>
+                {{ content }}
+
+                {% include foot.html %}
+            </div>
+        </div>
+        <div class="col-xl"></div>
+    </div>
+</div>
+
+{% include footer.html %}

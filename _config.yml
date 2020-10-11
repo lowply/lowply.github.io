@@ -1,0 +1,19 @@
+title: lowply.github.io
+description: lowply.github.io
+permalink: /:categories/:year/:month/:title/
+twitter_username: lowply
+github_username:  lowply
+timezone: Asia/Tokyo
+
+url: https://lowply.github.io
+# baseurl: ""
+
+sass:
+  style: compressed
+
+exclude:
+  - bin
+  - old
+  - Makefile
+
+imghost: https://lowply.s3-ap-northeast-1.amazonaws.com
