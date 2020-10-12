@@ -118,11 +118,21 @@ body {
     div.highlighter-rouge div.highlight pre {
       padding: 2rem;
     }
+    p.other {
+      margin: 8rem auto 4rem;
+      text-align: center;
+    }
     div#foot {
-      margin: 10rem auto 5rem;
+      margin: 4rem auto 3rem;
       padding: 1rem 0;
       border-top: solid 1px #eee;
       font-size: 0.8rem;
+      div.row {
+        div.lm {
+          color: #aaa;
+          text-align: right;
+        }
+      }
       p {
         margin: 1rem auto;
       }
