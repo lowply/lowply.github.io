@@ -3,8 +3,6 @@ layout: default
 title: Photo Journals
 ---
 
-{{ site.assets }}
-
 <ul class="photo">
 {% for post in site.categories.photo %}
     <li>
