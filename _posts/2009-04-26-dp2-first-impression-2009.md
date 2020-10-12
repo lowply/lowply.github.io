@@ -2,7 +2,7 @@
 layout: post
 title: "DP2 First Impression 2009"
 date: 2009-04-26 00:00:00 +0900
-categories: photo
+category: photo
 camera: "Sigma DP2"
 location: "Tokyo, Japan"
 top: "SDIM0045.jpg"

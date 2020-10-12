@@ -2,7 +2,7 @@
 layout: post
 title: "The Golden Era of Good Looking - Live Mix at Human Elements March 2019"
 date: 2019-09-15 21:56:00 +0900
-categories: blog
+category: blog
 ---
 
 This is a live recording mix I did at Human Elements in March 2019. All these stunning tunes are from Good Looking Records in it's late 90's.

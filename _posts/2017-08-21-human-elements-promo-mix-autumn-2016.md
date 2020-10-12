@@ -2,7 +2,7 @@
 layout: post
 title: "Human Elements Promo Mix Autumn 2016"
 date: 2017-08-21 22:04:00 +0900
-categories: blog
+category: blog
 ---
 
 ## On SoundCloud

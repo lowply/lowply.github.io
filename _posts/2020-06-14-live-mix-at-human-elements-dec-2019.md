@@ -2,7 +2,7 @@
 layout: post
 title: "Live Mix at Human Elements Dec 2019"
 date: 2020-06-14 17:17:00 +0900
-categories: blog
+category: blog
 ---
 
 This is a live recording mix I did at Human Elements in Dec 2019.

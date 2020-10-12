@@ -2,10 +2,10 @@
 layout: post
 title: "Moving to Jekyll"
 date: 2020-10-10 03:04 +0900
-categories: blog
+category: blog
 ---
 
-### SSG, GitHub Pages and Jekyll 4
+## SSG, GitHub Pages and Jekyll 4
 
 I changed the static site generator for this blog from [Hugo](https://gohugo.io/) to [Jekyll](https://jekyllrb.com/). Hugo is a fantastic tool and I still use it in my other projects, but it's not the perfect choice when used with [GitHub Pages](https://pages.github.com/).
 
@@ -28,7 +28,7 @@ group :jekyll_plugins do
 end
 ```
 
-### Images
+## Images
 
 I don't want to commit images and other binary files to the Git repository (even with [Git LFS](https://git-lfs.github.com/)!), so I decided to put every image on an S3 bucket. This isn't a bad idea, but uploading images only to preview the site is cumbersome.
 

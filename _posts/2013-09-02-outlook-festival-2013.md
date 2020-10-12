@@ -2,7 +2,7 @@
 layout: post
 title: "Outlook Festival 2013"
 date: "2013-09-02 00:00:00 +0900"
-categories: photo
+category: photo
 camera: "Ricoh GR"
 location : "Pula, Croatia"
 top: "IMG_2498.jpg"
@@ -10,7 +10,7 @@ top: "IMG_2498.jpg"
 
 {% include img.html name="IMG_2498.jpg" %}
 
-### Pula
+## Pula
 
 Outlook Festival is a massive bass music festival started in 2008. It continues 4 days - with number of boat parties and more than 10 stages in Fort Punta Christo, Pula, Croatia. Artists come from all over the world, including Drum&Bass, Dubstep, HipHop scene in Europe. In the mid 2013 all line up has been announced and as soon as I saw the name of LTJ Bukem, I booked a ticket.
 
@@ -38,7 +38,7 @@ Beautiful sunset in Adriatic Sea.
 
 {% include img.html name="IMG_2451.jpg" %}
 
-### Outlook Festival
+## Outlook Festival
 
 {% include img.html name="IMG_2498.jpg" %}
 
@@ -56,7 +56,7 @@ Look at this timetable. Crazy amount of artists. It turns out that Bukem will pl
 
 I took a taxi and found this. Yes.
 
-### AirBnb
+## AirBnb
 
 {% include img.html name="IMG_2509.jpg" %}
 
