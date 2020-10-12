@@ -1,3 +1,5 @@
 <div id="foot">
-    <p>{% if page.date %}Written on {{ page.date | date_to_long_string }}.{% endif %}<br>See all <a href="/blog">blog posts</a> or <a href="/photo">photo journals</a>. Feed is not ready yet. The souce of this website can be found at <a href="https://github.com/lowply/lowply.github.io">lowply/lowply.github.io</a>.</p>
+    {% if page.last_updated %}<p>Last updated: {{ page.last_updated }}</p>{% endif %}
+    {% if page.path != "index.md" %}<p><a class="back" href="/">← back to /</a></p>{% endif %}
+    <p>See all <a href="/blog">blog posts</a> or <a href="/photo">photo journals</a>. Feed is not ready yet. The souce of this website can be found at <a href="https://github.com/lowply/lowply.github.io">lowply/lowply.github.io</a>.</p>
 </div>

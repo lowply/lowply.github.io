@@ -120,9 +120,12 @@ body {
     }
     div#foot {
       margin: 10rem auto 5rem;
-      padding: 3rem 0;
+      padding: 1rem 0;
       border-top: solid 1px #eee;
       font-size: 0.8rem;
+      p {
+        margin: 1rem auto;
+      }
     }
   }
   div.container.hello {
