@@ -2,6 +2,7 @@
 layout: post
 title: "Moving to Jekyll"
 date: 2020-10-10 03:04 +0900
+last_updated: 2020-10-12 17:04 +0900
 category: blog
 ---
 
@@ -37,7 +38,9 @@ Thankfully, Jekyll accepts [multiple configuration files](https://jekyllrb.com/d
 _\_config.yml_
 
 ```yaml
+[...]
 assets: https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/assets
+[...]
 ```
 
 _\_config\_local.yml_
