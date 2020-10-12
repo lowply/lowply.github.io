@@ -38,7 +38,7 @@ category: blog
 ## 各方面のコメント
 
 - [はてブ](http://b.hatena.ne.jp/entry/fixture.jp/blog/2012/09/how-apple-compresses-video-in-iphone5-website/)
-- [Twitter](https://twitter.com/i/#!/search/?q=fixture.jp)
+- [Twitter](https://twitter.com/search?q=fixture.jp%20lang%3Aja&src=typed_query#!/search/?q=fixture.jp)
 
 一番見かけたのが「こんなん目指すべき姿じゃない」というご意見。
 
