@@ -26,11 +26,11 @@ $ make watch
 $ make new
 ```
 
-### Sync images
+### Sync assets
 
 ```bash
-$ ./bin/get_img.sh
-$ ./bin/push_img.sh
+$ ./bin/pull_assets.sh
+$ ./bin/push_assets.sh
 ```
 
 ### Author
