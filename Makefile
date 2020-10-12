@@ -4,11 +4,8 @@ clean:
 build: clean
 	bundle exec jekyll build
 
-server:
-	bundle exec jekyll server
-
-watch:
-	bundle exec jekyll server -H 0.0.0.0 --watch
+watch: clean
+	bundle exec jekyll server --watch --config _config_local.yml
 
 new:
 	bundle exec jekyll post "placeholder" --timestamp-format "%Y-%m-%d %H:%M:%S %z"

@@ -14,4 +14,4 @@ exclude:
   - bin
   - Makefile
 
-assets: https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/assets
+assets: /assets
