@@ -30,28 +30,35 @@ end
 
 ### Images
 
-I don't want to commit images and other binary files to the Git repository (even with [Git LFS](https://git-lfs.github.com/)!), so I decided to put every image to an S3 bucket. This isn't a bad idea, but uploading images only to preview the site is cumbersome.
+I don't want to commit images and other binary files to the Git repository (even with [Git LFS](https://git-lfs.github.com/)!), so I decided to put every image on an S3 bucket. This isn't a bad idea, but uploading images only to preview the site is cumbersome.
 
-With this small trick, images can be served by the local Jekyll server when previewing the site while they are served by S3 when the site is published to the GitHub Pages host.
+So I use two config files both for [the production and development environments](https://jekyllrb.com/docs/configuration/environments/). In the development mode, images are served by the local Jekyll server when previewing the site while they are served by S3 when the site is in the production mode (published to the GitHub Pages host).
 
 _\_config.yml_
 
 ```yaml
-imghost: https://lowply.s3-ap-northeast-1.amazonaws.com
+assets: https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/assets
+```
+
+_\_config\_local.yml_
+
+```yaml
+assets: /assets
+```
+
+_Makefile_
+
+```
+watch: clean
+    bundle exec jekyll server --watch --config _config_local.yml
 ```
 
 _\_include/img.html_
 
-```ruby
-{% raw %}{% if site.url == "https://lowply.github.io" | escape %}
-    {% assign imgpath = site.imghost | append: "/lowply.github.io/images" %}
-{% else %}
-    {% assign imgpath = "/images" %}
-{% endif %}
-
-<p>
-    <a href="{{ imgpath }}{{ page.id }}/{{ include.name }}" title="{{ include.name }}">
-    <img src="{{ imgpath }}{{ page.id }}/{{ include.name }}" width="{{ w }}" alt="{{ include.name }}">
+```html
+{% raw %}<p>
+    <a href="{{ site.assets }}{{ page.id }}/{{ include.name }}" title="{{ include.name }}">
+        <img src="{{ site.assets }}{{ page.id }}/{{ include.name }}" width="{{ w }}" alt="{{ include.name }}">
     </a>
 </p>{% endraw %}
 ```
