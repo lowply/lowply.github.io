@@ -1,19 +1,14 @@
-
-<p class="other">
-    <small>
-        {% if page.category == "blog" %}
-        <a href="/blog">Other blog posts</a>
-        {% elsif page.category == "photo" %}
-        <a href="/photo">Other photo journals</a>
-        {% endif %}
-    </small>
-</p>
-
 <div id="foot">
-    {% if page.path != "index.md" %}
+    {% if page.path == "index.md" %}
     <div class="row">
-        <div class="col"><a class="back" href="/">← back to /</a></div>
-        <div class="col lm">Last modified: {{ page.last_modified_at }}</div>
+        <div class="col">
+            Repository: <a href="https://github.com/lowply/lowply.github.io">lowply/lowply.github.io</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col"><a class="back" href="/">← back to ~</a> or read other {% if page.category == "blog" %}<a href="/blog">blog posts</a>{% elsif page.category == "photo" %}<a href="/photo">photo journals</a>{% endif %}</div>
+        <div class="col lm">{% if page.last_modified %}Last modified: {{ page.last_modified }}{% endif %}</div>
     </div>
     {% endif %}
 </div>

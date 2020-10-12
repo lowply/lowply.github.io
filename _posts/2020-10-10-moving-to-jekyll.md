@@ -2,7 +2,7 @@
 layout: post
 title: "Moving to Jekyll"
 date: 2020-10-10 03:04 +0900
-last_updated: 2020-10-12 17:04 +0900
+last_modified: 2020-10-12 17:04 +0900
 category: blog
 ---
 
