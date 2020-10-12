@@ -37,7 +37,7 @@ body {
       font-size: 1rem;
     }
     h1 {
-      margin: 5rem 0 0;
+      margin: 8rem 0;
       &:before {
         content: "# ";
       }
@@ -126,11 +126,6 @@ body {
       p {
         margin: 1rem auto;
       }
-    }
-  }
-  div.container.hello {
-    h1 {
-      margin-bottom: 5rem;
     }
   }
 }
