@@ -1,6 +1,6 @@
 ---
 layout: default
-title: hello
+title: lowply.github.io
 ---
 
 Hi, I'm [@lowply](https://twitter.com/lowply).
@@ -13,6 +13,6 @@ I'm based in Tokyo, Japan.
 
 {% for post in site.categories.blog limit:5 %}
 
-- <div class="date">{{ post.date | date: "%Y-%m-%d" }}</div> [{{ post.title }}]({{ post.url }})
+- <small class="date">{{ post.date | date: "%Y-%m-%d" }}</small> [{{ post.title }}]({{ post.url }})
 
 {% endfor %}
