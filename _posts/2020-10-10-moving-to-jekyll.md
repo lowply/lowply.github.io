@@ -32,7 +32,7 @@ end
 
 I don't want to commit images and other binary files to the Git repository (even with [Git LFS](https://git-lfs.github.com/)!), so I decided to put every image on an S3 bucket. This isn't a bad idea, but uploading images only to preview the site is cumbersome.
 
-So I use two config files both for [the production and development environments](https://jekyllrb.com/docs/configuration/environments/). In the development mode, images are served by the local Jekyll server when previewing the site while they are served by S3 when the site is in the production mode (published to the GitHub Pages host).
+Thankfully, Jekyll accepts [multiple configuration files](https://jekyllrb.com/docs/configuration/options/#build-command-options) to override variables. By doing the following, images are served by Jekyll when previewing the site locally while they are served by S3 when the site is published to the GitHub Pages host.
 
 _\_config.yml_
 
@@ -50,7 +50,7 @@ _Makefile_
 
 ```
 watch: clean
-    bundle exec jekyll server --watch --config _config_local.yml
+    bundle exec jekyll server --watch --config _config.yml,_config_local.yml
 ```
 
 _\_include/img.html_
