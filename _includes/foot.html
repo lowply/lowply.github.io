@@ -10,7 +10,9 @@
         <div class="col">
             <a class="back" href="/">Home</a> / <a href="/blog">Blog Posts</a> / <a href="/photo">Photo Journals</a> / <a href="/feed.xml">Feed</a>
         </div>
-        <div class="col lm">{% if page.last_modified %}Last modified: {{ page.last_modified }}{% endif %}</div>
+        {% if page.last_modified %}
+        <div class="col lm">Last modified: {{ page.last_modified }}</div>
+        {% endif %}
     </div>
     {% endif %}
 </div>
