@@ -2,12 +2,14 @@
     {% if page.path == "index.md" %}
     <div class="row">
         <div class="col">
-            Repository: <a href="https://github.com/lowply/lowply.github.io">lowply/lowply.github.io</a>
+            <a href="https://github.com/lowply/lowply.github.io">Repo</a> / <a href="/feed.xml">Feed</a>
         </div>
     </div>
     {% else %}
     <div class="row">
-        <div class="col"><a class="back" href="/">← back to ~</a> or read other {% if page.category == "blog" %}<a href="/blog">blog posts</a>{% elsif page.category == "photo" %}<a href="/photo">photo journals</a>{% endif %}</div>
+        <div class="col">
+            <a class="back" href="/">Home</a> / <a href="/blog">Blog Posts</a> / <a href="/photo">Photo Journals</a> / <a href="/feed.xml">Feed</a>
+        </div>
         <div class="col lm">{% if page.last_modified %}Last modified: {{ page.last_modified }}{% endif %}</div>
     </div>
     {% endif %}
