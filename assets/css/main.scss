@@ -36,6 +36,13 @@ body {
       border-radius: 6px;
     }
   }
+  blockquote {
+    border-left: solid 4px #eee;
+    font-style: italic;
+    p {
+      padding: 0 1rem;
+    }
+  }
   div.container {
     padding: 0 1.5rem;
     p {
@@ -116,11 +123,18 @@ body {
         }
       }
     }
-    blockquote {
-      border-left: solid 4px #eee;
-      font-style: italic;
-      p {
-        padding: 0 1rem;
+    ul.menu {
+      li {
+        display: inline-block;
+        margin-bottom: 0;
+        &:after {
+          content: " / ";
+        }
+        &:last-child {
+          &:after {
+            content: none;
+          }
+        }
       }
     }
     div.highlighter-rouge div.highlight pre {
