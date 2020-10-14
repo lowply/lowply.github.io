@@ -1,7 +1,7 @@
 <div id="foot">
     {% if page.path == "index.md" %}
     <div class="row">
-        <div class="col">
+        <div class="col text-right">
             <a href="https://github.com/lowply/lowply.github.io">Repo</a> / <a href="/feed.xml">Feed</a>
         </div>
     </div>
@@ -11,7 +11,7 @@
             <a class="back" href="/">Home</a> / <a href="/blog">Blog Posts</a> / <a href="/photo">Photo Journals</a> / <a href="/feed.xml">Feed</a>
         </div>
         {% if page.last_modified %}
-        <div class="col lm">Last modified: {{ page.last_modified }}</div>
+        <div class="col text-right">Last modified: {{ page.last_modified }}</div>
         {% endif %}
     </div>
     {% endif %}
