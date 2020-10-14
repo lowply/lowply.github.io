@@ -37,26 +37,26 @@ Thankfully, Jekyll accepts [multiple configuration files](https://jekyllrb.com/d
 
 _\_config.yml_
 
-```
+```yaml
 assets: https://lowply.s3-ap-northeast-1.amazonaws.com/lowply.github.io/assets
 ```
 
 _\_config\_local.yml_
 
-```
+```yaml
 assets: /assets
 ```
 
 _Makefile_
 
-```
+```make
 watch: clean
-    bundle exec jekyll server --watch --config _config.yml,_config_local.yml
+	bundle exec jekyll server --watch --config _config.yml,_config_local.yml
 ```
 
 _\_include/img.html_
 
-```
+```html
 {% raw %}<p>
     <a href="{{ site.assets }}{{ page.id }}/{{ include.name }}" title="{{ include.name }}">
         <img src="{{ site.assets }}{{ page.id }}/{{ include.name }}" width="{{ w }}" alt="{{ include.name }}">
