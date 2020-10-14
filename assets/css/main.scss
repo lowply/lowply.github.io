@@ -28,6 +28,14 @@ body {
   table tr:nth-child(2n) td {
     background: #f7f7f7;
   }
+  p {
+    > code {
+      padding: 0.2rem 0.5rem;
+      background-color: rgba(27, 31, 35, 0.05);
+      color: rgb(33, 37, 41);
+      border-radius: 6px;
+    }
+  }
   div.container {
     padding: 0 1.5rem;
     p {
@@ -124,11 +132,6 @@ body {
       padding: 1rem 0;
       border-top: solid 1px #ddd;
       font-size: 0.8rem;
-      div.row {
-        div.lm {
-          text-align: right;
-        }
-      }
     }
   }
 }
