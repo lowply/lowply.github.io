@@ -18,7 +18,7 @@
         <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
         <meta property="og:title" content="{{ page.title }}" />
         <meta property="og:image" content="{% if page.top %}{{ site.assets }}{{ page.id }}/{{ page.top }}{% else %}{{ site.assets }}/og.png{% endif %}" />
-        <meta property="og:description" content="{{ site.title }}" />
+        <meta property="og:description" content="{% if page.description %}{{ page.description }}{% endif %}" />
         <meta name="generator" content="Jekyll v{{ jekyll.version }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
