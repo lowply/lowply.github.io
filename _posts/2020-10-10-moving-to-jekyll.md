@@ -2,7 +2,7 @@
 layout: post
 title: "Moving to Jekyll"
 date: 2020-10-10 03:04:00 +0900
-last_modified: 2020-10-19 22:54:57 +0900
+last_modified: 2020-10-19 23:01:01 +0900
 category: blog
 ---
 
@@ -57,11 +57,11 @@ watch: clean
 _\_include/img.html_
 
 ```html
-{% raw %}<p>
-    <a href="{{ site.assets }}{{ page.id }}/{{ include.name }}" title="{{ include.name }}">
-        <img src="{{ site.assets }}{{ page.id }}/{{ include.name }}" width="{{ w }}" alt="{{ include.name }}">
-    </a>
-</p>{% endraw %}
+{% raw %}{% assign url = site.assets | append: page.id | append: "/" | append: include.name %}
+
+<a href="{{ url }}" title="{{ include.name }}">
+    <img src="{{ url }}" width="{{ w }}" alt="{{ include.name }}">
+</a>{% endraw %}
 ```
 
 After making some adjustments to the code, I found myself being so fascinated by the flexibility of Jekyll and Liquid template engine. The full source is up at [lowply/lowply.github.io](https://github.com/lowply/lowply.github.io).
