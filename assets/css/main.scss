@@ -147,5 +147,16 @@ body {
       border-top: solid 1px #ddd;
       font-size: 0.8rem;
     }
+    div.footnotes {
+      ol {
+        font-size: 0.8rem;
+        li {
+          margin: 0.5rem 0;
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
   }
 }
