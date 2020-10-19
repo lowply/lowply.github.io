@@ -6,8 +6,8 @@
     {% assign w = "100%" %}
 {% endif %}
 
-<p>
-    <a href="{{ site.assets }}{{ page.id }}/{{ include.name }}" title="{{ include.name }}">
-        <img src="{{ site.assets }}{{ page.id }}/{{ include.name }}" width="{{ w }}" alt="{{ include.name }}">
-    </a>
-</p>
+{% assign url = site.assets | append: page.id | append: "/" | append: include.name %}
+
+<a href="{{ url }}" title="{{ include.name }}">
+    <img src="{{ url }}" width="{{ w }}" alt="{{ include.name }}">
+</a>
