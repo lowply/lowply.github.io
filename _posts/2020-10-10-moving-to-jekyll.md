@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Moving to Jekyll"
-date: 2020-10-10 03:04 +0900
-last_modified: 2020-10-12 22:14 +0900
+date: 2020-10-10 03:04:00 +0900
+last_modified: 2020-10-19 22:54:57 +0900
 category: blog
 ---
 
@@ -16,7 +16,7 @@ I know I could use a file hosting platform, such as Firebase or Netlify as a wor
 
 In addition, Jekyll has become so much better than when I tried it last time. What I'm excited the most is the [switch to sassc](https://github.com/jekyll/jekyll-sass-converter/releases/tag/v2.0.0) in [Jekyll 4](https://github.com/jekyll/jekyll/blob/master/History.markdown#400--2019-08-19). Sass compilation is much faster.
 
-GitHub releases [github/pages-gem](https://github.com/github/pages-gem), which is the [recommended way](https://jekyllrb.com/docs/github-pages/) to build GitHub Pages. [But it doesn't support Jekyll 4 yet](https://github.com/github/pages-gem/issues/651) so I didn't use it. Instead, I did `gem "jekyll"` like this:
+GitHub releases [github/pages-gem](https://github.com/github/pages-gem), which is the [recommended way](https://jekyllrb.com/docs/github-pages/) to build GitHub Pages. [But it doesn't support Jekyll 4 yet](https://github.com/github/pages-gem/issues/651) so I didn't use it [^jekyll4]. Instead, I did `gem "jekyll"` like this:
 
 ```ruby
 source "https://rubygems.org"
@@ -65,3 +65,7 @@ _\_include/img.html_
 ```
 
 After making some adjustments to the code, I found myself being so fascinated by the flexibility of Jekyll and Liquid template engine. The full source is up at [lowply/lowply.github.io](https://github.com/lowply/lowply.github.io).
+
+---
+
+[^jekyll4]: This is because [GitHub Pages does not support Jekyll 4](https://pages.github.com/versions/). You can still use Jekyll 4 for local development like I do, but if you want to see the exact same output as GitHub Pages, you should use pages-gem.
