@@ -1,17 +1,20 @@
 ---
 layout: post
 title: Remapping HHKB
-date: '2021-04-11 13:52:32 +0900'
+date: 2021-04-11 13:52:32 +0900
+last_modified: 2021-04-11 16:07:32 +0900
 category: blog
 ---
 
-I recently switched my main keyboard from [Ergodox EZ](https://ergodox-ez.com/) to [Happy Hacking Keyboard (PD-KB800BNS)](https://www.pfu.fujitsu.com/direct/hhkb/detail_pd-kb800bns.html). This is my first Electrostatic Capacitive keyboard.
+I recently switched my main keyboard from [Ergodox EZ](https://ergodox-ez.com/) to [Happy Hacking Keyboard (PD-KB800BNS)](https://www.pfu.fujitsu.com/direct/hhkb/detail_pd-kb800bns.html), also known as HHKB. This is my first Electrostatic Capacitive keyboard.
 
-I was mostly happy with Ergodox EZ over the past few years, specifically the split design and its ability to remap every single keys programmatically. But also there are some flip sides. First, due to the split design, I had to adjust _two (physical) keyboards_ positions every time I move them out to clean my desk up and that was a bit frustrating. Secondly, it's size. It's too big that it occupies my desk space. I like putting my Apple Magic Trackpad 2 in between the keyboards, but as a result the total length of the keyboard - trackpad - keyboard setup ends up to be 64cm in width. Thirdly, Ergodox EZ has too many keys. I didn't use all keys. After seeing someone I know switching to Keyboardio Atreus, minimum and compact keyboards started to attract me a lot.
+I was mostly happy with Ergodox EZ over the past few years, specifically the split design and its ability to remap every single keys programmatically. But also there are some flip sides. First, due to the split design, I had to adjust _two (physical) keyboards_ positions every time I move them out to clean my desk up and that was a bit frustrating. Secondly, it's size. It's too big that it occupies my desk space. I like putting my Apple Magic Trackpad 2 in between the keyboards, but as a result the total length of the keyboard - trackpad - keyboard setup ends up to be 64cm in width. Thirdly, Ergodox EZ has too many keys. I didn't use all keys. After seeing someone I know switching to [Keyboardio Atreus](https://shop.keyboard.io/products/keyboardio-atreus), minimum and compact keyboards started to attract me a lot.
 
 Then I learned that PFU has updated the HHKB lineup in 2019 with the new "HYBRID Type-S" model. This made me start thinking about switching my keyboard a bit more seriously. Online reviews were all positive. I see some people say that they can't go back to the mechanical keyboards anymore. I asked one of my tech friend who's obsessed with the electrostatic capacitive keyboard, and his opinion was like that too.
 
-So I got it on March 29. Unboxing was exciting. The typing sound is gorgeous. The size and weight is nice. I like the replacement keycap color, this is good red. But as I tweeted, the biggest obstacle for me was that the `Fn` key to be located at the right bottom of the keyboard. I tried to get used to the keyboard's default allow key mapping (`Fn` + `[`, `;`, `'`, `/`) but that didn't work for me at all because putting my right pinky on the `Fn` key completely break the home position. Maybe more practice will do in the future, but not now.
+{% include img.html name="hhkb.jpg" %}
+
+So I got it on March 29th. Unboxing was exciting. The typing sound is gorgeous. The size and weight is nice. I like the [optional replacement keycap](https://www.pfu.fujitsu.com/direct/hhkb/hhkb-option/detail_keytop-proc.html) color, this is good red. But as I tweeted, the biggest obstacle for me was that the `Fn` key to be located at the right bottom of the keyboard. I tried to get used to the keyboard's default allow key mapping (`Fn` + `[`, `;`, `'`, `/`) but that didn't work for me at all because putting my right pinky on the `Fn` key completely break the home position. Maybe more practice will do in the future, but not now.
 
 <blockquote class="twitter-tweet" data-theme="light"><p lang="ja" dir="ltr">HHKB今まで全く興味なかったのにここ最近なぜか気になり始め購入。Ergodox EZも2年使って馴染んできてたけど、セパレート故の取り回しにくさとかデカさが常にあった。アローキーはそもそもいらない派だけど右Fnが最大の壁。 <a href="https://t.co/ju2V3PySrW">pic.twitter.com/ju2V3PySrW</a></p>&mdash; lowply (@lowply) <a href="https://twitter.com/lowply/status/1376545595469352962?ref_src=twsrc%5Etfw">March 29, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
