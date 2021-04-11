@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
 # Not using https://github.com/github/pages-gem because it's not using the latest Jekyll
-gem "jekyll", "~> 4.1.1"
+gem "jekyll", "~> 4.2.0"
+
+# For Ruby 3.0
+gem "webrick"
 
 # gem "minima", "~> 2.5"
 
