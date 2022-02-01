@@ -6,4 +6,4 @@ aws \
     s3 sync \
     --exclude "css/*" \
     --delete \
-    ./assets/ s3://lowply.org/lowply.github.io/assets/
+    ./assets/ s3://lowply.net/lowply.github.io/assets/

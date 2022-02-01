@@ -32,4 +32,4 @@ Not available on SoundCloud or Mixcloud
 ```
 
 ## Download
-- [320k MP3](https://lowply.org/mixes/human-elements-5th-promo-mix.mp3)
+- [320k MP3](https://lowply.net/mixes/human-elements-5th-promo-mix.mp3)

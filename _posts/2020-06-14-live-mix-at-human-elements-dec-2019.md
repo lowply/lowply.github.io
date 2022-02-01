@@ -36,9 +36,9 @@ This is a live recording mix I did at Human Elements in Dec 2019.
 
 ## Download
 
-- [Apple Lossless (best quality)](https://lowply.org/mixes/live-mix-at-human-elements-dec-2019-alac.m4a)
-- [AAC 320k](https://lowply.org/mixes/live-mix-at-human-elements-dec-2019-aac.m4a)
-- [MP3 320k](https://lowply.org/mixes/live-mix-at-human-elements-dec-2019.mp3)
+- [Apple Lossless (best quality)](https://lowply.net/mixes/live-mix-at-human-elements-dec-2019-alac.m4a)
+- [AAC 320k](https://lowply.net/mixes/live-mix-at-human-elements-dec-2019-aac.m4a)
+- [MP3 320k](https://lowply.net/mixes/live-mix-at-human-elements-dec-2019.mp3)
 
 ## Past mixes
 

@@ -15,4 +15,4 @@ exclude:
 plugins:
   - jekyll-feed
 
-assets: https://lowply.org/lowply.github.io/assets
+assets: https://lowply.net/lowply.github.io/assets
