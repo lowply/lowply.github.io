@@ -32,4 +32,4 @@ Not available on SoundCloud or Mixcloud
 ```
 
 ## Download
-- [320k MP3](https://www.dropbox.com/s/mu5tc2mlezib44i/Human%20Elements%205th%20Anniversary%20Mix%20Vol.3%20by%20lowply%20%28MP3%20320k%29.mp3?dl=1)
+- [320k MP3](https://lowply.org/mixes/human-elements-5th-promo-mix.mp3)

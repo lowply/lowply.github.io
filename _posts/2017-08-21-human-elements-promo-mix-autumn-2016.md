@@ -60,5 +60,5 @@ category: blog
 
 ## Download
 
-- [Apple Lossless (best quality)](https://www.dropbox.com/s/y8fbpom4ujhmr1h/Human%20Elements%20Promo%20Mix%20Autumn%202016%20%28Apple%20Lossless%29.m4a?dl=1)
-- [320k MP3 (same as SoundCloud download)](https://www.dropbox.com/s/19jeq0b09jrkihp/Human%20Elements%20Promo%20Mix%20Autumn%202016%20%28MP3%20320k%29.mp3?dl=1)
+- [Apple Lossless (best quality)](https://lowply.org/mixes/human-elements-promo-mix-autumn-2016-alac.m4a)
+- [320k MP3 (same as SoundCloud download)](https://lowply.org/mixes/human-elements-promo-mix-autumn-2016.mp3)

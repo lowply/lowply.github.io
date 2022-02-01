@@ -36,9 +36,9 @@ This is a live recording mix I did at Human Elements in March 2019. All these st
 11 | Planetary Funk Alert | Seba & MC Conrad | Good Looking Records, GLRV01
 
 ## Download
-- [Apple Lossless (best quality)](https://www.dropbox.com/s/map40y03g0beekp/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28Apple%20Lossless%29.m4a?dl=1)
-- [AAC 320k](https://www.dropbox.com/s/map40y03g0beekp/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28Apple%20Lossless%29.m4a?dl=1)
-- [MP3 320k](https://www.dropbox.com/s/nysvmm0x453epma/The%20Golden%20Era%20of%20Good%20Looking%20-%20Live%20Mix%20at%20Human%20Elements%2C%20March%202019%20%28MP3%20320k%29.mp3?dl=1)
+- [Apple Lossless (best quality)](https://lowply.org/mixes/the-golden-era-of-goodlooking-alac.m4a)
+- [AAC 320k](https://lowply.org/mixes/the-golden-era-of-goodlooking-aac.m4a)
+- [MP3 320k](https://lowply.org/mixes/the-golden-era-of-goodlooking.mp3)
 
 ## Past mixes
 
