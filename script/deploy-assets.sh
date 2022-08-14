@@ -2,7 +2,7 @@
 
 find . -name .DS_Store -delete -exec echo removed: {} \;
 aws \
-    --profile xxx \
+    --profile lowply.net \
     s3 sync \
     --exclude "sass/*" \
     --delete \
