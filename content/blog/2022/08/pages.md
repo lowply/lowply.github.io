@@ -1,6 +1,6 @@
 ---
 title: Using Hugo with the new GitHub Pages
-date: 2022-08-12T00:56:52+09:00
+date: 2022-08-14T23:00:00+09:00
 draft: false
 ---
 
