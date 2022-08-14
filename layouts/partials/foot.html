@@ -1,0 +1,25 @@
+<div id="foot">
+    <div class="row">
+        <div class="col">
+            <ul class="menu">
+                <li>
+                    {{ if eq .Page.RelPermalink "/" }}
+                    <a href="https://github.com/lowply/lowply.github.io" >Source</a >
+                    {{ else }}
+                    <a href="/">Home</a>
+                    {{ end }}
+                </li>
+                <li><a href="/blog">Blog Posts</a></li>
+                <li><a href="/photo">Photo Journals</a></li>
+                <li><a href="/index.xml">Feed</a></li>
+            </ul>
+        </div>
+        {{ if ne .Page.RelPermalink "/" }}
+        {{ if ne .Page.RelPermalink "/blog/" }}
+        {{ if eq .Page.Type "blog" }}
+        <div class="col text-end">Last modified: {{ .Page.Lastmod }} -</div>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+    </div>
+</div>

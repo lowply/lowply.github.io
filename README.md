@@ -2,12 +2,6 @@
 
 [lowply.github.io](https://lowply.github.io) - hosted by [GitHub Pages](https://pages.github.com/)
 
-### Prep
-
-```bash
-$ bundle install
-```
-
 ### Build
 
 ```bash
@@ -17,13 +11,13 @@ $ make build
 ### Run dev server
 
 ```bash
-$ make watch
+$ make local
 ```
 
-### Write a new post
+### Write a new blog post
 
 ```bash
-$ make new
+$ ./script/new slug
 ```
 
 ### Sync assets

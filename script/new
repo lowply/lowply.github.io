@@ -1,0 +1,12 @@
+#!/bin/bash
+
+usage(){
+    echo "Usage:"
+    echo "./script/new slug"
+}
+
+[ $# -ne 1 ] && { usage; exit 1; }
+
+FILE=$(hugo new blog/$(date +%Y/%m)/${1}.md 2>/dev/null | cut -d ' ' -f 2 | sed -e 's/"//g')
+
+[ -n "${FILE}" ] && vim ${FILE}

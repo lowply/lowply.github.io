@@ -1,0 +1,6 @@
+baseURL: https://lowply.github.io/
+languageCode: en-us
+title: lowply.github.io
+enableGitInfo: true
+params:
+  asseturl: /assets
