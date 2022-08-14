@@ -1,0 +1,161 @@
+@import "bootstrap";
+
+body {
+  color: rgb(33, 37, 41);
+  background-color: #fcfcfc;
+  a {
+    color: rgb(150, 150, 100);
+    &:hover {
+      color: rgb(100, 100, 50);
+    }
+  }
+  table tr th,
+  table tr td {
+    padding: 0.3rem 1rem 0.3rem 0;
+  }
+  table tr th {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: solid 1px #eee;
+  }
+  table tr:first-child td {
+    padding-top: 0.5rem;
+  }
+  table tr:nth-child(2n) td {
+    background: #f7f7f7;
+  }
+  p {
+    > code {
+      padding: 0.2rem 0.5rem;
+      background-color: rgba(27, 31, 35, 0.05);
+      color: rgb(33, 37, 41);
+      border-radius: 6px;
+    }
+  }
+  blockquote {
+    border-left: solid 4px #eee;
+    font-style: italic;
+    p {
+      padding: 0 1rem;
+    }
+  }
+  div.container {
+    padding: 0 1.5rem;
+    p {
+      margin: 2rem auto;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-size: 1rem;
+    }
+    h1 {
+      margin: 8rem 0;
+      &:before {
+        content: "# ";
+      }
+      div.meta {
+        margin-top: 0.2rem;
+        color: #aaa;
+        small {
+          span {
+            &:before {
+              content: " / ";
+            }
+          }
+        }
+      }
+    }
+    h2 {
+      margin: 4rem 0;
+      &:before {
+        content: "## ";
+      }
+    }
+    h3 {
+      margin: 3rem 0;
+      &:before {
+        content: "### ";
+      }
+    }
+    h4 {
+      margin: 1rem 0;
+      &:before {
+        content: "#### ";
+      }
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        small.date {
+          display: block;
+          color: #aaa;
+        }
+        p {
+          margin: 0;
+        }
+        margin-bottom: 1rem;
+      }
+    }
+    ul.photo {
+      text-align: center;
+      li {
+        margin: 0 auto 5rem;
+        a {
+          color: rgb(33, 37, 41);
+          text-decoration: none;
+          display: block;
+          padding-top: 20rem;
+          height: 100px;
+          margin-bottom: 0.8rem;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: 50%;
+        }
+        div {
+          small {
+            display: block;
+            color: #aaa;
+          }
+        }
+      }
+    }
+    ul.menu {
+      li {
+        display: inline-block;
+        margin-bottom: 0;
+        &:after {
+          content: " / ";
+        }
+        &:last-child {
+          &:after {
+            content: none;
+          }
+        }
+      }
+    }
+    div.highlight pre {
+      padding: 1.5rem;
+    }
+    div#foot {
+      color: #999;
+      margin: 10rem auto 3rem;
+      padding: 1rem 0;
+      border-top: solid 1px #ddd;
+      font-size: 0.8rem;
+    }
+    div.footnotes {
+      ol {
+        font-size: 0.8rem;
+        li {
+          margin: 0.5rem 0;
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

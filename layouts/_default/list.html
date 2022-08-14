@@ -1,0 +1,33 @@
+{{ partial "header.html" . }}
+
+<div class="container hello">
+    <div class="row">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h1>{{ .Title }}</h1>
+
+            <ul class="{{ .Page.Type }}">
+                {{ range .Pages }} {{ if eq .Page.Type "blog" }}
+                <li>
+                    <small class="date">{{ .Date.Format "2006-01-02" }}</small>
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </li>
+                {{ else if eq .Type "photo" }}
+                <li>
+                    <a
+                        href="{{ .Permalink }}"
+                        style="background-image: url('{{ .Site.Params.asseturl }}/{{ .Type }}/{{ .File.TranslationBaseName }}/{{ .Params.thumb }}');"
+                    ></a>
+                    <div>
+                        {{ .Page.Title }}<small>{{ .Params.Location }}</small>
+                    </div>
+                </li>
+                {{ end }} {{ end }}
+            </ul>
+            {{ partial "foot.html" . }}
+        </div>
+        <div class="col-xl"></div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}

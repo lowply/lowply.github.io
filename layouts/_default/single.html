@@ -1,0 +1,27 @@
+{{ partial "header.html" . }}
+
+<div class="container post">
+    <div class="row">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h1>
+                {{ .Page.Title }}
+                <div class="meta">
+                    <small>
+                        {{ .Date.Format "2006-01-02" }} {{ if eq .Page.Type
+                        "photo" }}
+                        <span class="location"> {{ .Params.location }}</span>
+                        <span class="camera"> {{ .Params.camera }}</span>
+                        {{ end }}
+                    </small>
+                </div>
+            </h1>
+            {{ .Content }}
+
+            {{ partial "foot.html" . }}
+        </div>
+        <div class="col-xl"></div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}

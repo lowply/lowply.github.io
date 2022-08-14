@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@lowply" />
+        <meta name="twitter:site" content="@lowply" />
+        <meta name="twitter:title" content="{{ .Page.Title }}" />
+        <meta property="og:site_name" content="{{ .Site.Title }}" />
+        <meta property="og:url" content="{{ .Page.Permalink }}" />
+        <meta property="og:title" content="{{ .Page.Title }}" />
+        {{- $og_image := "" }}
+        {{- if isset .Params "thumb" }}
+        {{- $og_image = print .Site.Params.asseturl "/" .Page.File.Dir .Page.File.ContentBaseName "/" .Params.thumb }}
+        {{- else }}
+        {{- $og_image = print .Site.Params.asseturl "/og.png" }}
+        {{- end }}
+        <meta property="og:image" content="{{ $og_image }}" />
+        {{- with .Params.description }}
+        <meta property="og:description" content="{{ . }}" />
+        <meta name="description" content="{{ . }}" />
+        {{- end }}
+        {{ hugo.Generator }}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {{- $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+        <link href="{{ $style.RelPermalink }}" rel="stylesheet" />
+        {{- with .OutputFormats.Get "rss" -}}
+        {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+        {{- end }}
+        <title>{{ .Page.Title }} | lowply.github.io</title>
+    </head>
+    <body>

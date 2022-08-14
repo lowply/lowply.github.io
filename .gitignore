@@ -1,6 +1,5 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-assets/*
-!assets/css
+static/assets
+jekyll
+resources
+public
+.hugo_build.lock

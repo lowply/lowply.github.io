@@ -1,0 +1,16 @@
+{{ $w := "" }}
+{{ if .Get "orientation" | eq "portrait" }}
+    {{ $w = "50%" }}
+{{ else if .Get "orientation" | eq "square" }}
+    {{ $w = "80%" }}
+{{ else }}
+    {{ $w = "100%" }}
+{{ end }}
+{{ $name := .Get "name" }}
+{{ $url := print .Site.Params.asseturl "/" .Page.File.Dir .Page.File.ContentBaseName "/" $name }}
+
+<p>
+    <a href="{{ $url }}" title="{{ $name }}">
+        <img src="{{ $url }}" width="{{ $w }}" alt="{{ $name }}" />
+    </a>
+</p>

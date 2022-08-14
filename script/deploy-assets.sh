@@ -2,8 +2,8 @@
 
 find . -name .DS_Store -delete -exec echo removed: {} \;
 aws \
-    --profile s3backup \
+    --profile xxx \
     s3 sync \
-    --exclude "css/*" \
+    --exclude "sass/*" \
     --delete \
-    ./assets/ s3://lowply.net/lowply.github.io/assets/
+    ./static/assets/ s3://lowply.net/lowply.github.io/assets/
