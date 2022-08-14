@@ -2,4 +2,4 @@ build:
 	hugo --cleanDestinationDir
 
 local:
-	hugo server --config config-local.yaml
+	hugo server --config config-local.yaml --minify

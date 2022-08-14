@@ -127,7 +127,8 @@ body {
         display: inline-block;
         margin-bottom: 0;
         &:after {
-          content: " / ";
+          content: "/";
+          margin: 0 0.3rem;
         }
         &:last-child {
           &:after {
