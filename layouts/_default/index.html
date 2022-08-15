@@ -10,13 +10,11 @@
 
             <h2>Recent Posts</h2>
             <ul>
-                {{ range first 5 (where site.RegularPages "Type" "blog") }}
-                <li>
-                    <small class="date">{{ .Date.Format "2006-01-02" }}</small>
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                </li>
-                {{ end }} {{ partial "foot.html" . }}
+                {{- range first 5 (where site.RegularPages "Type" "blog") }}
+                <li><small class="date">{{ .Date.Format "2006-01-02" }}</small><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{- end }}
             </ul>
+            {{ partial "foot.html" . }}
         </div>
         <div class="col-xl"></div>
     </div>

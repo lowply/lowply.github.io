@@ -8,14 +8,17 @@
                 {{ .Page.Title }}
                 <div class="meta">
                     <small>
-                        {{ .Date.Format "2006-01-02" }} {{ if eq .Page.Type
-                        "photo" }}
-                        <span class="location"> {{ .Params.location }}</span>
-                        <span class="camera"> {{ .Params.camera }}</span>
-                        {{ end }}
+                        {{- with .Date -}}
+                        {{- .Format "2006-01-02" -}}
+                        {{- end -}}
+
+                        {{- if eq .Page.Type "photo" -}}
+                        <span class="location">{{ .Params.location }}</span><span class="camera">{{ .Params.camera }}</span>
+                        {{- end -}}
                     </small>
                 </div>
             </h1>
+
             {{ .Content }}
 
             {{ partial "foot.html" . }}
