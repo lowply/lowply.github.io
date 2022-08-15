@@ -12,7 +12,7 @@ I was mostly happy with Ergodox EZ over the past few years, specifically the spl
 
 Then I learned that PFU has updated the HHKB lineup in 2019 with the new "HYBRID Type-S" models. This made me start thinking about switching my keyboard a bit more seriously. Online reviews were all positive. I see some people even say that they can't go back to the mechanical keyboards anymore. I asked one of my tech friend who's obsessed with the electrostatic capacitive keyboards, and his opinion was like that too.
 
-{{<img name="hhkb.jpg" >}}
+{{< img name="hhkb.jpg" >}}
 
 So I got it on March 29th. Unboxing was exciting. The typing sound is gorgeous. The size and weight is nice. I like the [optional replacement keycap](https://www.pfu.fujitsu.com/direct/hhkb/hhkb-option/detail_keytop-proc.html) color, this is good red. But as I tweeted, the biggest obstacle for me was that the `Fn` key to be located at the right bottom of the keyboard. I tried to get used to the keyboard's default arrow key mappings (`Fn` + `[`, `;`, `'`, `/`) but that didn't work for me at all because putting my right pinky on the `Fn` key completely breaks the home position. Maybe more practice will do in the future, but not now.
 

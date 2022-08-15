@@ -18,11 +18,11 @@ draft: false
 
 そこで発想の転換をして、[Retina MBP のページ](http://www.apple.com/macbook-pro/features/#seq)では、蓋が開くたった 2 秒間のアニメーションに 60 枚の JPG をぶん回すという荒業を使っていた。これは実に 5MB もの画像を使っていることになる（そのかわり Retina ディスプレイに対応した画像サイズにはなっていない）↓ これ。
 
-{{<img name="open_060.jpg" >}}
+{{< img name="open_060.jpg" >}}
 
 で、今回の iPhone5 のアンロックアニメーションは更に手法を更に進化させて、2MB に収まる 2 枚の JPG 画像を JS で高速に差し替えて canvas タグ内に描画している。各フレームごとの JPG の位置は JSON で記述されていて、全体的な制御は ac_flow.js が行なっていると。圧縮された JPG 画像はこんな感じ。注：バグってるわけではありません。元画像は[こちら](http://www.apple.com/iphone/design/images/unlock/unlock_001.jpg)
 
-{{<img name="unlock_001.jpg" >}}
+{{< img name="unlock_001.jpg" >}}
 
 ここまで来ると誰にも真似できないというか、驚きを通り越して恐怖。昔から思ってたけど、Apple のウェブサイトって本当に一つの目指すべき姿だと思う。
 
@@ -32,7 +32,7 @@ draft: false
 
 昨夜、この記事が FICC の[@akirafukuoka](https://twitter.com/akirafukuoka)さんに紹介され、さらに尊敬する[@fladdict](https://twitter.com/fladdict)さんに RT された形で一気に拡散し、[ホットエントリー入り](http://b.hatena.ne.jp/hotentry)しました。まさか自分の VPS が最大瞬間 7.5Mbps のトラフィックを出すとは思ってもいなかったです。
 
-{{<img name="if_eth0-day.png" >}}
+{{< img name="if_eth0-day.png" >}}
 
 感動して勢いで書いた部分もあり、読み返して表現が間違ってるなーと思う部分もあったので訂正しつつ追記。
 

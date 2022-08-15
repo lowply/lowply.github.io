@@ -32,6 +32,6 @@ I've checked the Cloudflare token but it wasn't expired. I rolled it just in cas
 
 Quick GitHub search retuened an interesting issue: [CloudflareAuthenticationError with valid token in 0.9.14 · Issue #791 · octodns/octodns](https://github.com/octodns/octodns/issues/791). According to the report, it seems that the token now needs the `Zone.Page Rules:Read` permission in addition to what it has been required: `Zone.DNS:Edit`.
 
-{{<img name="cf.png" >}}
+{{< img name="cf.png" >}}
 
 Adding the permission fixed the authentication error.
