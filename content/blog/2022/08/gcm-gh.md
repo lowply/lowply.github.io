@@ -48,7 +48,7 @@ Due to this configuration, the first time you clone a repo after authenticating 
 
 ### gh
 
-With `gh`, this is the reason why you can still clone a private repo after running `gh auth logout -h github.com` and this is really confusing. Also, with `gh`, the token in the `~/.config/gh/hosts.yml` file and the token in the Keychain.app (Internet password for github.com) are _different_ (unsure why).
+With `gh`, this is the reason why you can still clone a private repo after running `gh auth logout -h github.com` and can be really confusing. Also, with `gh`, the token in the `~/.config/gh/hosts.yml` file and the token in the Keychain.app (Internet password for github.com) are _different_ (unsure why).
 
 ### gcm
 
@@ -68,7 +68,7 @@ On the other hand, `gcm` stores its credentials in the Keychain.app on macOS and
 
 There's no default credential store for Linux though. If your Linux machine is owned by you and there's no other users, `plaintext` can be an option - See [Credential stores](https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/credstores.md) for more details.
 
-Do you want to use Keychain.app on macOS while plaintext on Linux? Use `[include]` directive in your `~/.gitconfig`. With this, you can load environment specific configuration files e.g. `~/.gitconfig.local`.
+Do you want to use Keychain.app on macOS and plaintext on Linux? Use `[include]` directive in your `~/.gitconfig`. With this, you can load environment specific configuration files e.g. `~/.gitconfig.local`.
 
 ```text
 $ tail -n 2 ~/.gitconfig
@@ -86,7 +86,7 @@ $ cat ~/.gitconfig.local
 
 If you choose plaintext, your credential will be stored in `~/.gcm/store/git/https/github.com/[username].credential`.
 
-## 3. How to get started
+## 3. The helper path
 
 ## gh
 
@@ -105,14 +105,14 @@ Btw, the `!` at the beginning is explained in [Git - gitcredentials Documentatio
 
 ### gcm
 
-With `gcm`, the installation path can also be different depending on how you install it and what OS you're on. So, similar to `gh`, you can't use the a single `.gitconfig` across multiple environments. However, unlike `gh`, it's just a path, without `!` prefix. This means that you can put the `git-credential-manager-core` in the `$PATH` and call it as a command by adding the prefix!
+On the other hand, with `gcm`, the installation path is the same at least both on macOS and Linux. On macOS the `git-credential-manager-core` binary is installed in `/usr/local/share/gcm-core` and the symlink to the binary will be created in `/usr/local/bin`. On Linux the `git-credential-manager-core` binary is installed in `/usr/local/bin`, either using the tarball or the .deb package.
+
+So your `~/.gitconfig` should be simple, just set the absolute path to the binary as the helper:
 
 ```ini
 [credential]
-    helper = !git-credential-manager-core
+    helper = /usr/local/bin/git-credential-manager-core
 ```
-
-With this workaround, you can use the same `~/.gitconfig` across multiple environments.
 
 ## Conclusion
 
