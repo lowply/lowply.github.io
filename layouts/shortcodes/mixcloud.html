@@ -1,0 +1,4 @@
+{{- $url := .Get "url" | urls.Parse -}}
+{{- $path := $url.Path | urlquery -}}
+{{- $embed := print $url.Scheme "://" $url.Host "/widget/iframe/?hide_cover=1&light=1&feed=" $path -}}
+<iframe width="100%" height="120" src="{{ $embed }}" frameborder="0" ></iframe>
