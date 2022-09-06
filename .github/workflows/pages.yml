@@ -23,15 +23,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.101.0
+      HUGO_VERSION: 0.102.3
     steps:
+      - name: Install Hugo CLI
+        run: |
+          curl -L -o ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
       - name: Build with Hugo
-        uses: lowply/build-hugo@v0.102.3
+        run: hugo
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
