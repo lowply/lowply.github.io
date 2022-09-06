@@ -4,3 +4,5 @@ title: lowply.github.io
 enableGitInfo: true
 params:
   asseturl: https://lowply.net/lowply.github.io/assets
+minify:
+  minifyOutput: true
