@@ -23,7 +23,7 @@ $ ./script/new slug
 ### Sync assets
 
 ```bash
-$ ./script/push-assets
+$ ./script/deploy-assets.sh
 ```
 
 ### Author
