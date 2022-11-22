@@ -18,6 +18,6 @@ $ infocmp -a xterm-kitty | gh cs ssh -c [name of the codespace] -- tic -x -o \~/
 
 You might see the following warning, but this can be ignored.
 
-```
+```console
 "/dev/stdin", line 2, col 22, terminal 'xterm-kitty': older tic versions may treat the description field as an alias
 ```
