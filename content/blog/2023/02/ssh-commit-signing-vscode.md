@@ -4,8 +4,6 @@ date: 2023-02-03T20:33:45+09:00
 draft: false
 ---
 
-# SSH commit signing with GitHub Codespaces + VS Code
-
 GitHub Codespaces [supports GPG commit signing](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-gpg-verification-for-github-codespaces). Of course, by [SSHing to the Codespaces instance](https://docs.github.com/en/codespaces/developing-in-codespaces/using-github-codespaces-with-github-cli#ssh-into-a-codespace) using any terminal software with [SSH agent forwarding](https://docs.github.com/en/developers/overview/using-ssh-agent-forwarding), you can [sign your commits with your SSH key](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification) as well.
 
 However, this isn't applicable to VS Code. Using VS Code and its terminal functionality means no SSH agent forwarding (because you're not SSHing), so there's no SSH private key to sign, unless you manually `scp` your SSH private key to the Codespaces instance (which is a terrible idea).
