@@ -23,13 +23,13 @@ $ echo $SSH_AUTH_SOCK
 /tmp/ssh-[random-string]/agent.[PID]
 ```
 
-By assigning the same value to the same environment variable in VS Code's terminal, you'll be able to use the SSH key via the agent, as long as the original SSH connection is alive.
+By assigning the same value to the same environment variable in VS Code's terminal, you'll be able to use the SSH key via the agent, as long as the original SSH connection is alive:
 
 ```console
 $ export SSH_AUTH_SOCK=/tmp/ssh-[random-string]/agent.[PID]
 ```
 
-Adding the following snippets to your `~/.bashrc` and using your [dotfiles](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles) for Codespaces, all of this can be automated.
+Adding the following snippets to your `~/.bashrc` and using [dotfiles](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles) for Codespaces, all of this can be automated:
 
 ```bash
 if [ "${CODESPACES}" == "true" ] && [ "${TERM_PROGRAM}" == "vscode" ]; then
