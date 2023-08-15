@@ -10,7 +10,7 @@ I realized that the result of the `infocmp -a xterm-kitty` command that run on m
 
 On Codespace instances (and other Linux machines too) just downloading the terminfo file from the GitHub repository and passing it to the `tic` command is easier and more reliable.
 
-```console
+```shell
 gh api \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
@@ -24,19 +24,19 @@ _END OF UPDATE_
 
 [Kitty](https://sw.kovidgoyal.net/kitty/) has been my main terminal software for quite a while. One unique thing about it is that it has its own terminfo, `xterm-kitty`. Without having the terminfo file on the server, you may encounter the following warning when running commands such as `less`, and the terminal actually isn't functional at all.
 
-```console
+```shell
 WARNING: terminal is not fully functional
 ```
 
 There are some well-written solutions for this in [Frequently Asked Questions - kitty](https://sw.kovidgoyal.net/kitty/faq/). On [GitHub Codespaces](https://github.com/features/codespaces) instance, with the [GitHub CLI](https://github.com/cli/cli) you can apply this:
 
-```console
+```shell
 infocmp -a xterm-kitty | gh cs ssh -c [name of the codespace] -- tic -x -o \~/.terminfo /dev/stdin
 ```
 
 You might see the following warning, but this can be ignored.
 
-```console
+```shell
 "/dev/stdin", line 2, col 22, terminal 'xterm-kitty': older tic versions may treat the description field as an alias
 ```
 
