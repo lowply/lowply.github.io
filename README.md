@@ -23,6 +23,7 @@ $ ./script/new slug
 ### Sync assets
 
 ```bash
+$ ln -s /path/to/assets static/assets
 $ ./script/deploy-assets.sh
 ```
 

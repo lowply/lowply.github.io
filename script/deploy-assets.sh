@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-find . -name .DS_Store -delete -exec echo removed: {} \;
+set -euo pipefail
 
-az storage blob sync \
-    --account-name lowplynet \
-    --source ./static/assets \
-    --container '$web/lowply.github.io/assets' \
-    --delete-destination true
+STORAGE_ACCOUNT_NAME=lowplynet
+SOURCE_DIR=$(cd ./static/assets && pwd -P)
+
+find "${SOURCE_DIR}" -name .DS_Store -delete -print
+
+azcopy sync "${SOURCE_DIR}" \
+    "https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net/\$web/lowply.github.io/assets/" \
+    --recursive \
+    --delete-destination=true
