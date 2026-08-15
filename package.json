@@ -1,0 +1,7 @@
+{
+  "name": "lowply.github.io",
+  "private": true,
+  "devDependencies": {
+    "bootstrap": "5.3.8"
+  }
+}
