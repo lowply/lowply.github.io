@@ -16,7 +16,7 @@ Then I learned that PFU has updated the HHKB lineup in 2019 with the new "HYBRID
 
 So I got it on March 29th. Unboxing was exciting. The typing sound is gorgeous. The size and weight is nice. I like the [optional replacement keycap](https://www.pfu.fujitsu.com/direct/hhkb/hhkb-option/detail_keytop-proc.html) color, this is good red. But as I tweeted, the biggest obstacle for me was that the `Fn` key to be located at the right bottom of the keyboard. I tried to get used to the keyboard's default arrow key mappings (`Fn` + `[`, `;`, `'`, `/`) but that didn't work for me at all because putting my right pinky on the `Fn` key completely breaks the home position. Maybe more practice will do in the future, but not now.
 
-{{< tweet user="lowply" id="1376545595469352962" >}}
+{{< x user="lowply" id="1376545595469352962" >}}
 
 After some trials and errors, I decided to override `Ctrl` + `H`,`J`,`K`,`L` to arrow keys using [Karabiner-Elements](https://karabiner-elements.pqrs.org/). To tell the truth, I'm not 100% happy with this mapping, because I used to use `Ctrl + L` a lot in my terminal and `Ctrl + K` to convert a Japanese word to Katakana forcefully.
 
@@ -31,7 +31,7 @@ For example, holding `Option` you can move the cursor by the word (like Vim's `w
 
 To utilize these powerful editing shortcuts, I needed arrow keys.
 
-{{< tweet user="lowply" id="1380855105721757700" >}}
+{{< x user="lowply" id="1380855105721757700" >}}
 
 I've put my custom config file in [my dotfiles repo](https://github.com/lowply/dotfiles/blob/master/symlinks/.config/karabiner/assets/complex_modifications/lowply.json), but here's an extract:
 
@@ -167,6 +167,6 @@ In addition, I made both left and right `Option` keys for IME switching. [There'
 
 So far so good! The only remaining concern is the prefix conflict in [tmux](https://github.com/tmux/tmux/wiki).
 
-{{< tweet user="lowply" id="1380855106728382467" >}}
+{{< x user="lowply" id="1380855106728382467" >}}
 
 My current prefix is `Ctrl + A` and it conflicts with `Ctrl + HJKL` keymap if I hold the left `Control` key too long. I'm now learning Kitty (my main terminal client) 's [native keyboard shortcuts](https://sw.kovidgoyal.net/kitty/#tabs-and-windows) so I can say goodbye to my 10 years friend, tmux. My keyboard journey has just started...
