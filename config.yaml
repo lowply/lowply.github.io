@@ -1,5 +1,5 @@
 baseURL: https://lowply.github.io/
-languageCode: en-us
+locale: en-US
 title: lowply.github.io
 enableGitInfo: true
 params:
