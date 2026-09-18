@@ -55,9 +55,41 @@ img {
     vertical-align: middle;
 }
 
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: 1px solid;
+    opacity: 0.25;
+}
+
+sub,
+sup {
+    position: relative;
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
 table {
     caption-side: bottom;
     border-collapse: collapse;
+}
+
+th {
+    text-align: inherit;
+    text-align: -webkit-match-parent;
 }
 
 blockquote {
