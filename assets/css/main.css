@@ -43,12 +43,24 @@ code {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+code {
+    font-size: 0.875em;
+    color: #d63384;
+    word-wrap: break-word;
+}
+
 pre {
     display: block;
     margin-top: 0;
     margin-bottom: 1rem;
     overflow: auto;
     font-size: 0.875em;
+}
+
+pre code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
 }
 
 img {
