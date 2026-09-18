@@ -17,7 +17,7 @@ then
 fi
 
 stylesheet_path=$(
-    sed -n 's/.*href="\([^"]*\/css\/main\.min\.[^"]*\.css\)".*/\1/p' public/index.html |
+    sed -n 's/.*href="\{0,1\}\([^" >]*\/css\/main\.min\.[^" >]*\.css\)"\{0,1\}.*/\1/p' public/index.html |
         head -n 1
 )
 
@@ -29,7 +29,7 @@ case "$stylesheet_path" in
         ;;
 esac
 
-if ! grep -Eq 'href="[^"]*/css/main\.min\.[^"]*\.css" rel="stylesheet" integrity="[^"]+"' public/index.html; then
+if ! grep -Eq 'href="?/css/main\.min\.[^" >]*\.css"?[[:space:]]+rel="?stylesheet"?[[:space:]]+integrity="[^"]+"' public/index.html; then
     echo "stylesheet integrity attribute not found" >&2
     exit 1
 fi

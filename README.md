@@ -4,6 +4,8 @@
 
 ### Build
 
+Hugo is the only required build tool for this site.
+
 ```bash
 $ make build
 ```
