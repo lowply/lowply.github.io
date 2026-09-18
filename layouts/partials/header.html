@@ -22,13 +22,8 @@
         {{ hugo.Generator }}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {{- $sassOptions := dict
-            "transpiler" "dartsass"
-            "includePaths" (slice "node_modules/bootstrap/scss")
-            "silenceDependencyDeprecations" true
-        }}
-        {{- $style := resources.Get "sass/main.scss" | css.Sass $sassOptions | resources.Minify | resources.Fingerprint }}
-        <link href="{{ $style.RelPermalink }}" rel="stylesheet" />
+        {{- $style := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
+        <link href="{{ $style.RelPermalink }}" rel="stylesheet" integrity="{{ $style.Data.Integrity }}" />
         {{- with .OutputFormats.Get "rss" -}}
         {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
         {{- end }}
